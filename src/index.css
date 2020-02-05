@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.hxm-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #007bff;
+  text-align: center;
+}
+
+.switch-toggle {
+  width: 10em;
+}
+
+.switch-toggle label:not(.disabled) {
+  cursor: pointer;
+}
+
+.hxm-slider-width {
+  width: 35%;
+}
+
+/*** MULTICHOICE BOXES ************************************************************************************/
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.multichoiceboxes {
+  border: 1px solid #c7c7c7;
+  border-radius: 5%;
+  padding: 5px 10px;
+  text-align: center;
+  margin: 0;
+  background-color: white;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  display: flex;
+  height: 52px;
+  min-height: 52px;
+  letter-spacing: initial;
+  cursor: pointer;
+
+  /*make text on button not highlightable so it doesn't get in the way of clicking*/
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+/*** MULTICHOICE BOXES ************************************************************************************/
+
+.multichoice-card:nth-of-type(2n + 1) {
+  padding-right: 4px;
+  padding-left: 0;
+}
+
+.multichoice-card:nth-of-type(2n + 2) {
+  padding-right: 0;
+  padding-left: 4px;
+}
