@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
@@ -15,6 +14,7 @@ import IndividualPanel from "./../../containers/individualPanel";
 import OccupationPanel from "../../containers/occupationPanel";
 import StatusPanel from "../../containers/statusPanel";
 import VehicleUsePanel from "../../containers/vehicleUsePanel";
+import { useMediaQuery } from "react-responsive";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,12 +39,12 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired
 };
 
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`
-  };
-}
+// function a11yProps(index) {
+//   return {
+//     id: `simple-tab-${index}`,
+//     "aria-controls": `simple-tabpanel-${index}`
+//   };
+// }
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -54,7 +54,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimpleTabs() {
+export default function SimpleTabs({
+  renderInput,
+  renderSelect,
+  renderDatePicker,
+  renderRadioGrid,
+  renderYesNoSlider,
+  renderYesNoToggle
+}) {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-device-width: 1224px)"
+  });
+
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -63,38 +74,71 @@ export default function SimpleTabs() {
   };
 
   return (
-    <div className={classes.root}>
-      <Paper square className={classes.root}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="fullWidth"
-          indicatorColor="primary"
-          textColor="primary"
-          aria-label="icon tabs example"
-        >
-          <Tab icon={<PhoneIcon />} aria-label="individualPanel" />
-          <Tab icon={<FavoriteIcon />} aria-label="statusPanel" />
-          <Tab icon={<PersonPinIcon />} aria-label="occupationPanel" />
-          <Tab icon={<Android />} aria-label="vehicleUsePanel" />
-        </Tabs>
-      </Paper>
+    <React.Fragment>
+      <div className={classes.root}>
+        <Paper square className={classes.root}>
+          {!isDesktopOrLaptop && (
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              variant="fullWidth"
+              indicatorColor="primary"
+              textColor="primary"
+              aria-label="icon tabs example"
+            >
+              <Tab icon={<PhoneIcon />} aria-label="individualPanel" />
+              <Tab icon={<FavoriteIcon />} aria-label="statusPanel" />
+              <Tab icon={<PersonPinIcon />} aria-label="occupationPanel" />
+              <Tab icon={<Android />} aria-label="vehicleUsePanel" />
+              <Tab icon={<PhoneIcon />} aria-label="testPanel" />
+            </Tabs>
+          )}
+        </Paper>
+      </div>
 
-      <TabPanel value={value} index={0}>
-        <IndividualPanel />
-      </TabPanel>
+      {!isDesktopOrLaptop && (
+        <div>
+          <TabPanel value={value} index={0}>
+            <IndividualPanel
+              renderInput={renderInput}
+              renderSelect={renderSelect}
+              renderDatePicker={renderDatePicker}
+              renderRadioGrid={renderRadioGrid}
+            />
+          </TabPanel>
 
-      <TabPanel value={value} index={1}>
-        <StatusPanel />
-      </TabPanel>
+          <TabPanel value={value} index={1}>
+            <StatusPanel renderYesNoToggle={renderYesNoToggle} />
+          </TabPanel>
 
-      <TabPanel value={value} index={2}>
-        <OccupationPanel />
-      </TabPanel>
+          <TabPanel value={value} index={2}>
+            <OccupationPanel renderSelect={renderSelect} />
+          </TabPanel>
 
-      <TabPanel value={value} index={3}>
-        <VehicleUsePanel />
-      </TabPanel>
-    </div>
+          <TabPanel value={value} index={3}>
+            <VehicleUsePanel
+              renderInput={renderInput}
+              renderYesNoToggle={renderYesNoToggle}
+            />
+          </TabPanel>
+        </div>
+      )}
+      {isDesktopOrLaptop && (
+        <div>
+          <IndividualPanel
+            renderInput={renderInput}
+            renderSelect={renderSelect}
+            renderDatePicker={renderDatePicker}
+            renderRadioGrid={renderRadioGrid}
+          />
+          <StatusPanel renderYesNoToggle={renderYesNoToggle} />
+          <OccupationPanel renderSelect={renderSelect} />
+          <VehicleUsePanel
+            renderInput={renderInput}
+            renderYesNoToggle={renderYesNoToggle}
+          />
+        </div>
+      )}
+    </React.Fragment>
   );
 }

@@ -1,15 +1,7 @@
-import React, { Component } from "react";
-import Input from "../elements/input/input";
-import YesNoSlider from "../elements/input/yesNoSlider";
+import React from "react";
 
-const VehicleUsePanel = () => {
-  return (
-    <div>
-      <div>VehicleUse content</div>
-      <Input label="Registration Number" name="regNumber" />
-      <YesNoSlider id="carNice" />
-    </div>
-  );
+const VehicleUsePanel = ({ renderYesNoToggle }) => {
+  return <div>{renderYesNoToggle("isMarried", "Marriage Status")}</div>;
 };
 
 export default VehicleUsePanel;

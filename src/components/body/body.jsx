@@ -1,12 +1,8 @@
 import React from "react";
-import IconTabs from "../../elements/nav/iconTabs";
+import PersonForm from "./../../containers/personForm";
 
 const Body = props => {
-  return (
-    <div>
-      <IconTabs />
-    </div>
-  );
+  return <PersonForm />;
 };
 
 export default Body;

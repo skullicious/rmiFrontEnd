@@ -1,21 +1,33 @@
 import React from "react";
 
-const YesNoSlider = ({ id }) => {
+const YesNoSlider = ({ name }) => {
   return (
-    <div id={id} class="switch-toggle switch-3 switch-candy hxm-slider-width">
-      <input id={id + "Yes"} name={id} type="radio" />
-      <label htmlFor={id + "Yes"} onclick="">
-        Yes
+    <div
+      id={name}
+      className="switch-toggle switch-3 switch-candy form-group"
+      value={true}
+    >
+      <input id={name + "_on"} name={name} type="radio" />
+
+      <label htmlFor={name + "_on"} onClick="">
+        ON
       </label>
 
-      <input id={id + "Na"} name={id} type="radio" disabled="disabled" />
-      <label htmlFor={id + "Na"} class="disabled" onclick="">
-        |
+      <input
+        id={name + "_na"}
+        name={name}
+        type="radio"
+        disabled
+        checked="defaultChecked"
+      />
+      <label htmlFor={name + "_na"} className="disabled" onClick="">
+        ||
       </label>
 
-      <input id={id + "No"} name={id} type="radio" />
-      <label htmlFor={id + "No"} onclick="">
-        No
+      <input id={name + "_off"} name={name} type="radio" />
+
+      <label htmlFor={name + "_off"} onClick="">
+        OFF
       </label>
 
       <a></a>

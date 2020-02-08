@@ -1,11 +1,9 @@
 export const titles = [
-  { _id: "1", title: "Mr" },
-  { _id: "2", title: "Mrs" },
-  { _id: "3", title: "Miss" },
-  { _id: "4", title: "Doctor" }
-
-]
-
+  { _id: "1", name: "Mr" },
+  { _id: "2", name: "Mrs" },
+  { _id: "3", name: "Miss" },
+  { _id: "4", name: "Doctor" }
+];
 
 export function getTitles() {
   return titles;

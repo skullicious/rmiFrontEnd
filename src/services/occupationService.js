@@ -12,3 +12,14 @@ export const occs = [
 export function getOccs() {
   return occs;
 }
+
+export const occStatus = [
+  { _id: "1", name: "Full time" },
+  { _id: "2", name: "Part time" },
+  { _id: "3", name: "Unemployed" },
+  { _id: "4", name: "Contractor" }
+];
+
+export function getOccStatus() {
+  return occStatus;
+}

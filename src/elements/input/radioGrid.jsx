@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const RadioGrid = ({ name, label, options, error, ...rest }) => {
   return (
@@ -12,7 +12,7 @@ const RadioGrid = ({ name, label, options, error, ...rest }) => {
           id={name}
           {...rest}
           className="form-control"
-          hidden="true"
+          hidden={true}
         ></input>
 
         <div className="k-form-field">
@@ -21,12 +21,12 @@ const RadioGrid = ({ name, label, options, error, ...rest }) => {
               <input
                 type="radio"
                 name="radio"
-                value={option.title}
+                value={option.name}
                 key={option._id}
                 className="k-radio"
-                //   onChange={this.handleChange}
+                // onChange={onChange}
               ></input>
-              <span className="multichoiceboxes">{option.title}</span>
+              <span className="multichoiceboxes">{option.name}</span>
             </label>
           ))}
           {error && <div className="alert alert-danger">{error}</div>}

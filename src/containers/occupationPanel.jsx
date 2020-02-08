@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { getOccs } from "../services/occupationService";
-import Select from "./../elements/input/select";
+import React from "react";
+import { getOccs, getOccStatus } from "../services/occupationService";
 
-const OccupationPanel = () => {
-  const options = getOccs();
+const OccupationPanel = ({ renderSelect }) => {
+  const occs = getOccs();
+  const occStatus = getOccStatus();
   return (
     <div>
-      <div>Occupation content</div>
-      <Select options={options} />
+      {renderSelect("occupation", "Occupation", occs)}
+      {renderSelect("occStatus", "Occupation Status", occStatus)}
     </div>
   );
 };

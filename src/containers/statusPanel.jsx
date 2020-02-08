@@ -1,15 +1,13 @@
-import React, { Component } from "react";
-import YesNoSlider from "../elements/input/yesNoSlider";
+import React from "react";
 
-const StatusPanel = () => {
+const StatusPanel = ({ renderYesNoToggle }) => {
   return (
     <div>
-      <div>Status content</div>
-      <YesNoSlider id="homeOwnershipStatus" />
+      {renderYesNoToggle("married", "Marriage Status")}
       <br />
-      <YesNoSlider id="ukResidencyStatus" />
+      {renderYesNoToggle("ownHouse", "Own House")}
       <br />
-      <YesNoSlider id="marriageStatus" />
+      {renderYesNoToggle("hasLicense", "Car License")}
     </div>
   );
 };
