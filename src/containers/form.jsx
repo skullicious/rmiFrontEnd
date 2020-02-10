@@ -32,7 +32,7 @@ class Form extends Component {
         name={name}
         label={label}
         value={data[name]}
-        onChange={this.handleChange}
+        onToggle={this.handleToggle}
         options={options}
         error={errors[name]}
       />
@@ -92,14 +92,14 @@ class Form extends Component {
   }
 
   handleToggle = ({ currentTarget: input }) => {
-    console.log(input.value);
-    console.log(input.name);
-
+    console.log(input);
     const data = { ...this.state.data };
-    console.log(data);
+
+    console.log(input.name);
+    console.log(input.value);
     data[input.name] = input.value;
     this.setState({ data });
-    console.log(data);
+    console.log({ data });
   };
 
   handleChange = ({ currentTarget: input }) => {

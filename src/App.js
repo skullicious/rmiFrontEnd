@@ -8,6 +8,10 @@ import Body from "./components/body/body";
 function App() {
   return (
     <React.Fragment>
+      <meta
+        name="viewport"
+        content="minimum-scale=1, initial-scale=1, width=device-width"
+      />
       <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"

@@ -5,6 +5,7 @@ import Form from "./form";
 //import { saveMovie, getMovie } from "./services/fakeMovieService";
 import IconTabs from "../elements/nav/iconTabs";
 import { getOccs } from "../services/occupationService";
+import { getTitles } from "../services/titleService";
 
 class PersonForm extends Form {
   state = {
@@ -22,6 +23,7 @@ class PersonForm extends Form {
     },
     genres: [],
     occupations: [],
+    titles: [],
     errors: {}
   };
 
@@ -53,7 +55,10 @@ class PersonForm extends Form {
   // username = React.createRef();
   componentDidMount() {
     const occupations = getOccs(); //gen genres for dropdown
-    this.setState({ occupations }); //set empty genres to result of call
+    const titles = getTitles();
+    this.setState({ occupations, titles }); //set empty genres to result of call
+
+    console.log(titles);
     ////*** */
     // const movieId = this.props.match.params.id; //set movie id to the paramater
     // if (movieId === "new") return; // if movie id is new return to empty page to allow details to be added
