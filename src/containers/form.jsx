@@ -92,17 +92,14 @@ class Form extends Component {
   }
 
   handleToggle = ({ currentTarget: input }) => {
-    console.log(input);
     const data = { ...this.state.data };
-
-    console.log(input.name);
-    console.log(input.value);
     data[input.name] = input.value;
     this.setState({ data });
-    console.log({ data });
   };
 
   handleChange = ({ currentTarget: input }) => {
+    console.log(input);
+
     const errors = { ...this.state.errors };
     const errorMessage = this.validateProperty(input);
     if (errorMessage) errors[input.name] = errorMessage;

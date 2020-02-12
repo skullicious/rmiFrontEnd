@@ -1,8 +1,8 @@
 import React from "react";
 import PersonForm from "./../../containers/personForm";
 
-const Body = props => {
+const Person = props => {
   return <PersonForm />;
 };
 
-export default Body;
+export default Person;

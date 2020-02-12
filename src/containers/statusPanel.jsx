@@ -1,13 +1,11 @@
 import React from "react";
 
-const StatusPanel = ({ renderYesNoToggle }) => {
+const StatusPanel = ({ renderInput }) => {
   return (
     <div>
-      {renderYesNoToggle("married", "Marriage Status")}
-      <br />
-      {renderYesNoToggle("ownHouse", "Own House")}
-      <br />
-      {renderYesNoToggle("hasLicense", "Car License")}
+      {renderInput("postcode", "Postcode")}
+      {renderInput("email", "Email Address")}
+      {renderInput("contactNumber", "Contact Number")}
     </div>
   );
 };

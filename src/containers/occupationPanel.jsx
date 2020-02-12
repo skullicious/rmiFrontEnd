@@ -1,13 +1,26 @@
 import React from "react";
-import { getOccs, getOccStatus } from "../services/occupationService";
+import { employmentTypes } from "./../services/occupationService";
+import {
+  getOccs,
+  getOccStatus,
+  getEmploymentTypes
+} from "../services/occupationService";
 
-const OccupationPanel = ({ renderSelect }) => {
+const OccupationPanel = ({
+  renderSelect,
+  renderYesNoToggle,
+  renderRadioGrid
+}) => {
   const occs = getOccs();
   const occStatus = getOccStatus();
+  const employmentTypes = getEmploymentTypes();
   return (
     <div>
       {renderSelect("occupation", "Occupation", occs)}
       {renderSelect("occStatus", "Occupation Status", occStatus)}
+      {renderYesNoToggle("partTime", "Part Time?")}
+      <br />
+      {renderRadioGrid("employmentType", "Employment Type", employmentTypes)}
     </div>
   );
 };

@@ -1,15 +1,14 @@
 import React from "react";
 import { getTitles } from "../services/titleService";
 
-const Individual = ({ renderSelect, renderInput, renderRadioGrid }) => {
+const Individual = ({ renderInput, renderRadioGrid }) => {
   const titles = getTitles();
 
   return (
     <div>
-      {renderSelect("title", "Title", titles)}
+      {renderRadioGrid("title", "Title Selection:", titles)}
       {renderInput("firstName", "First Name")}
       {renderInput("lastName", "Last Name")}
-      {renderRadioGrid("title", "Title Selection:", titles)}
     </div>
   );
 };

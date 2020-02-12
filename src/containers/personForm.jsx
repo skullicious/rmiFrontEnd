@@ -6,6 +6,10 @@ import Form from "./form";
 import IconTabs from "../elements/nav/iconTabs";
 import { getOccs } from "../services/occupationService";
 import { getTitles } from "../services/titleService";
+import {
+  getLicenseTypes,
+  getVehicleUses
+} from "./../services/vehicleUseService";
 
 class PersonForm extends Form {
   state = {
@@ -19,8 +23,17 @@ class PersonForm extends Form {
       isMarried: "",
       isOwnHouse: "",
       hasLicense: "",
-      hasOwnCar: ""
+      hasOwnCar: "",
+      licenseType: "",
+      vehicleUse: "",
+      motoringQualification: "",
+      postcode: "",
+      email: "",
+      contactNumber: ""
     },
+    licenseTypes: [],
+    licenseRestrictions: [],
+    vehicleUses: [],
     genres: [],
     occupations: [],
     titles: [],
@@ -38,6 +51,9 @@ class PersonForm extends Form {
     lastName: Joi.string()
       .required()
       .label("Last Name"),
+    email: Joi.string()
+      .required()
+      .label("Email"),
     occupation: Joi.string()
       .required()
       .label("Occupation"),
@@ -49,16 +65,30 @@ class PersonForm extends Form {
       .label("Registration Number"),
     isMarried: Joi.boolean()
       .required()
-      .label("Marriage Status")
+      .label("Marriage Status"),
+    vehicleUse: Joi.string()
+      .required()
+      .label("Vehicle Use"),
+    licenseType: Joi.string()
+      .required()
+      .label("License Types"),
+    postcode: Joi.string()
+      .required()
+      .label("Postcode"),
+    contactNumber: Joi.string()
+      .required()
+      .label("Contact Number")
   };
 
   // username = React.createRef();
   componentDidMount() {
     const occupations = getOccs(); //gen genres for dropdown
     const titles = getTitles();
-    this.setState({ occupations, titles }); //set empty genres to result of call
+    const vehicleUses = getVehicleUses();
+    const licenseTypes = getLicenseTypes();
 
-    console.log(titles);
+    this.setState({ occupations, titles, vehicleUses, licenseTypes }); //set empty genres to result of call
+
     ////*** */
     // const movieId = this.props.match.params.id; //set movie id to the paramater
     // if (movieId === "new") return; // if movie id is new return to empty page to allow details to be added
@@ -102,7 +132,7 @@ class PersonForm extends Form {
             renderRadioGrid={this.renderRadioGrid.bind(this)}
             renderYesNoToggle={this.renderYesNoToggle.bind(this)}
           />
-          {this.renderButton("Save")}
+          {/* {this.renderButton("Save")} */}
         </form>
       </div>
     );

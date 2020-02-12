@@ -5,6 +5,9 @@ import ToggleButton from "@material-ui/lab/ToggleButton/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup/ToggleButtonGroup";
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    paddingBottom: "05px"
+  },
   paper: {
     display: "flex",
     border: `1px solid ${theme.palette.divider}`,
@@ -36,12 +39,10 @@ export default function YesNoToggle({ name, label, onToggle, value }) {
 
   const classes = useStyles();
 
-  // const handleClick = e => {
-  //   console.log(e.target.parentNode.parentNode.parentNode.value);
-  // };
-
   return (
-    <div>
+    <div className={classes.root}>
+      <span>{label}</span>
+      <br />
       <Paper elevation={0} className={classes.paper}>
         <StyledToggleButtonGroup
           id={name}

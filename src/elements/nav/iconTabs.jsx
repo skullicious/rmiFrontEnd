@@ -59,7 +59,6 @@ export default function SimpleTabs({
   renderSelect,
   renderDatePicker,
   renderRadioGrid,
-  renderYesNoSlider,
   renderYesNoToggle
 }) {
   const isDesktopOrLaptop = useMediaQuery({
@@ -72,6 +71,8 @@ export default function SimpleTabs({
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const handleTest = (event, newValue) => {};
 
   return (
     <React.Fragment>
@@ -90,7 +91,7 @@ export default function SimpleTabs({
               <Tab icon={<FavoriteIcon />} aria-label="statusPanel" />
               <Tab icon={<PersonPinIcon />} aria-label="occupationPanel" />
               <Tab icon={<Android />} aria-label="vehicleUsePanel" />
-              <Tab icon={<PhoneIcon />} aria-label="testPanel" />
+              {/* <Tab icon={<PhoneIcon />} aria-label="testPanel" /> */}
             </Tabs>
           )}
         </Paper>
@@ -108,17 +109,22 @@ export default function SimpleTabs({
           </TabPanel>
 
           <TabPanel value={value} index={1}>
-            <StatusPanel renderYesNoToggle={renderYesNoToggle} />
+            <StatusPanel renderInput={renderInput} />
           </TabPanel>
 
           <TabPanel value={value} index={2}>
-            <OccupationPanel renderSelect={renderSelect} />
+            <OccupationPanel
+              renderSelect={renderSelect}
+              renderYesNoToggle={renderYesNoToggle}
+              renderRadioGrid={renderRadioGrid}
+            />
           </TabPanel>
 
           <TabPanel value={value} index={3}>
             <VehicleUsePanel
-              renderInput={renderInput}
               renderYesNoToggle={renderYesNoToggle}
+              renderRadioGrid={renderRadioGrid}
+              renderSelect={renderSelect}
             />
           </TabPanel>
         </div>
@@ -131,11 +137,16 @@ export default function SimpleTabs({
             renderDatePicker={renderDatePicker}
             renderRadioGrid={renderRadioGrid}
           />
-          <StatusPanel renderYesNoToggle={renderYesNoToggle} />
-          <OccupationPanel renderSelect={renderSelect} />
-          <VehicleUsePanel
-            renderInput={renderInput}
+          <StatusPanel renderInput={renderInput} />
+          <OccupationPanel
+            renderSelect={renderSelect}
             renderYesNoToggle={renderYesNoToggle}
+            renderRadioGrid={renderRadioGrid}
+          />
+          <VehicleUsePanel
+            renderYesNoToggle={renderYesNoToggle}
+            renderRadioGrid={renderRadioGrid}
+            renderSelect={renderSelect}
           />
         </div>
       )}

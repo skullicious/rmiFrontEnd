@@ -1,9 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
-import Body from "./components/body/body";
+import Person from "./components/body/body";
+import { Route, Switch } from "react-router-dom";
 
 function App() {
   return (
@@ -25,7 +25,10 @@ function App() {
 
       <div className="App">
         <Header />
-        <Body />
+        <Switch>
+          <Route path="/person" component={Person} />
+          <Route path="/" component={Person} />
+        </Switch>
         <Footer />
       </div>
     </React.Fragment>
