@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     letterSpacing: "initial",
     cursor: "pointer",
     fontWeight: "bold",
-    width: "125px",
+    width: "130px",
     height: "50px"
   },
   checkedIcon: {
@@ -43,15 +43,15 @@ const useStyles = makeStyles({
   },
   formControlLabel: {
     marginLeft: "0px",
-    marginRight: "0px"
-    // ":nth-of-type(2n + 1)": {
-    //   paddingRight: "4px",
-    //   paddingLeft: "0"
-    // },
-    // ":nth-of-type(2n + 2)": {
-    //   paddingRight: "0",
-    //   paddingLeft: "4px"
-    // }
+    marginRight: "0px",
+    "&:nth-of-type(2n + 1)": {
+      paddingRight: "4px",
+      paddingLeft: "0"
+    },
+    "&:nth-of-type(2n + 2)": {
+      paddingRight: "0",
+      paddingLeft: "4px"
+    }
   },
   formLabel: {
     color: "#212529"

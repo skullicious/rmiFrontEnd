@@ -1,7 +1,8 @@
 import React from "react";
+import Android from "@material-ui/icons/Android";
+import Tab from "@material-ui/core/Tab";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
@@ -16,52 +17,43 @@ const useStyles = makeStyles({
   }
 });
 
-export default function LabelBottomNavigation(onClick) {
-  console.log(onClick);
+export default function Footer({ bottomNavClick, index }) {
   const classes = useStyles();
-  const [value, setValue] = React.useState("recents");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChange = dir => {
+    bottomNavClick(dir);
   };
 
   return (
-    <BottomNavigation
-      value={value}
-      onChange={handleChange}
-      className={classes.root}
-    >
-      <BottomNavigationAction
-        label="Backward"
-        value="backward"
-        onClick={onClick}
-        icon={<ArrowBackIosIcon />}
-      />
-      <BottomNavigationAction
+    <div>
+      <BottomNavigation className={classes.root}>
+        {index != 0 && (
+          <Tab
+            icon={
+              <ArrowBackIosIcon
+                onClick={handleChange.bind(this, "backward")}
+                value="backward"
+              />
+            }
+          />
+        )}
 
-      // icon={<FavoriteIcon />}
-      />
-      <BottomNavigationAction
+        <Tab />
+        <Tab />
+        <Tab />
+        <Tab />
 
-      // icon={<LocationOnIcon />}
-      />
-      <BottomNavigationAction
-        label="Forward"
-        value="forward"
-        icon={<ArrowForwardIosIcon />}
-      />
-    </BottomNavigation>
+        {index != 3 && (
+          <Tab
+            icon={
+              <ArrowForwardIosIcon
+                onClick={handleChange.bind(this, "forward")}
+                value="forward"
+              />
+            }
+          />
+        )}
+      </BottomNavigation>
+    </div>
   );
 }
-
-// import React from "react";
-
-// const footer = props => {
-//   return (
-//     <div>
-//       <h3 className="hxm-footer">Footer</h3>
-//     </div>
-//   );
-// };
-
-// export default footer;

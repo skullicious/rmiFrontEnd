@@ -1,8 +1,6 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./form";
-//import { getGenres } from "./services/fakeGenreService";
-//import { saveMovie, getMovie } from "./services/fakeMovieService";
 import IconTabs from "../elements/nav/iconTabs";
 import { getOccs } from "../services/occupationService";
 import { getTitles } from "../services/titleService";
@@ -10,6 +8,7 @@ import {
   getLicenseTypes,
   getVehicleUses
 } from "./../services/vehicleUseService";
+import Footer from "../components/footer/footer";
 
 class PersonForm extends Form {
   state = {
@@ -117,7 +116,6 @@ class PersonForm extends Form {
   doSubmit = () => {
     // call server
     //  saveMovie(this.state.data); // save movie in state
-
     this.props.history.push("/movies");
   };
 

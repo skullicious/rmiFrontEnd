@@ -29,7 +29,7 @@ function App() {
           <Route path="/person" component={Person} />
           <Route path="/" component={Person} />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </React.Fragment>
   );

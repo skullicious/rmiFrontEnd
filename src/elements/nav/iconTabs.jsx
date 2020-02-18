@@ -15,6 +15,7 @@ import OccupationPanel from "../../containers/occupationPanel";
 import StatusPanel from "../../containers/statusPanel";
 import VehicleUsePanel from "../../containers/vehicleUsePanel";
 import { useMediaQuery } from "react-responsive";
+import Footer from "../../components/footer/footer";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -38,13 +39,6 @@ TabPanel.propTypes = {
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired
 };
-
-// function a11yProps(index) {
-//   return {
-//     id: `simple-tab-${index}`,
-//     "aria-controls": `simple-tabpanel-${index}`
-//   };
-// }
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -72,7 +66,20 @@ export default function SimpleTabs({
     setValue(newValue);
   };
 
-  const handleTest = (event, newValue) => {};
+  const bottomNavClick = dir => {
+    let newValue;
+    if (dir == "forward" && value < 3) {
+      newValue = value + 1;
+      setValue(newValue);
+    } else if (dir == "backward" && value > 0) {
+      newValue = value - 1;
+      setValue(newValue);
+    } else {
+      console.log("AT END OF INDEX");
+    }
+  };
+
+  console.log(value);
 
   return (
     <React.Fragment>
@@ -91,7 +98,6 @@ export default function SimpleTabs({
               <Tab icon={<FavoriteIcon />} aria-label="statusPanel" />
               <Tab icon={<PersonPinIcon />} aria-label="occupationPanel" />
               <Tab icon={<Android />} aria-label="vehicleUsePanel" />
-              {/* <Tab icon={<PhoneIcon />} aria-label="testPanel" /> */}
             </Tabs>
           )}
         </Paper>
@@ -149,6 +155,10 @@ export default function SimpleTabs({
             renderSelect={renderSelect}
           />
         </div>
+      )}
+
+      {!isDesktopOrLaptop && (
+        <Footer bottomNavClick={bottomNavClick.bind(this)} index={value} />
       )}
     </React.Fragment>
   );

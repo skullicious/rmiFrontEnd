@@ -6,13 +6,16 @@ import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup/ToggleButtonGr
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingBottom: "05px"
+    paddingBottom: "5px"
   },
   paper: {
     display: "flex",
     border: `1px solid ${theme.palette.divider}`,
     flexWrap: "wrap",
     width: "130px"
+  },
+  toggleButton: {
+    color: "#212529"
   }
 }));
 
@@ -54,12 +57,18 @@ export default function YesNoToggle({ name, label, onToggle, value }) {
           onChange={handleAlignment}
           aria-label="text alignment"
         >
-          <ToggleButton value="true" aria-label="true aligned" name={name}>
+          <ToggleButton
+            className={classes.toggleButton}
+            value="true"
+            aria-label="true aligned"
+            name={name}
+          >
             <span></span>
             {<a>Yes</a>}
             <span></span>
           </ToggleButton>
           <ToggleButton
+            className={classes.toggleButton}
             value="na"
             aria-label="centered"
             disabled
@@ -67,7 +76,12 @@ export default function YesNoToggle({ name, label, onToggle, value }) {
           >
             ||
           </ToggleButton>
-          <ToggleButton name={name} value="false" aria-label="false aligned">
+          <ToggleButton
+            className={classes.toggleButton}
+            name={name}
+            value="false"
+            aria-label="false aligned"
+          >
             <span>&nbsp;</span>
             <a>No</a>
             <span>&nbsp;</span>
