@@ -1,8 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/header/header";
-import Footer from "./components/footer/footer";
-import Person from "./components/body/body";
+import { PersonBase, VehicleBase } from "./components/body/body";
 import { Route, Switch } from "react-router-dom";
 
 function App() {
@@ -26,10 +25,10 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <Route path="/person" component={Person} />
-          <Route path="/" component={Person} />
+          <Route path="/person" component={PersonBase} />
+          <Route path="/vehicle" component={VehicleBase} />
+          <Route path="/" component={PersonBase} />
         </Switch>
-        {/* <Footer /> */}
       </div>
     </React.Fragment>
   );

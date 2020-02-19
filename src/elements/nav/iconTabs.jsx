@@ -5,10 +5,6 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import PhoneIcon from "@material-ui/icons/Phone";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import PersonPinIcon from "@material-ui/icons/PersonPin";
-import Android from "@material-ui/icons/Android";
 import Paper from "@material-ui/core/Paper/Paper";
 import IndividualPanel from "./../../containers/individualPanel";
 import OccupationPanel from "../../containers/occupationPanel";
@@ -53,7 +49,8 @@ export default function SimpleTabs({
   renderSelect,
   renderDatePicker,
   renderRadioGrid,
-  renderYesNoToggle
+  renderYesNoToggle,
+  icons
 }) {
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-device-width: 1224px)"
@@ -68,18 +65,16 @@ export default function SimpleTabs({
 
   const bottomNavClick = dir => {
     let newValue;
-    if (dir == "forward" && value < 3) {
+    if (dir === "forward" && value < 3) {
       newValue = value + 1;
       setValue(newValue);
-    } else if (dir == "backward" && value > 0) {
+    } else if (dir === "backward" && value > 0) {
       newValue = value - 1;
       setValue(newValue);
     } else {
       console.log("AT END OF INDEX");
     }
   };
-
-  console.log(value);
 
   return (
     <React.Fragment>
@@ -94,10 +89,15 @@ export default function SimpleTabs({
               textColor="primary"
               aria-label="icon tabs example"
             >
-              <Tab icon={<PhoneIcon />} aria-label="individualPanel" />
-              <Tab icon={<FavoriteIcon />} aria-label="statusPanel" />
-              <Tab icon={<PersonPinIcon />} aria-label="occupationPanel" />
-              <Tab icon={<Android />} aria-label="vehicleUsePanel" />
+              {icons.map(icon => (
+                <Tab icon={icon.tabIcon} aria-label={icon.ariaLabel} />
+              ))}
+
+              {/* <IconList options={icons} /> */}
+              {/* <Tab icon={<Person />} aria-label="individualPanel" />
+              <Tab icon={<Home />} aria-label="statusPanel" />
+              <Tab icon={<Work />} aria-label="occupationPanel" />
+              <Tab icon={<DirectionsCar />} aria-label="vehicleUsePanel" /> */}
             </Tabs>
           )}
         </Paper>

@@ -2,14 +2,12 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "./form";
 import IconTabs from "../elements/nav/iconTabs";
-import { getOccs, getEmploymentTypes } from "../services/occupationService";
+import { getOccs } from "../services/occupationService";
 import { getTitles } from "../services/titleService";
-import {
-  getLicenseTypes,
-  getVehicleUses
-} from "./../services/vehicleUseService";
+import { getLicenseTypes, getVehicleUses } from "../services/vehicleUseService";
+import { employmentTypes } from "./../services/occupationService";
 
-class PersonForm extends Form {
+class VehicleForm extends Form {
   state = {
     data: {
       title: "",
@@ -82,28 +80,24 @@ class PersonForm extends Form {
 
   // username = React.createRef();
   componentDidMount() {
-    // const occupations = getOccs(); //gen genres for dropdown
-    // const titles = getTitles();
-    // const vehicleUses = getVehicleUses();
-    // const licenseTypes = getLicenseTypes();
-    // const employmentTypes = getEmploymentTypes();
-    // this.setState({
-    //   occupations,
-    //   titles,
-    //   vehicleUses,
-    //   licenseTypes,
-    //   employmentTypes
-    // });
-    //
-    //
-    //set empty genres to result of call
+    const occupations = getOccs(); //gen genres for dropdown
+    const titles = getTitles();
+    const vehicleUses = getVehicleUses();
+    const licenseTypes = getLicenseTypes();
+
+    this.setState({ occupations, titles, vehicleUses, licenseTypes }); //set empty genres to result of call
+
     ////*** */
     // const movieId = this.props.match.params.id; //set movie id to the paramater
     // if (movieId === "new") return; // if movie id is new return to empty page to allow details to be added
+
     //else
+
     // const movie = getMovie(movieId); //get movie based on id in paramater.
     // if (!movie) return this.props.history.replace("/not-found"); //if not found redirect to error
+
     // this.setState({ data: this.mapToViewModel(movie) }); //if found map results from getMovie to a viewModel that fits with our local state
+
     ///*** */
   }
 
@@ -129,7 +123,6 @@ class PersonForm extends Form {
       <div>
         <form onSubmit={this.handleSubmit}>
           <IconTabs
-            icons={this.props.icons}
             renderInput={this.renderInput.bind(this)}
             renderSelect={this.renderSelect.bind(this)}
             renderDatePicker={this.renderDatePicker.bind(this)}
@@ -143,4 +136,4 @@ class PersonForm extends Form {
   }
 }
 
-export default PersonForm;
+export default VehicleForm;

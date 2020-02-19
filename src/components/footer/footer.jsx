@@ -1,5 +1,4 @@
 import React from "react";
-import Android from "@material-ui/icons/Android";
 import Tab from "@material-ui/core/Tab";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
@@ -13,7 +12,8 @@ const useStyles = makeStyles({
     bottom: "0",
     width: "100%",
     backgroundColor: "#007bff",
-    textAlign: "center"
+    textAlign: "center",
+    zIndex: 3
   }
 });
 
@@ -27,7 +27,7 @@ export default function Footer({ bottomNavClick, index }) {
   return (
     <div>
       <BottomNavigation className={classes.root}>
-        {index != 0 && (
+        {index !== 0 && (
           <Tab
             icon={
               <ArrowBackIosIcon
@@ -41,9 +41,8 @@ export default function Footer({ bottomNavClick, index }) {
         <Tab />
         <Tab />
         <Tab />
-        <Tab />
 
-        {index != 3 && (
+        {index !== 3 && (
           <Tab
             icon={
               <ArrowForwardIosIcon

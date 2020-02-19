@@ -1,10 +1,10 @@
 import React from "react";
-import { employmentTypes } from "./../services/occupationService";
 import {
   getOccs,
   getOccStatus,
   getEmploymentTypes
 } from "../services/occupationService";
+import { getVehicleUses } from "../services/vehicleUseService";
 
 const OccupationPanel = ({
   renderSelect,
