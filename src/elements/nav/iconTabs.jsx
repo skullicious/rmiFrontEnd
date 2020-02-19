@@ -1,10 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper/Paper";
 import IndividualPanel from "./../../containers/individualPanel";
 import OccupationPanel from "../../containers/occupationPanel";
@@ -12,29 +9,29 @@ import StatusPanel from "../../containers/statusPanel";
 import VehicleUsePanel from "../../containers/vehicleUsePanel";
 import { useMediaQuery } from "react-responsive";
 import Footer from "../../components/footer/footer";
+import TabPanel from "../nav/tabPanel";
+// function TabPanel(props) {
+//   const { children, value, index, ...other } = props;
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+//   return (
+//     <Typography
+//       component="div"
+//       role="tabpanel"
+//       hidden={value !== index}
+//       id={`simple-tabpanel-${index}`}
+//       aria-labelledby={`simple-tab-${index}`}
+//       {...other}
+//     >
+//       {value === index && <Box p={3}>{children}</Box>}
+//     </Typography>
+//   );
+// }
 
-  return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box p={3}>{children}</Box>}
-    </Typography>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired
-};
+// TabPanel.propTypes = {
+//   children: PropTypes.node,
+//   index: PropTypes.any.isRequired,
+//   value: PropTypes.any.isRequired
+// };
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -92,12 +89,6 @@ export default function SimpleTabs({
               {icons.map(icon => (
                 <Tab icon={icon.tabIcon} aria-label={icon.ariaLabel} />
               ))}
-
-              {/* <IconList options={icons} /> */}
-              {/* <Tab icon={<Person />} aria-label="individualPanel" />
-              <Tab icon={<Home />} aria-label="statusPanel" />
-              <Tab icon={<Work />} aria-label="occupationPanel" />
-              <Tab icon={<DirectionsCar />} aria-label="vehicleUsePanel" /> */}
             </Tabs>
           )}
         </Paper>

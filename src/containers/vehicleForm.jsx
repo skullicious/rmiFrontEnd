@@ -123,6 +123,8 @@ class VehicleForm extends Form {
       <div>
         <form onSubmit={this.handleSubmit}>
           <IconTabs
+            panels={this.props.panels}
+            icons={this.props.icons}
             renderInput={this.renderInput.bind(this)}
             renderSelect={this.renderSelect.bind(this)}
             renderDatePicker={this.renderDatePicker.bind(this)}

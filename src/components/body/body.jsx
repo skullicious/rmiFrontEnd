@@ -28,7 +28,8 @@ const VehicleBase = props => {
     { tabIcon: <Info />, ariaLabel: "particularsPanel" },
     { tabIcon: <EmojiTransportationIcon />, ariaLabel: "locationPanel" }
   ];
-  return <VehicleForm icons={icons} />;
+  const panels = "Test";
+  return <VehicleForm icons={icons} panels={panels} />;
 };
 
 export { PersonBase, VehicleBase };
