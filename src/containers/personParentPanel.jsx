@@ -1,26 +1,36 @@
-import React, { Component } from "react";
-import TabPanels from "../../elements/nav/tabPanels";
+import React from "react";
+import IndividualPanel from "./../containers/individualPanel";
+import OccupationPanel from "../containers/occupationPanel";
+import StatusPanel from "../containers/statusPanel";
+import VehicleUsePanel from "../containers/vehicleUsePanel";
+import TabPanel from "../elements/nav/tabPanel";
+import { useMediaQuery } from "react-responsive";
 
-const PersonParentPanel = props => {
+const RenderPersonParentPanel = ({
+  renderInput,
+  renderSelect,
+  renderYesNoToggle,
+  renderRadioGrid,
+  value
+}) => {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-device-width: 1224px)"
+  });
+
   return (
     <React.Fragment>
       {!isDesktopOrLaptop && (
         <div>
-          <TabPanels panels={panels} />
-
           <TabPanel value={value} index={0}>
             <IndividualPanel
               renderInput={renderInput}
               renderSelect={renderSelect}
-              renderDatePicker={renderDatePicker}
               renderRadioGrid={renderRadioGrid}
             />
           </TabPanel>
-
           <TabPanel value={value} index={1}>
             <StatusPanel renderInput={renderInput} />
           </TabPanel>
-
           <TabPanel value={value} index={2}>
             <OccupationPanel
               renderSelect={renderSelect}
@@ -28,7 +38,6 @@ const PersonParentPanel = props => {
               renderRadioGrid={renderRadioGrid}
             />
           </TabPanel>
-
           <TabPanel value={value} index={3}>
             <VehicleUsePanel
               renderYesNoToggle={renderYesNoToggle}
@@ -43,7 +52,6 @@ const PersonParentPanel = props => {
           <IndividualPanel
             renderInput={renderInput}
             renderSelect={renderSelect}
-            renderDatePicker={renderDatePicker}
             renderRadioGrid={renderRadioGrid}
           />
           <StatusPanel renderInput={renderInput} />
@@ -63,4 +71,4 @@ const PersonParentPanel = props => {
   );
 };
 
-export default PersonParentPanel;
+export default RenderPersonParentPanel;

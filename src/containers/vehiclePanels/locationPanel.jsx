@@ -1,7 +1,6 @@
 import React from "react";
-import { getTitles } from "../services/titleService";
 
-const Location = ({ renderInput, renderRadioGrid, renderYesNoToggle }) => {
+const Location = ({ renderInput, renderYesNoToggle }) => {
   return (
     <div>
       {renderInput("dayLocation", "Where is the car parked during the day?")}

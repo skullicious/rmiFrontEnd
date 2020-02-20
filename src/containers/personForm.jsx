@@ -8,6 +8,8 @@ import {
   getLicenseTypes,
   getVehicleUses
 } from "./../services/vehicleUseService";
+import IndividualPanel from "./individualPanel";
+import RenderPersonParentPanel from "./personParentPanel";
 
 class PersonForm extends Form {
   state = {
@@ -129,6 +131,7 @@ class PersonForm extends Form {
       <div>
         <form onSubmit={this.handleSubmit}>
           <IconTabs
+            renderPanel={RenderPersonParentPanel}
             icons={this.props.icons}
             renderInput={this.renderInput.bind(this)}
             renderSelect={this.renderSelect.bind(this)}

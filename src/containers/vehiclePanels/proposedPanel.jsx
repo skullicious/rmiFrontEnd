@@ -1,7 +1,12 @@
 import React from "react";
 import { getVehicles } from "../../services/vehicleService";
 
-const Proposed = ({ renderInput, renderYesNoToggle, renderSelect }) => {
+const Proposed = ({
+  renderInput,
+  renderYesNoToggle,
+  renderSelect,
+  renderRadioGrid
+}) => {
   const vehicles = getVehicles();
   return (
     <div>
@@ -11,7 +16,6 @@ const Proposed = ({ renderInput, renderYesNoToggle, renderSelect }) => {
       )}
       <br />
       {renderInput("regNumber", "Registration Number")}
-      {renderRadioGrid("employmentType", "Employment Type", employmentTypes)}
       {renderSelect("vehicle", "Select vehicle", vehicles)}
       {renderInput("yearOfMake", "Year of Make")}
     </div>

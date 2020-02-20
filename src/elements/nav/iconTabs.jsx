@@ -10,28 +10,9 @@ import VehicleUsePanel from "../../containers/vehicleUsePanel";
 import { useMediaQuery } from "react-responsive";
 import Footer from "../../components/footer/footer";
 import TabPanel from "../nav/tabPanel";
-// function TabPanel(props) {
-//   const { children, value, index, ...other } = props;
-
-//   return (
-//     <Typography
-//       component="div"
-//       role="tabpanel"
-//       hidden={value !== index}
-//       id={`simple-tabpanel-${index}`}
-//       aria-labelledby={`simple-tab-${index}`}
-//       {...other}
-//     >
-//       {value === index && <Box p={3}>{children}</Box>}
-//     </Typography>
-//   );
-// }
-
-// TabPanel.propTypes = {
-//   children: PropTypes.node,
-//   index: PropTypes.any.isRequired,
-//   value: PropTypes.any.isRequired
-// };
+import PersonParentPanel from "../../containers/personParentPanel";
+import VehicleParentPanel from "../../containers/vehiclePanels/vehicleParentPanel";
+import RenderPersonParentPanel from "./../../containers/personParentPanel";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,9 +25,9 @@ const useStyles = makeStyles(theme => ({
 export default function SimpleTabs({
   renderInput,
   renderSelect,
-  renderDatePicker,
   renderRadioGrid,
   renderYesNoToggle,
+  renderPanel,
   icons
 }) {
   const isDesktopOrLaptop = useMediaQuery({
@@ -93,8 +74,38 @@ export default function SimpleTabs({
           )}
         </Paper>
       </div>
+      {/* {panels.map(panel => (
+        <TabPanel value={value} index={0}>
+          {panel.panel}
+          Panel here
+        </TabPanel>
+      ))} */}
+      {renderPanel({
+        renderInput,
+        renderRadioGrid,
+        renderYesNoToggle,
+        renderSelect,
+        value
+      })}
 
-      {!isDesktopOrLaptop && (
+      {/* <PersonParentPanel
+        renderInput={renderInput}
+        renderSelect={renderSelect}
+        renderDatePicker={renderDatePicker}
+        renderRadioGrid={renderRadioGrid}
+        renderYesNoToggle={renderYesNoToggle}
+        value={value}
+      /> */}
+      {/* <VehicleParentPanel
+        renderInput={renderInput}
+        renderSelect={renderSelect}
+        renderDatePicker={renderDatePicker}
+        renderRadioGrid={renderRadioGrid}
+        renderYesNoToggle={renderYesNoToggle}
+        value={value}
+      /> */}
+
+      {/* {!isDesktopOrLaptop && (
         <div>
           <TabPanel value={value} index={0}>
             <IndividualPanel
@@ -146,8 +157,7 @@ export default function SimpleTabs({
             renderSelect={renderSelect}
           />
         </div>
-      )}
-
+      )} */}
       {!isDesktopOrLaptop && (
         <Footer bottomNavClick={bottomNavClick.bind(this)} index={value} />
       )}

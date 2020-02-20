@@ -1,7 +1,7 @@
 import React from "react";
 import { getOwners } from "../../services/vehicleService";
 
-const OwnerKeeper = ({ renderInput, renderYesNoToggle }) => {
+const OwnerKeeper = ({ renderRadioGrid, renderYesNoToggle }) => {
   const owners = getOwners();
   return (
     <div>

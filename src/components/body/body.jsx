@@ -9,14 +9,17 @@ import PeopleAlt from "@material-ui/icons/PeopleAlt";
 import Build from "@material-ui/icons/Build";
 import Info from "@material-ui/icons/Info";
 import EmojiTransportationIcon from "@material-ui/icons/EmojiTransportation";
+import RenderPersonParentPanel from "../../containers/personParentPanel";
+import RenderVehicleParentPanel from "../../containers/vehiclePanels/vehicleParentPanel";
 
-const PersonBase = props => {
+const PersonBase = () => {
   const icons = [
     { tabIcon: <Person />, ariaLabel: "individualPanel" },
     { tabIcon: <Home />, ariaLabel: "statusPanel" },
     { tabIcon: <Work />, ariaLabel: "occupationPanel" },
     { tabIcon: <DirectionsCar />, ariaLabel: "vehicleUsePanel" }
   ];
+
   return <PersonForm icons={icons} />;
 };
 
@@ -28,8 +31,8 @@ const VehicleBase = props => {
     { tabIcon: <Info />, ariaLabel: "particularsPanel" },
     { tabIcon: <EmojiTransportationIcon />, ariaLabel: "locationPanel" }
   ];
-  const panels = "Test";
-  return <VehicleForm icons={icons} panels={panels} />;
+
+  return <VehicleForm icons={icons} />;
 };
 
 export { PersonBase, VehicleBase };

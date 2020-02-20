@@ -6,6 +6,7 @@ import { getOccs } from "../services/occupationService";
 import { getTitles } from "../services/titleService";
 import { getLicenseTypes, getVehicleUses } from "../services/vehicleUseService";
 import { employmentTypes } from "./../services/occupationService";
+import RenderVehicleParentPanel from "./../containers/vehiclePanels/vehicleParentPanel";
 
 class VehicleForm extends Form {
   state = {
@@ -123,7 +124,7 @@ class VehicleForm extends Form {
       <div>
         <form onSubmit={this.handleSubmit}>
           <IconTabs
-            panels={this.props.panels}
+            renderPanel={RenderVehicleParentPanel}
             icons={this.props.icons}
             renderInput={this.renderInput.bind(this)}
             renderSelect={this.renderSelect.bind(this)}
