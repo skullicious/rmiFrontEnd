@@ -11,6 +11,7 @@ const RenderPersonParentPanel = ({
   renderSelect,
   renderYesNoToggle,
   renderRadioGrid,
+  renderButton,
   value
 }) => {
   const isDesktopOrLaptop = useMediaQuery({
@@ -67,6 +68,8 @@ const RenderPersonParentPanel = ({
           />
         </div>
       )}
+
+      {renderButton("Next")}
     </React.Fragment>
   );
 };

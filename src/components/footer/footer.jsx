@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Footer({ bottomNavClick, index }) {
+export default function Footer({ bottomNavClick, index, iconCount }) {
   const classes = useStyles();
 
   const handleChange = dir => {
@@ -42,7 +42,7 @@ export default function Footer({ bottomNavClick, index }) {
         <Tab />
         <Tab />
 
-        {index !== 3 && (
+        {index !== iconCount - 1 && (
           <Tab
             icon={
               <ArrowForwardIosIcon

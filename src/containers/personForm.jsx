@@ -10,6 +10,7 @@ import {
 } from "./../services/vehicleUseService";
 import IndividualPanel from "./individualPanel";
 import RenderPersonParentPanel from "./personParentPanel";
+import { employmentTypes } from "./../services/occupationService";
 
 class PersonForm extends Form {
   state = {
@@ -79,7 +80,19 @@ class PersonForm extends Form {
       .label("Postcode"),
     contactNumber: Joi.string()
       .required()
-      .label("Contact Number")
+      .label("Contact Number"),
+    employmentType: Joi.string()
+      .required()
+      .label("Employment Type"),
+    partTime: Joi.string()
+      .required()
+      .label("Part Time"),
+    licenseRestrictions: Joi.string()
+      .required()
+      .label("License Restrictions"),
+    motoringQualifications: Joi.string()
+      .required()
+      .label("Motoring Qualifications")
   };
 
   // username = React.createRef();
@@ -138,6 +151,7 @@ class PersonForm extends Form {
             renderDatePicker={this.renderDatePicker.bind(this)}
             renderRadioGrid={this.renderRadioGrid.bind(this)}
             renderYesNoToggle={this.renderYesNoToggle.bind(this)}
+            renderButton={this.renderButton}
           />
           {/* {this.renderButton("Save")} */}
         </form>

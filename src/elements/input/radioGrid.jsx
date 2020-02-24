@@ -82,7 +82,7 @@ function StyledRadio(props) {
 
 // const [getState] = React.useState(value);
 
-const RadioGrid = ({ name, label, options, onToggle, value }) => {
+const RadioGrid = ({ name, label, options, onToggle, value, error }) => {
   const classes = useStyles();
 
   return (
@@ -107,6 +107,7 @@ const RadioGrid = ({ name, label, options, onToggle, value }) => {
             name={name}
           />
         ))}
+        {error && <div className="alert alert-danger">{error}</div>}
       </RadioGroup>
     </FormControl>
   );

@@ -28,6 +28,7 @@ export default function SimpleTabs({
   renderRadioGrid,
   renderYesNoToggle,
   renderPanel,
+  renderButton,
   icons
 }) {
   const isDesktopOrLaptop = useMediaQuery({
@@ -42,8 +43,12 @@ export default function SimpleTabs({
   };
 
   const bottomNavClick = dir => {
+    console.log("clicking navs");
+    console.log(icons.length);
+    console.log("clicking navs");
+
     let newValue;
-    if (dir === "forward" && value < 3) {
+    if (dir === "forward" && value < icons.length) {
       newValue = value + 1;
       setValue(newValue);
     } else if (dir === "backward" && value > 0) {
@@ -74,92 +79,21 @@ export default function SimpleTabs({
           )}
         </Paper>
       </div>
-      {/* {panels.map(panel => (
-        <TabPanel value={value} index={0}>
-          {panel.panel}
-          Panel here
-        </TabPanel>
-      ))} */}
       {renderPanel({
         renderInput,
         renderRadioGrid,
         renderYesNoToggle,
         renderSelect,
-        value
+        value,
+        renderButton
       })}
 
-      {/* <PersonParentPanel
-        renderInput={renderInput}
-        renderSelect={renderSelect}
-        renderDatePicker={renderDatePicker}
-        renderRadioGrid={renderRadioGrid}
-        renderYesNoToggle={renderYesNoToggle}
-        value={value}
-      /> */}
-      {/* <VehicleParentPanel
-        renderInput={renderInput}
-        renderSelect={renderSelect}
-        renderDatePicker={renderDatePicker}
-        renderRadioGrid={renderRadioGrid}
-        renderYesNoToggle={renderYesNoToggle}
-        value={value}
-      /> */}
-
-      {/* {!isDesktopOrLaptop && (
-        <div>
-          <TabPanel value={value} index={0}>
-            <IndividualPanel
-              renderInput={renderInput}
-              renderSelect={renderSelect}
-              renderDatePicker={renderDatePicker}
-              renderRadioGrid={renderRadioGrid}
-            />
-          </TabPanel>
-
-          <TabPanel value={value} index={1}>
-            <StatusPanel renderInput={renderInput} />
-          </TabPanel>
-
-          <TabPanel value={value} index={2}>
-            <OccupationPanel
-              renderSelect={renderSelect}
-              renderYesNoToggle={renderYesNoToggle}
-              renderRadioGrid={renderRadioGrid}
-            />
-          </TabPanel>
-
-          <TabPanel value={value} index={3}>
-            <VehicleUsePanel
-              renderYesNoToggle={renderYesNoToggle}
-              renderRadioGrid={renderRadioGrid}
-              renderSelect={renderSelect}
-            />
-          </TabPanel>
-        </div>
-      )}
-      {isDesktopOrLaptop && (
-        <div>
-          <IndividualPanel
-            renderInput={renderInput}
-            renderSelect={renderSelect}
-            renderDatePicker={renderDatePicker}
-            renderRadioGrid={renderRadioGrid}
-          />
-          <StatusPanel renderInput={renderInput} />
-          <OccupationPanel
-            renderSelect={renderSelect}
-            renderYesNoToggle={renderYesNoToggle}
-            renderRadioGrid={renderRadioGrid}
-          />
-          <VehicleUsePanel
-            renderYesNoToggle={renderYesNoToggle}
-            renderRadioGrid={renderRadioGrid}
-            renderSelect={renderSelect}
-          />
-        </div>
-      )} */}
       {!isDesktopOrLaptop && (
-        <Footer bottomNavClick={bottomNavClick.bind(this)} index={value} />
+        <Footer
+          bottomNavClick={bottomNavClick.bind(this)}
+          index={value}
+          iconCount={icons.length}
+        />
       )}
     </React.Fragment>
   );

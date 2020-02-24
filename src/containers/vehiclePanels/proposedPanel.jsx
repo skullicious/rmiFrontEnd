@@ -1,12 +1,7 @@
 import React from "react";
 import { getVehicles } from "../../services/vehicleService";
 
-const Proposed = ({
-  renderInput,
-  renderYesNoToggle,
-  renderSelect,
-  renderRadioGrid
-}) => {
+const Proposed = ({ renderInput, renderYesNoToggle, renderSelect }) => {
   const vehicles = getVehicles();
   return (
     <div>

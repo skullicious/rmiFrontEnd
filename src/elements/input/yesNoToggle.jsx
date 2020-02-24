@@ -33,7 +33,7 @@ const StyledToggleButtonGroup = withStyles(theme => ({
   }
 }))(ToggleButtonGroup);
 
-export default function YesNoToggle({ name, label, onToggle, value }) {
+export default function YesNoToggle({ name, label, onToggle, value, error }) {
   const [alignment, setAlignment] = React.useState(value);
   const handleAlignment = (event, newAlignment, value) => {
     setAlignment(newAlignment);
@@ -88,6 +88,7 @@ export default function YesNoToggle({ name, label, onToggle, value }) {
           </ToggleButton>
         </StyledToggleButtonGroup>
       </Paper>
+      {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );
 }

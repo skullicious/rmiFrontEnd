@@ -41,42 +41,48 @@ class VehicleForm extends Form {
 
   schema = {
     _id: Joi.string(),
-    title: Joi.string()
+    regNoKnown: Joi.string()
       .required()
-      .label("Title"),
-    firstName: Joi.string()
-      .required()
-      .label("First Name"),
-    lastName: Joi.string()
-      .required()
-      .label("Last Name"),
-    email: Joi.string()
-      .required()
-      .label("Email"),
-    occupation: Joi.string()
-      .required()
-      .label("Occupation"),
-    occStatus: Joi.string()
-      .required()
-      .label("Occupation Status"),
+      .label("Registration known"),
     regNumber: Joi.string()
       .required()
-      .label("Registration Number"),
-    isMarried: Joi.boolean()
+      .label("Registration number"),
+    vehicle: Joi.string()
       .required()
-      .label("Marriage Status"),
-    vehicleUse: Joi.string()
+      .label("Proposed Vehicle"),
+    yearOfMake: Joi.string()
       .required()
-      .label("Vehicle Use"),
-    licenseType: Joi.string()
+      .label("Year of make"),
+    owner: Joi.string()
       .required()
-      .label("License Types"),
-    postcode: Joi.string()
+      .label("Registered Owner"),
+    isOwnerKeeper: Joi.string()
       .required()
-      .label("Postcode"),
-    contactNumber: Joi.string()
+      .label("Registered Keeper"),
+    hasModification: Joi.string()
       .required()
-      .label("Contact Number")
+      .label("Modifications"),
+    hasSecurityDevice: Joi.string()
+      .required()
+      .label("Security Device"),
+    isPurchased: Joi.string()
+      .required()
+      .label("Purchased"),
+    vehicleValue: Joi.string()
+      .required()
+      .label("Vehicle Value"),
+    annualMileage: Joi.string()
+      .required()
+      .label("Annual Mileage"),
+    currentMileage: Joi.string()
+      .required()
+      .label("Current Mileage"),
+    dayLocation: Joi.string()
+      .required()
+      .label("Daytime Location"),
+    isKeptAtHome: Joi.string()
+      .required()
+      .label("Kept At Home")
   };
 
   // username = React.createRef();
@@ -131,6 +137,7 @@ class VehicleForm extends Form {
             renderDatePicker={this.renderDatePicker.bind(this)}
             renderRadioGrid={this.renderRadioGrid.bind(this)}
             renderYesNoToggle={this.renderYesNoToggle.bind(this)}
+            renderButton={this.renderButton}
           />
           {/* {this.renderButton("Save")} */}
         </form>
