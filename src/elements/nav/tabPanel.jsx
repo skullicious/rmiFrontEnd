@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
@@ -26,13 +25,5 @@ TabPanel.propTypes = {
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired
 };
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    maxWidth: 3000,
-    minWidth: 320
-  }
-}));
 
 export default TabPanel;

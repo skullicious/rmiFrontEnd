@@ -4,7 +4,6 @@ import {
   getOccStatus,
   getEmploymentTypes
 } from "../services/occupationService";
-import { getVehicleUses } from "../services/vehicleUseService";
 
 const OccupationPanel = ({
   renderSelect,

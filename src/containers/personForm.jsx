@@ -2,15 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "./form";
 import IconTabs from "../elements/nav/iconTabs";
-import { getOccs, getEmploymentTypes } from "../services/occupationService";
-import { getTitles } from "../services/titleService";
-import {
-  getLicenseTypes,
-  getVehicleUses
-} from "./../services/vehicleUseService";
-import IndividualPanel from "./individualPanel";
 import RenderPersonParentPanel from "./personParentPanel";
-import { employmentTypes } from "./../services/occupationService";
 
 class PersonForm extends Form {
   state = {

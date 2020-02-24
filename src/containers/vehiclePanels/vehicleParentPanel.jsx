@@ -1,9 +1,4 @@
 import React from "react";
-// import ProposedPanel from "./../containers/vehiclePanels/proposedPanel";
-// import OwnerKeeperPanel from "./../containers/vehiclePanels/ownerKeeperPanel";
-// import ModSecPanel from "./../containers/vehiclePanels/modSecPanel";
-// import ParticularsPanel from "./../containers/vehiclePanels/particularsPanel";
-// import LocationPanel from "./../containers/vehiclePanels/locationPanel";
 import ProposedPanel from "./../vehiclePanels/proposedPanel";
 import OwnerKeeperPanel from "./../vehiclePanels/ownerKeeperPanel";
 import ModSecPanel from "./../vehiclePanels/modSecPanel";

@@ -3,16 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Paper from "@material-ui/core/Paper/Paper";
-import IndividualPanel from "./../../containers/individualPanel";
-import OccupationPanel from "../../containers/occupationPanel";
-import StatusPanel from "../../containers/statusPanel";
-import VehicleUsePanel from "../../containers/vehicleUsePanel";
 import { useMediaQuery } from "react-responsive";
 import Footer from "../../components/footer/footer";
-import TabPanel from "../nav/tabPanel";
-import PersonParentPanel from "../../containers/personParentPanel";
-import VehicleParentPanel from "../../containers/vehiclePanels/vehicleParentPanel";
-import RenderPersonParentPanel from "./../../containers/personParentPanel";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,10 +35,6 @@ export default function SimpleTabs({
   };
 
   const bottomNavClick = dir => {
-    console.log("clicking navs");
-    console.log(icons.length);
-    console.log("clicking navs");
-
     let newValue;
     if (dir === "forward" && value < icons.length) {
       newValue = value + 1;
@@ -54,8 +42,6 @@ export default function SimpleTabs({
     } else if (dir === "backward" && value > 0) {
       newValue = value - 1;
       setValue(newValue);
-    } else {
-      console.log("AT END OF INDEX");
     }
   };
 
@@ -72,8 +58,12 @@ export default function SimpleTabs({
               textColor="primary"
               aria-label="icon tabs example"
             >
-              {icons.map(icon => (
-                <Tab icon={icon.tabIcon} aria-label={icon.ariaLabel} />
+              {icons.map((icon, index) => (
+                <Tab
+                  key={index}
+                  icon={icon.tabIcon}
+                  aria-label={icon.ariaLabel}
+                />
               ))}
             </Tabs>
           )}

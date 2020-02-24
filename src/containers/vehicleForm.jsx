@@ -5,7 +5,6 @@ import IconTabs from "../elements/nav/iconTabs";
 import { getOccs } from "../services/occupationService";
 import { getTitles } from "../services/titleService";
 import { getLicenseTypes, getVehicleUses } from "../services/vehicleUseService";
-import { employmentTypes } from "./../services/occupationService";
 import RenderVehicleParentPanel from "./../containers/vehiclePanels/vehicleParentPanel";
 
 class VehicleForm extends Form {
