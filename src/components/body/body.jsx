@@ -21,7 +21,7 @@ const PersonBase = () => {
   return <PersonForm icons={icons} />;
 };
 
-const VehicleBase = props => {
+const VehicleBase = () => {
   const icons = [
     { tabIcon: <DirectionsCar />, ariaLabel: "proposedPanel" },
     { tabIcon: <PeopleAlt />, ariaLabel: "ownerKeeperPanel" },

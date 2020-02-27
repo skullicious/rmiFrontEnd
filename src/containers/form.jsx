@@ -14,6 +14,7 @@ class Form extends Component {
 
   renderYesNoToggle(name, label) {
     const { data, errors } = this.state;
+
     return (
       <YesNoToggle
         name={name}
@@ -80,11 +81,13 @@ class Form extends Component {
     );
   }
 
-  renderButton(label) {
+  renderButton(label, target) {
     return (
       <button
         // disabled={this.validate()}
         className="btn btn-primary"
+        value={target}
+        onClick={this.handleSubmit}
       >
         {label}
       </button>
@@ -92,9 +95,15 @@ class Form extends Component {
   }
 
   handleToggle = ({ currentTarget: input }) => {
+    const errors = { ...this.state.errors };
+    const errorMessage = this.validateProperty(input);
+
+    if (errorMessage) errors[input.name] = errorMessage;
+    else delete errors[input.name];
+
     const data = { ...this.state.data };
     data[input.name] = input.value;
-    this.setState({ data });
+    this.setState({ data, errors });
   };
 
   handleChange = ({ currentTarget: input }) => {
@@ -113,11 +122,8 @@ class Form extends Component {
     const options = { abortEarly: false };
 
     const { error } = Joi.validate(this.state.data, this.schema, options);
-
     if (!error) return null;
-
     const errors = {};
-
     for (let item of error.details) errors[item.path[0]] = item.message;
 
     return errors;
@@ -127,6 +133,7 @@ class Form extends Component {
     const obj = { [name]: value }; //build object and determine property name at runtime
     const schema = { [name]: this.schema[name] }; //use specific schema for single object
     const { error } = Joi.validate(obj, schema); // validate
+
     return error ? error.details[0].message : null; // feed into custom object map
   };
 
@@ -139,7 +146,7 @@ class Form extends Component {
     this.setState({ errors: errors || {} });
     if (errors) return;
 
-    this.doSubmit();
+    // this.doSubmit();
     // const username = this.username.current.value;
   };
 }

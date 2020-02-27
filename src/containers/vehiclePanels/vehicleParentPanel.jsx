@@ -55,6 +55,7 @@ const VehicleParentPanel = ({
             <LocationPanel
               renderYesNoToggle={renderYesNoToggle}
               renderInput={renderInput}
+              renderButton={renderButton}
             />
           </TabPanel>
         </div>
@@ -79,11 +80,10 @@ const VehicleParentPanel = ({
           <LocationPanel
             renderYesNoToggle={renderYesNoToggle}
             renderInput={renderInput}
+            renderButton={renderButton}
           />
         </div>
       )}
-
-      {renderButton("Next")}
     </React.Fragment>
   );
 };

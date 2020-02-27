@@ -11,11 +11,24 @@ const useStyles = makeStyles(theme => ({
   paper: {
     display: "flex",
     border: `1px solid ${theme.palette.divider}`,
-    flexWrap: "wrap",
-    width: "130px"
+    flexWrap: "wrap"
+  },
+  toggleButtonGroup: {
+    width: "100%",
+    fontWeight: "400"
+  },
+  toggleButtonNA: {
+    color: "black"
   },
   toggleButton: {
+    width: "50%",
     color: "#212529"
+  },
+  toggleButtonSelected: {
+    backgroundColor: "#137cbd !important",
+    "& a": {
+      color: "white !important"
+    }
   }
 }));
 
@@ -56,19 +69,21 @@ export default function YesNoToggle({ name, label, onToggle, value, error }) {
           exclusive
           onChange={handleAlignment}
           aria-label="text alignment"
+          className={classes.toggleButtonGroup}
         >
           <ToggleButton
-            className={classes.toggleButton}
+            classes={{
+              root: classes.toggleButton,
+              selected: classes.toggleButtonSelected
+            }}
             value="true"
             aria-label="true aligned"
             name={name}
           >
-            <span></span>
-            {<a>Yes</a>}
-            <span></span>
+            <a>Yes</a>
           </ToggleButton>
           <ToggleButton
-            className={classes.toggleButton}
+            className={classes.toggleButtonNA}
             value="na"
             aria-label="centered"
             disabled
@@ -77,14 +92,15 @@ export default function YesNoToggle({ name, label, onToggle, value, error }) {
             ||
           </ToggleButton>
           <ToggleButton
-            className={classes.toggleButton}
+            classes={{
+              root: classes.toggleButton,
+              selected: classes.toggleButtonSelected
+            }}
             name={name}
             value="false"
             aria-label="false aligned"
           >
-            <span>&nbsp;</span>
             <a>No</a>
-            <span>&nbsp;</span>
           </ToggleButton>
         </StyledToggleButtonGroup>
       </Paper>

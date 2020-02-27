@@ -1,10 +1,11 @@
 import React from "react";
 
-const Location = ({ renderInput, renderYesNoToggle }) => {
+const Location = ({ renderInput, renderYesNoToggle, renderButton }) => {
   return (
     <div>
       {renderInput("dayLocation", "Where is the car parked during the day?")}
       {renderYesNoToggle("isKeptAtHome", "Kept at home address overnight?")}
+      {renderButton("Next", "vehicle")}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import StatusPanel from "../containers/statusPanel";
 import VehicleUsePanel from "../containers/vehicleUsePanel";
 import TabPanel from "../elements/nav/tabPanel";
 import { useMediaQuery } from "react-responsive";
+import { makeStyles } from "@material-ui/core/styles";
 
 const RenderPersonParentPanel = ({
   renderInput,
@@ -18,10 +19,19 @@ const RenderPersonParentPanel = ({
     query: "(min-device-width: 1224px)"
   });
 
+  const useStyles = makeStyles(theme => ({
+    root: {
+      paddingTop: "100px",
+      width: "100%"
+    }
+  }));
+
+  const classes = useStyles();
+
   return (
     <React.Fragment>
       {!isDesktopOrLaptop && (
-        <div>
+        <div className={classes.root}>
           <TabPanel value={value} index={0}>
             <IndividualPanel
               renderInput={renderInput}
@@ -44,12 +54,13 @@ const RenderPersonParentPanel = ({
               renderYesNoToggle={renderYesNoToggle}
               renderRadioGrid={renderRadioGrid}
               renderSelect={renderSelect}
+              renderButton={renderButton}
             />
           </TabPanel>
         </div>
       )}
       {isDesktopOrLaptop && (
-        <div>
+        <div className={classes.root}>
           <IndividualPanel
             renderInput={renderInput}
             renderSelect={renderSelect}
@@ -65,11 +76,10 @@ const RenderPersonParentPanel = ({
             renderYesNoToggle={renderYesNoToggle}
             renderRadioGrid={renderRadioGrid}
             renderSelect={renderSelect}
+            renderButton={renderButton}
           />
         </div>
       )}
-
-      {renderButton("Next")}
     </React.Fragment>
   );
 };

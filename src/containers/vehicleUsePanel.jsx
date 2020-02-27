@@ -7,7 +7,8 @@ import {
 const VehicleUsePanel = ({
   renderRadioGrid,
   renderSelect,
-  renderYesNoToggle
+  renderYesNoToggle,
+  renderButton
 }) => {
   const vehicleUses = getVehicleUses();
   const licenseTypes = getLicenseTypes();
@@ -24,6 +25,8 @@ const VehicleUsePanel = ({
         "motoringQualifications",
         "Do you have any motoring qualifications?"
       )}
+
+      {renderButton("Next")}
     </div>
   );
 };

@@ -24,7 +24,8 @@ const useStyles = makeStyles(theme => ({
 const style = {
   background: "#007bff",
   color: "white",
-  boxShadow: "none"
+  boxShadow: "none",
+  position: "fixed"
 };
 
 export default function ButtonAppBar() {
@@ -45,7 +46,6 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Hexham Insurance
           </Typography>
-          {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
     </div>

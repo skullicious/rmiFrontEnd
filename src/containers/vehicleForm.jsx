@@ -40,7 +40,7 @@ class VehicleForm extends Form {
 
   schema = {
     _id: Joi.string(),
-    regNoKnown: Joi.string()
+    regNoKnown: Joi.boolean()
       .required()
       .label("Registration known"),
     regNumber: Joi.string()
@@ -55,16 +55,16 @@ class VehicleForm extends Form {
     owner: Joi.string()
       .required()
       .label("Registered Owner"),
-    isOwnerKeeper: Joi.string()
+    isOwnerKeeper: Joi.boolean()
       .required()
       .label("Registered Keeper"),
-    hasModification: Joi.string()
+    hasModification: Joi.boolean()
       .required()
       .label("Modifications"),
-    hasSecurityDevice: Joi.string()
+    hasSecurityDevice: Joi.boolean()
       .required()
       .label("Security Device"),
-    isPurchased: Joi.string()
+    isPurchased: Joi.boolean()
       .required()
       .label("Purchased"),
     vehicleValue: Joi.string()
@@ -79,7 +79,7 @@ class VehicleForm extends Form {
     dayLocation: Joi.string()
       .required()
       .label("Daytime Location"),
-    isKeptAtHome: Joi.string()
+    isKeptAtHome: Joi.boolean()
       .required()
       .label("Kept At Home")
   };
@@ -136,9 +136,8 @@ class VehicleForm extends Form {
             renderDatePicker={this.renderDatePicker.bind(this)}
             renderRadioGrid={this.renderRadioGrid.bind(this)}
             renderYesNoToggle={this.renderYesNoToggle.bind(this)}
-            renderButton={this.renderButton}
+            renderButton={this.renderButton.bind(this)}
           />
-          {/* {this.renderButton("Save")} */}
         </form>
       </div>
     );

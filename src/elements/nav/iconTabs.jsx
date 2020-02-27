@@ -10,7 +10,10 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     maxWidth: 3000,
-    minWidth: 320
+    minWidth: 320,
+    width: "100%",
+    paddingTop: "28px",
+    position: "fixed"
   }
 }));
 

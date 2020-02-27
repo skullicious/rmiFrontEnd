@@ -23,7 +23,8 @@ class PersonForm extends Form {
       postcode: "",
       email: "",
       contactNumber: "",
-      employmentType: ""
+      employmentType: "",
+      partTime: ""
     },
     employmentTypes: [],
     licenseTypes: [],
@@ -76,13 +77,13 @@ class PersonForm extends Form {
     employmentType: Joi.string()
       .required()
       .label("Employment Type"),
-    partTime: Joi.string()
+    partTime: Joi.boolean()
       .required()
       .label("Part Time"),
-    licenseRestrictions: Joi.string()
+    licenseRestrictions: Joi.boolean()
       .required()
       .label("License Restrictions"),
-    motoringQualifications: Joi.string()
+    motoringQualifications: Joi.boolean()
       .required()
       .label("Motoring Qualifications")
   };
@@ -128,7 +129,7 @@ class PersonForm extends Form {
   doSubmit = () => {
     // call server
     //  saveMovie(this.state.data); // save movie in state
-    this.props.history.push("/movies");
+    this.props.history.push("/vehicle");
   };
 
   render() {
@@ -143,9 +144,8 @@ class PersonForm extends Form {
             renderDatePicker={this.renderDatePicker.bind(this)}
             renderRadioGrid={this.renderRadioGrid.bind(this)}
             renderYesNoToggle={this.renderYesNoToggle.bind(this)}
-            renderButton={this.renderButton}
+            renderButton={this.renderButton.bind(this)}
           />
-          {/* {this.renderButton("Save")} */}
         </form>
       </div>
     );
