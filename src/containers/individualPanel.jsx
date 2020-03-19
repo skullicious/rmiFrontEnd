@@ -6,9 +6,9 @@ const Individual = ({ renderInput, renderRadioGrid }) => {
 
   return (
     <div>
-      {renderRadioGrid("title", "Title Selection:", titles)}
-      {renderInput("firstName", "First Name")}
-      {renderInput("lastName", "Last Name")}
+      {renderRadioGrid("individual_title", "Title Selection:", titles)}
+      {renderInput("individual_firstName", "First Name")}
+      {renderInput("individual_lastName", "Last Name")}
     </div>
   );
 };

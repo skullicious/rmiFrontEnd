@@ -69,3 +69,11 @@ input[type="radio"] {
   padding-right: 0;
   padding-left: 4px;
 }
+
+/* VALIDATION TILES */
+
+.validation-tab-error {
+  background-color: #f8d7da !important;
+  border-color: #f5c6cb !important;
+  color: #721c24 !important;
+}

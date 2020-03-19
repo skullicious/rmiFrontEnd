@@ -5,6 +5,7 @@ import Select from "./../elements/input/select";
 import DatePicker from "../elements/input/datepicker";
 import RadioGrid from "../elements/input/radioGrid";
 import YesNoToggle from "./../elements/input/yesNoToggle";
+import ValidationTabController from "./../helpers/validationTabController";
 
 class Form extends Component {
   state = {
@@ -104,6 +105,8 @@ class Form extends Component {
     const data = { ...this.state.data };
     data[input.name] = input.value;
     this.setState({ data, errors });
+
+    ValidationTabController(errors);
   };
 
   handleChange = ({ currentTarget: input }) => {
@@ -116,6 +119,8 @@ class Form extends Component {
 
     data[input.name] = input.value;
     this.setState({ data, errors });
+
+    ValidationTabController(errors);
   };
 
   validate = () => {
@@ -125,6 +130,8 @@ class Form extends Component {
     if (!error) return null;
     const errors = {};
     for (let item of error.details) errors[item.path[0]] = item.message;
+
+    ValidationTabController(errors);
 
     return errors;
   };

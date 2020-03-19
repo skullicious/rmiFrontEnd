@@ -5,6 +5,7 @@ const Location = ({ renderInput, renderYesNoToggle, renderButton }) => {
     <div>
       {renderInput("dayLocation", "Where is the car parked during the day?")}
       {renderYesNoToggle("isKeptAtHome", "Kept at home address overnight?")}
+      <br />
       {renderButton("Next", "vehicle")}
     </div>
   );

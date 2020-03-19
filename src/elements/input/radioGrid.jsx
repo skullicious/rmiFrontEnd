@@ -6,53 +6,43 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles({
   root: {
-    display: "flex",
-    flexWrap: "wrap",
-    flexGrow: 1
+    flexGrow: 1,
+    width: "100%"
   },
   icon: {
     border: "1px solid #c7c7c7",
     borderRadius: "5%",
-    padding: "5px 10px",
-    textAlign: "center",
-    margin: "0",
-    backgroundColor: "white",
-    color: "black",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: "12px",
-    display: "flex",
-    minHeight: "52px",
-    letterSpacing: "initial",
-    cursor: "pointer",
-    fontWeight: "bold",
-    width: "130px",
-    height: "50px"
+    minHeight: "64px",
+    minWidth: "62px",
+    width: "100%",
+    fontSize: "13px",
+    fontWeight: "bold"
   },
   checkedIcon: {
     backgroundColor: "#137cbd",
     color: "white"
   },
-  radioGroupContainer: {
-    display: "block"
-  },
   formControlLabel: {
-    marginLeft: "0px",
-    marginRight: "0px",
-    "&:nth-of-type(2n + 1)": {
-      paddingRight: "4px",
-      paddingLeft: "0"
-    },
-    "&:nth-of-type(2n + 2)": {
-      paddingRight: "0",
-      paddingLeft: "4px"
-    }
+    margin: "0",
+    width: "100%"
   },
+
+  gridItem: {
+    "&:nth-of-type(2n+1)": {},
+    "&:nth-of-type(2n+2)": {}
+  },
+
   formLabel: {
     color: "#212529"
+  },
+
+  labelFocused: {
+    color: "#212529 !important"
   }
 });
 
@@ -86,30 +76,43 @@ const RadioGrid = ({ name, label, options, onToggle, value, error }) => {
   const classes = useStyles();
 
   return (
-    <FormControl component="fieldset" className={"form-group"}>
-      <FormLabel className={classes.formLabel} component="legend">
-        {label}
-      </FormLabel>
+    <React.Fragment>
+      <FormControl component="fieldset" className={"form-group"}>
+        <FormLabel
+          classes={{ root: classes.formLabel, focused: classes.labelFocused }}
+          component="legend"
+        >
+          {label}
+        </FormLabel>
 
-      <RadioGroup
-        className={clsx(classes.radioGroupContainer)}
-        value={value}
-        onChange={onToggle}
-        aria-label={label}
-        name={name}
-      >
-        {options.map(option => (
-          <FormControlLabel
-            className={classes.formControlLabel}
-            key={option._id}
-            value={option._id}
-            control={<StyledRadio label={option.name} />}
-            name={name}
-          />
-        ))}
-        {error && <div className="alert alert-danger">{error}</div>}
-      </RadioGroup>
-    </FormControl>
+        <RadioGroup
+          value={value}
+          onChange={onToggle}
+          aria-label={label}
+          name={name}
+        >
+          <Grid
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+          >
+            {options.map(option => (
+              <Grid className={classes.gridItem} item xs>
+                <FormControlLabel
+                  className={classes.formControlLabel}
+                  key={option._id}
+                  value={option._id}
+                  control={<StyledRadio label={option.name} />}
+                  name={name}
+                />
+              </Grid>
+            ))}
+          </Grid>
+          {error && <div className="alert alert-danger">{error}</div>}
+        </RadioGroup>
+      </FormControl>
+    </React.Fragment>
   );
 };
 

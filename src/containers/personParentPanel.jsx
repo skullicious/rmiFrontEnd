@@ -22,6 +22,7 @@ const RenderPersonParentPanel = ({
   const useStyles = makeStyles(theme => ({
     root: {
       paddingTop: "100px",
+
       width: "100%"
     }
   }));
@@ -57,6 +58,8 @@ const RenderPersonParentPanel = ({
               renderButton={renderButton}
             />
           </TabPanel>
+          <br />
+          <br />
         </div>
       )}
       {isDesktopOrLaptop && (
@@ -78,6 +81,8 @@ const RenderPersonParentPanel = ({
             renderSelect={renderSelect}
             renderButton={renderButton}
           />
+          <br />
+          <br />
         </div>
       )}
     </React.Fragment>

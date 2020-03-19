@@ -13,7 +13,15 @@ const useStyles = makeStyles(theme => ({
     minWidth: 320,
     width: "100%",
     paddingTop: "28px",
-    position: "fixed"
+    position: "fixed",
+    zIndex: "2"
+  },
+
+  "@global": {
+    "[data-value-error]": {
+      backgroundColor: "#f8d7da",
+      borderColor: "#f5c6cb"
+    }
   }
 }));
 
@@ -59,13 +67,14 @@ export default function SimpleTabs({
               variant="fullWidth"
               indicatorColor="primary"
               textColor="primary"
-              aria-label="icon tabs example"
+              aria-label="icon tabs"
             >
               {icons.map((icon, index) => (
                 <Tab
                   key={index}
                   icon={icon.tabIcon}
                   aria-label={icon.ariaLabel}
+                  classes={{ selected: classes.selected }}
                 />
               ))}
             </Tabs>

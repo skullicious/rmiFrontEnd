@@ -10,9 +10,9 @@ import RenderVehicleParentPanel from "./../containers/vehiclePanels/vehicleParen
 class VehicleForm extends Form {
   state = {
     data: {
-      title: "",
-      firstName: "",
-      lastName: "",
+      proposed_title: "",
+      proposed_firstName: "",
+      proposed_lastName: "",
       occupation: "",
       occupationStatus: "",
       regNumber: "",

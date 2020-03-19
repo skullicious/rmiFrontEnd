@@ -14,18 +14,18 @@ const VehicleUsePanel = ({
   const licenseTypes = getLicenseTypes();
   return (
     <div>
-      {renderRadioGrid("vehicleUse", "Vehicle Use", vehicleUses)}
-      {renderSelect("licenseType", "License Type", licenseTypes)}
+      {renderRadioGrid("vehicleUse_vehicleUse", "Vehicle Use", vehicleUses)}
+      {renderSelect("vehicleUse_licenseType", "License Type", licenseTypes)}
 
       {renderYesNoToggle(
-        "licenseRestrictions",
+        "vehicleUse_licenseRestriction",
         "Do you have any license restrictions?"
       )}
       {renderYesNoToggle(
-        "motoringQualifications",
+        "vehicleUse_motoringQualification",
         "Do you have any motoring qualifications?"
       )}
-
+      <br />
       {renderButton("Next")}
     </div>
   );

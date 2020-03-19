@@ -7,24 +7,20 @@ import RenderPersonParentPanel from "./personParentPanel";
 class PersonForm extends Form {
   state = {
     data: {
-      title: "",
-      firstName: "",
-      lastName: "",
-      occupation: "",
-      occupationStatus: "",
-      regNumber: "",
-      isMarried: "",
-      isOwnHouse: "",
-      hasLicense: "",
-      hasOwnCar: "",
-      licenseType: "",
-      vehicleUse: "",
-      motoringQualification: "",
-      postcode: "",
-      email: "",
-      contactNumber: "",
-      employmentType: "",
-      partTime: ""
+      individual_title: "",
+      individual_firstName: "",
+      individual_lastName: "",
+      occupation_occupation: "",
+      occupation_occupationStatus: "",
+      occupation_employmentType: "",
+      occupation_partTime: "",
+      vehicleUse_licenseRestriction: "",
+      vehicleUse_licenseType: "",
+      vehicleUse_vehicleUse: "",
+      vehicleUse_motoringQualification: "",
+      status_postcode: "",
+      status_email: "",
+      status_contactNumber: ""
     },
     employmentTypes: [],
     licenseTypes: [],
@@ -38,52 +34,46 @@ class PersonForm extends Form {
 
   schema = {
     _id: Joi.string(),
-    title: Joi.string()
+    individual_title: Joi.string()
       .required()
       .label("Title"),
-    firstName: Joi.string()
+    individual_firstName: Joi.string()
       .required()
       .label("First Name"),
-    lastName: Joi.string()
+    individual_lastName: Joi.string()
       .required()
       .label("Last Name"),
-    email: Joi.string()
+    status_email: Joi.string()
       .required()
       .label("Email"),
-    occupation: Joi.string()
+    occupation_occupation: Joi.string()
       .required()
       .label("Occupation"),
-    occStatus: Joi.string()
+    occupation_occupationStatus: Joi.string()
       .required()
       .label("Occupation Status"),
-    regNumber: Joi.string()
-      .required()
-      .label("Registration Number"),
-    isMarried: Joi.boolean()
-      .required()
-      .label("Marriage Status"),
-    vehicleUse: Joi.string()
+    vehicleUse_vehicleUse: Joi.string()
       .required()
       .label("Vehicle Use"),
-    licenseType: Joi.string()
+    vehicleUse_licenseType: Joi.string()
       .required()
       .label("License Types"),
-    postcode: Joi.string()
+    status_postcode: Joi.string()
       .required()
       .label("Postcode"),
-    contactNumber: Joi.string()
+    status_contactNumber: Joi.string()
       .required()
       .label("Contact Number"),
-    employmentType: Joi.string()
+    occupation_employmentType: Joi.string()
       .required()
       .label("Employment Type"),
-    partTime: Joi.boolean()
+    occupation_partTime: Joi.boolean()
       .required()
       .label("Part Time"),
-    licenseRestrictions: Joi.boolean()
+    vehicleUse_licenseRestriction: Joi.boolean()
       .required()
       .label("License Restrictions"),
-    motoringQualifications: Joi.boolean()
+    vehicleUse_motoringQualification: Joi.boolean()
       .required()
       .label("Motoring Qualifications")
   };

@@ -6,7 +6,7 @@ const Proposed = ({ renderInput, renderYesNoToggle, renderSelect }) => {
   return (
     <div>
       {renderYesNoToggle(
-        "regNoKnown",
+        "proposed_regNoKnown",
         "Do you know the vehicle registration number?"
       )}
       <br />
