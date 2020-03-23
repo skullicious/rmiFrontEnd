@@ -7,6 +7,7 @@ import LocationPanel from "./../vehiclePanels/locationPanel";
 
 import TabPanel from "../../elements/nav/tabPanel";
 import { useMediaQuery } from "react-responsive";
+import { makeStyles } from "@material-ui/core/styles";
 
 const VehicleParentPanel = ({
   renderInput,
@@ -20,10 +21,20 @@ const VehicleParentPanel = ({
     query: "(min-device-width: 1224px)"
   });
 
+  const useStyles = makeStyles(theme => ({
+    root: {
+      paddingTop: "100px",
+
+      width: "100%"
+    }
+  }));
+
+  const classes = useStyles();
+
   return (
     <React.Fragment>
       {!isDesktopOrLaptop && (
-        <div>
+        <div className={classes.root}>
           <TabPanel value={value} index={0}>
             <ProposedPanel
               renderYesNoToggle={renderYesNoToggle}
@@ -32,25 +43,21 @@ const VehicleParentPanel = ({
               renderRadioGrid={renderRadioGrid}
             />
           </TabPanel>
-
           <TabPanel value={value} index={1}>
             <OwnerKeeperPanel
               renderYesNoToggle={renderYesNoToggle}
               renderRadioGrid={renderRadioGrid}
             />
           </TabPanel>
-
           <TabPanel value={value} index={2}>
             <ModSecPanel renderYesNoToggle={renderYesNoToggle} />
           </TabPanel>
-
           <TabPanel value={value} index={3}>
             <ParticularsPanel
               renderYesNoToggle={renderYesNoToggle}
               renderInput={renderInput}
             />
           </TabPanel>
-
           <TabPanel value={value} index={4}>
             <LocationPanel
               renderYesNoToggle={renderYesNoToggle}

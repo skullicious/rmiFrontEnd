@@ -111,9 +111,17 @@ class Form extends Component {
 
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
-    const errorMessage = this.validateProperty(input);
-    if (errorMessage) errors[input.name] = errorMessage;
-    else delete errors[input.name];
+
+    if (Object.keys(errors).length === 0 && errors.constructor === Object) {
+      //allow user to enter date without validation
+    }
+
+    // if we have generated errors by doing normal submit start checking fields onChange
+    else {
+      const errorMessage = this.validateProperty(input);
+      if (errorMessage) errors[input.name] = errorMessage;
+      else delete errors[input.name];
+    }
 
     const data = { ...this.state.data };
 
@@ -153,7 +161,7 @@ class Form extends Component {
     this.setState({ errors: errors || {} });
     if (errors) return;
 
-    // this.doSubmit();
+    this.doSubmit();
     // const username = this.username.current.value;
   };
 }

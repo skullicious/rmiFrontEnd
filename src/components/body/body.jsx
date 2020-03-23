@@ -10,7 +10,7 @@ import Build from "@material-ui/icons/Build";
 import Info from "@material-ui/icons/Info";
 import EmojiTransportationIcon from "@material-ui/icons/EmojiTransportation";
 
-const PersonBase = () => {
+const PersonBase = props => {
   const icons = [
     { tabIcon: <Person />, ariaLabel: "individualPanel" },
     { tabIcon: <Home />, ariaLabel: "statusPanel" },
@@ -18,10 +18,10 @@ const PersonBase = () => {
     { tabIcon: <DirectionsCar />, ariaLabel: "vehicleUsePanel" }
   ];
 
-  return <PersonForm icons={icons} />;
+  return <PersonForm icons={icons} history={props.history} />;
 };
 
-const VehicleBase = () => {
+const VehicleBase = props => {
   const icons = [
     { tabIcon: <DirectionsCar />, ariaLabel: "proposedPanel" },
     { tabIcon: <PeopleAlt />, ariaLabel: "ownerKeeperPanel" },
@@ -30,7 +30,7 @@ const VehicleBase = () => {
     { tabIcon: <EmojiTransportationIcon />, ariaLabel: "locationPanel" }
   ];
 
-  return <VehicleForm icons={icons} />;
+  return <VehicleForm icons={icons} history={props.history} />;
 };
 
 export { PersonBase, VehicleBase };

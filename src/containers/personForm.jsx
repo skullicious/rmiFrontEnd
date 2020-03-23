@@ -44,6 +44,7 @@ class PersonForm extends Form {
       .required()
       .label("Last Name"),
     status_email: Joi.string()
+      .email({ minDomainAtoms: 2 })
       .required()
       .label("Email"),
     occupation_occupation: Joi.string()
@@ -59,9 +60,13 @@ class PersonForm extends Form {
       .required()
       .label("License Types"),
     status_postcode: Joi.string()
+      .regex(/[A-Za-z]{1,2}[0-9]{1,2}\s*[A-Za-z]{0,1}\s*?[0-9][A-Za-z]{2}\s*/)
       .required()
       .label("Postcode"),
     status_contactNumber: Joi.string()
+      .regex(
+        /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/
+      )
       .required()
       .label("Contact Number"),
     occupation_employmentType: Joi.string()

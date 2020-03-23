@@ -1,8 +1,6 @@
 const ValidationTabController = errors => {
   const tabList = new Set();
 
-  console.log(errors);
-
   const errorList = Object.entries(errors);
 
   errorList.map(item => {
