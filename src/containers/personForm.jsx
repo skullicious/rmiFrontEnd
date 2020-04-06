@@ -32,55 +32,128 @@ class PersonForm extends Form {
     errors: {}
   };
 
+  errorType = {};
+
   schema = {
     _id: Joi.string(),
     individual_title: Joi.string()
       .required()
-      .label("Title"),
+      .label("Title")
+      .error(() => {
+        return {
+          message: "Please select a title"
+        };
+      }),
     individual_firstName: Joi.string()
       .required()
-      .label("First Name"),
+      .label("First Name")
+      .error(() => {
+        return {
+          message: "Please enter your first name"
+        };
+      }),
     individual_lastName: Joi.string()
       .required()
-      .label("Last Name"),
+      .label("Last Name")
+      .error(() => {
+        return {
+          message: "Please enter your last name"
+        };
+      }),
     status_email: Joi.string()
       .email({ minDomainAtoms: 2 })
       .required()
-      .label("Email"),
+      .label("Email")
+      .error(() => {
+        return {
+          message: "Please enter a valid email address"
+        };
+      }),
     occupation_occupation: Joi.string()
       .required()
-      .label("Occupation"),
+      .label("Occupation")
+      .error(() => {
+        return {
+          message: "Please select an occupation from the list"
+        };
+      }),
     occupation_occupationStatus: Joi.string()
       .required()
-      .label("Occupation Status"),
+      .label("Occupation Status")
+      .error(() => {
+        return {
+          message: "Please select an occupation status from the list"
+        };
+      }),
     vehicleUse_vehicleUse: Joi.string()
       .required()
-      .label("Vehicle Use"),
+      .label("Vehicle Use")
+      .error(() => {
+        return {
+          message: "Please select a vehicle use from the options provided"
+        };
+      }),
     vehicleUse_licenseType: Joi.string()
       .required()
-      .label("License Types"),
+      .label("License Types")
+      .error(() => {
+        return {
+          message: "Please select an license type from the list"
+        };
+      }),
+
     status_postcode: Joi.string()
       .regex(/[A-Za-z]{1,2}[0-9]{1,2}\s*[A-Za-z]{0,1}\s*?[0-9][A-Za-z]{2}\s*/)
       .required()
-      .label("Postcode"),
+      .label("Postcode")
+      .error(() => {
+        return {
+          message: "Please enter a valid postcode"
+        };
+      }),
     status_contactNumber: Joi.string()
       .regex(
         /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/
       )
       .required()
-      .label("Contact Number"),
+      .label("Contact Number")
+      .error(() => {
+        return {
+          message: "Please enter a valid UK phone number"
+        };
+      }),
     occupation_employmentType: Joi.string()
       .required()
-      .label("Employment Type"),
+      .label("Employment Type")
+      .error(() => {
+        return {
+          message: "Please select an employment type from the options provided"
+        };
+      }),
     occupation_partTime: Joi.boolean()
       .required()
-      .label("Part Time"),
+      .label("Part Time")
+      .error(() => {
+        return {
+          message: "Please state if you are a part time worker"
+        };
+      }),
     vehicleUse_licenseRestriction: Joi.boolean()
       .required()
-      .label("License Restrictions"),
+      .label("License Restrictions")
+      .error(() => {
+        return {
+          message: "Please state if you have any license restrictions"
+        };
+      }),
     vehicleUse_motoringQualification: Joi.boolean()
       .required()
       .label("Motoring Qualifications")
+      .error(() => {
+        return {
+          message: "Please state if you have any motoring qualifications"
+        };
+      })
   };
 
   // username = React.createRef();

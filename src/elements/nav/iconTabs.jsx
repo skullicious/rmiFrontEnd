@@ -60,25 +60,25 @@ export default function SimpleTabs({
     <React.Fragment>
       <div className={classes.root}>
         <Paper square className={classes.root}>
-          {!isDesktopOrLaptop && (
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              variant="fullWidth"
-              indicatorColor="primary"
-              textColor="primary"
-              aria-label="icon tabs"
-            >
-              {icons.map((icon, index) => (
-                <Tab
-                  key={index}
-                  icon={icon.tabIcon}
-                  aria-label={icon.ariaLabel}
-                  classes={{ selected: classes.selected }}
-                />
-              ))}
-            </Tabs>
-          )}
+          {/* {!isDesktopOrLaptop && ( */}
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            variant="fullWidth"
+            indicatorColor="primary"
+            textColor="primary"
+            aria-label="icon tabs"
+          >
+            {icons.map((icon, index) => (
+              <Tab
+                key={index}
+                icon={icon.tabIcon}
+                aria-label={icon.ariaLabel}
+                classes={{ selected: classes.selected }}
+              />
+            ))}
+          </Tabs>
+          {/* )} */}
         </Paper>
       </div>
       {renderPanel({

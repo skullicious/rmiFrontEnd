@@ -17,8 +17,9 @@ const ValidationTabController = errors => {
     }
   });
 
-  const icons = document.getElementsByClassName("MuiTabs-flexContainer")[0]
-    .children;
+  let icons = {};
+
+  icons = document.getElementsByClassName("MuiTabs-flexContainer")[0].children;
 
   for (var i = 0; i < icons.length; i++) {
     let currentIconElement = icons[i];

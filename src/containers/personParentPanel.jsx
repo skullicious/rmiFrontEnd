@@ -6,6 +6,7 @@ import VehicleUsePanel from "../containers/vehicleUsePanel";
 import TabPanel from "../elements/nav/tabPanel";
 import { useMediaQuery } from "react-responsive";
 import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 
 const RenderPersonParentPanel = ({
   renderInput,
@@ -62,28 +63,38 @@ const RenderPersonParentPanel = ({
           <br />
         </div>
       )}
+
+      <br />
       {isDesktopOrLaptop && (
-        <div className={classes.root}>
-          <IndividualPanel
-            renderInput={renderInput}
-            renderSelect={renderSelect}
-            renderRadioGrid={renderRadioGrid}
-          />
-          <StatusPanel renderInput={renderInput} />
-          <OccupationPanel
-            renderSelect={renderSelect}
-            renderYesNoToggle={renderYesNoToggle}
-            renderRadioGrid={renderRadioGrid}
-          />
-          <VehicleUsePanel
-            renderYesNoToggle={renderYesNoToggle}
-            renderRadioGrid={renderRadioGrid}
-            renderSelect={renderSelect}
-            renderButton={renderButton}
-          />
-          <br />
-          <br />
-        </div>
+        <Grid
+          container
+
+          // direction="row"
+          // justify="space-between"
+          // alignItems="center"
+        >
+          <div className={classes.root}>
+            <IndividualPanel
+              renderInput={renderInput}
+              renderSelect={renderSelect}
+              renderRadioGrid={renderRadioGrid}
+            />
+            <StatusPanel renderInput={renderInput} />
+            <OccupationPanel
+              renderSelect={renderSelect}
+              renderYesNoToggle={renderYesNoToggle}
+              renderRadioGrid={renderRadioGrid}
+            />
+            <VehicleUsePanel
+              renderYesNoToggle={renderYesNoToggle}
+              renderRadioGrid={renderRadioGrid}
+              renderSelect={renderSelect}
+              renderButton={renderButton}
+            />
+            <br />
+            <br />
+          </div>
+        </Grid>
       )}
     </React.Fragment>
   );

@@ -1,17 +1,26 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 
 const Input = ({ name, label, error, ...rest }) => {
-  return (
-    <div className="form-group">
-      <label htmlFor={name}>{label}</label>
-      <input
-        // autoFocus
+  const useStyles = makeStyles(theme => ({}));
 
-        id={name}
-        className="form-control"
-        name={name}
-        {...rest}
-      />
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <div className={(classes.padding, "form-group row")}>
+        <label className="col-sm-6" htmlFor={name}>
+          {label}
+        </label>
+
+        <input
+          id={name}
+          className={"form-control col-sm-6"}
+          name={name}
+          {...rest}
+        />
+      </div>
       {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );

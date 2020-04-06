@@ -56,54 +56,56 @@ export default function YesNoToggle({ name, label, onToggle, value, error }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <span>{label}</span>
-      <br />
-      <Paper elevation={0} className={classes.paper}>
-        <StyledToggleButtonGroup
-          id={name}
-          name={name}
-          label={label}
-          size="small"
-          value={alignment}
-          exclusive
-          onChange={handleAlignment}
-          aria-label="text alignment"
-          className={classes.toggleButtonGroup}
-        >
-          <ToggleButton
-            classes={{
-              root: classes.toggleButton,
-              selected: classes.toggleButtonSelected
-            }}
-            value="true"
-            aria-label="true aligned"
+    <div className={(classes.root, "form-group row")}>
+      <label className="col-sm-6">{label}</label>
+
+      <label className={"col-sm-6"}>
+        <Paper elevation={0} className={classes.paper}>
+          <StyledToggleButtonGroup
+            id={name}
             name={name}
+            label={label}
+            size="small"
+            value={alignment}
+            exclusive
+            onChange={handleAlignment}
+            aria-label="text alignment"
+            className={classes.toggleButtonGroup}
           >
-            <a>Yes</a>
-          </ToggleButton>
-          <ToggleButton
-            className={classes.toggleButtonNA}
-            value="na"
-            aria-label="centered"
-            disabled
-            selected={true}
-          >
-            ||
-          </ToggleButton>
-          <ToggleButton
-            classes={{
-              root: classes.toggleButton,
-              selected: classes.toggleButtonSelected
-            }}
-            name={name}
-            value="false"
-            aria-label="false aligned"
-          >
-            <a>No</a>
-          </ToggleButton>
-        </StyledToggleButtonGroup>
-      </Paper>
+            <ToggleButton
+              classes={{
+                root: classes.toggleButton,
+                selected: classes.toggleButtonSelected
+              }}
+              value="true"
+              aria-label="true aligned"
+              name={name}
+            >
+              <a>Yes</a>
+            </ToggleButton>
+            <ToggleButton
+              className={classes.toggleButtonNA}
+              value="na"
+              aria-label="centered"
+              disabled
+              selected={true}
+            >
+              ||
+            </ToggleButton>
+            <ToggleButton
+              classes={{
+                root: classes.toggleButton,
+                selected: classes.toggleButtonSelected
+              }}
+              name={name}
+              value="false"
+              aria-label="false aligned"
+            >
+              <a>No</a>
+            </ToggleButton>
+          </StyledToggleButtonGroup>
+        </Paper>
+      </label>
       {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );

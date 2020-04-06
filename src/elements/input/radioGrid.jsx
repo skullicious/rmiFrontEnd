@@ -7,7 +7,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles({
   root: {
@@ -75,43 +74,46 @@ function StyledRadio(props) {
 const RadioGrid = ({ name, label, options, onToggle, value, error }) => {
   const classes = useStyles();
 
+  // //Why do I need to string this
+  // const reactOptions = options.map(function(row) {
+  //   return { _id: row.titleId.toString(), name: row.name };
+  // });
+
   return (
     <React.Fragment>
-      <FormControl component="fieldset" className={"form-group"}>
-        <FormLabel
-          classes={{ root: classes.formLabel, focused: classes.labelFocused }}
-          component="legend"
-        >
-          {label}
-        </FormLabel>
+      <div className={"form-group row"}>
+        <label className="col-sm-6">{label}</label>
 
-        <RadioGroup
-          value={value}
-          onChange={onToggle}
-          aria-label={label}
-          name={name}
-        >
-          <Grid
-            container
-            direction="row"
-            justify="space-between"
-            alignItems="center"
+        <label className="col-sm-6">
+          <RadioGroup
+            value={value}
+            onChange={onToggle}
+            aria-label={label}
+            name={name}
           >
-            {options.map(option => (
-              <Grid className={classes.gridItem} item xs>
-                <FormControlLabel
-                  className={classes.formControlLabel}
-                  key={option._id}
-                  value={option._id}
-                  control={<StyledRadio label={option.name} />}
-                  name={name}
-                />
-              </Grid>
-            ))}
-          </Grid>
-          {error && <div className="alert alert-danger">{error}</div>}
-        </RadioGroup>
-      </FormControl>
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+            >
+              {options.map(option => (
+                <Grid className={classes.gridItem} item xs>
+                  <FormControlLabel
+                    className={classes.formControlLabel}
+                    key={option._id}
+                    value={option._id}
+                    control={<StyledRadio label={option.name} />}
+                    name={name}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </RadioGroup>
+        </label>
+
+        {error && <div className="alert alert-danger">{error}</div>}
+      </div>
     </React.Fragment>
   );
 };
