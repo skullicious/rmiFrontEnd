@@ -8,3 +8,9 @@ export const OCCUPATIONS_API_URL =
 
 export const OCCUPATIONSTATUS_API_URL =
   "https://localhost:44306/api/test/occupationStatus";
+
+export const LICENSETYPES_API_URL =
+  "https://localhost:44306/api/test/licensetypes";
+
+export const VEHICLEUSES_API_URL =
+  "https://localhost:44306/api/test/vehicleuses";
