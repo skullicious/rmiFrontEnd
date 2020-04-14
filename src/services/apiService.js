@@ -1,16 +1,16 @@
-export const TITLES_API_URL = "https://localhost:44306/api/test/titles";
+export const TITLES_API_URL = "https://localhost:44306/api/data/titles";
 
 export const EMPLOYMENTTYPES_API_URL =
-  "https://localhost:44306/api/test/employmenttypes";
+  "https://localhost:44306/api/data/employmenttypes";
 
 export const OCCUPATIONS_API_URL =
-  "https://localhost:44306/api/test/occupations";
+  "https://localhost:44306/api/data/occupations";
 
 export const OCCUPATIONSTATUS_API_URL =
-  "https://localhost:44306/api/test/occupationStatus";
+  "https://localhost:44306/api/data/occupationStatus";
 
 export const LICENSETYPES_API_URL =
-  "https://localhost:44306/api/test/licensetypes";
+  "https://localhost:44306/api/data/licensetypes";
 
 export const VEHICLEUSES_API_URL =
-  "https://localhost:44306/api/test/vehicleuses";
+  "https://localhost:44306/api/data/vehicleuses";
