@@ -10,7 +10,7 @@ import ValidationTabController from "./../helpers/validationTabController";
 class Form extends Component {
   state = {
     data: {},
-    errors: {}
+    errors: {},
   };
 
   renderYesNoToggle(name, label) {
@@ -152,7 +152,7 @@ class Form extends Component {
     return error ? error.details[0].message : null; // feed into custom object map
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     //presubmit validation
 
     e.preventDefault();

@@ -11,7 +11,7 @@ import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-    width: "100%"
+    width: "100%",
   },
   icon: {
     border: "1px solid #c7c7c7",
@@ -20,29 +20,29 @@ const useStyles = makeStyles({
     minWidth: "62px",
     width: "100%",
     fontSize: "13px",
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   checkedIcon: {
     backgroundColor: "#137cbd",
-    color: "white"
+    color: "white",
   },
   formControlLabel: {
     margin: "0",
-    width: "100%"
+    width: "100%",
   },
 
   gridItem: {
     "&:nth-of-type(2n+1)": {},
-    "&:nth-of-type(2n+2)": {}
+    "&:nth-of-type(2n+2)": {},
   },
 
   formLabel: {
-    color: "#212529"
+    color: "#212529",
   },
 
   labelFocused: {
-    color: "#212529 !important"
-  }
+    color: "#212529 !important",
+  },
 });
 
 // Inspired by blueprintjs
@@ -78,6 +78,8 @@ const RadioGrid = ({ name, label, options, onToggle, value, error }) => {
   // const reactOptions = options.map(function(row) {
   //   return { _id: row.titleId.toString(), name: row.name };
   // });
+  console.log("options");
+  console.log(options);
 
   return (
     <React.Fragment>
@@ -97,7 +99,7 @@ const RadioGrid = ({ name, label, options, onToggle, value, error }) => {
               justify="space-between"
               alignItems="center"
             >
-              {options.map(option => (
+              {options.map((option) => (
                 <Grid className={classes.gridItem} item xs>
                   <FormControlLabel
                     className={classes.formControlLabel}
