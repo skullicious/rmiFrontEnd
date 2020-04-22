@@ -1,57 +1,53 @@
-import React, { useState, useEffect } from "react";
-import {
-  OCCUPATIONS_API_URL,
-  EMPLOYMENTTYPES_API_URL,
-  OCCUPATIONSTATUS_API_URL
-} from "../services/apiService";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchData } from "./../actions/testActions";
+import { OCCUPATIONS_API_URL } from "./../services/apiService";
+import { OCCUPATIONSTATUS_API_URL } from "./../services/apiService";
+import { FETCH_OCCUPATIONS } from "../actions/types";
+import { FETCH_OCCUPATIONSTATUS } from "../actions/types";
+import { FETCH_EMPLOYMENTTYPES } from "../actions/types";
+import { EMPLOYMENTTYPES_API_URL } from "./../services/apiService";
 
 const OccupationPanel = ({
+  fetchData,
+  employmentTypes,
+  occupations,
+  occupationStatus,
   renderSelect,
   renderYesNoToggle,
-  renderRadioGrid
+  renderRadioGrid,
 }) => {
-  const [hasError, setErrors] = useState(false);
-  const [occStatus, setoccStatus] = useState([]);
-  const [occs, setoccs] = useState([]);
-  const [ets, setets] = useState([]);
-  //USE EFFECTS USED IN PLACE OF COMPONENT DID MOUNT AS SIDE EFFECT IN FUNCTION COMPONENT
-
-  async function fetchData() {
-    const occStatusRes = await fetch(OCCUPATIONSTATUS_API_URL);
-    occStatusRes
-      .json()
-      .then(res => setoccStatus(res))
-      .catch(err => setErrors(err));
-
-    const occsRes = await fetch(OCCUPATIONS_API_URL);
-    occsRes
-      .json()
-      .then(res => setoccs(res))
-      .catch(err => setErrors(err));
-
-    const etsRes = await fetch(EMPLOYMENTTYPES_API_URL);
-    etsRes
-      .json()
-      .then(res => setets(res))
-      .catch(err => setErrors(err));
-  }
   useEffect(() => {
-    fetchData();
+    fetchData(EMPLOYMENTTYPES_API_URL, FETCH_EMPLOYMENTTYPES);
+    fetchData(OCCUPATIONS_API_URL, FETCH_OCCUPATIONS);
+    fetchData(OCCUPATIONSTATUS_API_URL, FETCH_OCCUPATIONSTATUS);
   }, []);
 
   return (
     <div>
-      {renderSelect("occupation_occupation", "Occupation", occs)}
+      {renderSelect("occupation_occupation", "Occupation", occupations)}
       {renderSelect(
         "occupation_occupationStatus",
         "Occupation Status",
-        occStatus
+        occupationStatus
       )}
       {renderYesNoToggle("occupation_partTime", "Part Time?")}
       <br />
-      {renderRadioGrid("occupation_employmentType", "Employment Type", ets)}
+      {renderRadioGrid(
+        "occupation_employmentType",
+        "Employment Type",
+        employmentTypes
+      )}
     </div>
   );
 };
 
-export default OccupationPanel;
+const mapStateToProps = (state) => ({
+  occupations: state.data.occupations,
+  occupationStatus: state.data.occupationStatus,
+  employmentTypes: state.data.employmentTypes,
+});
+
+export default connect(mapStateToProps, {
+  fetchData,
+})(OccupationPanel);

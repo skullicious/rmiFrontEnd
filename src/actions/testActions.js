@@ -1,14 +1,53 @@
-import { FETCH_TESTS, FETCH_TESTS_X } from "./types";
-import { TITLES_API_URL } from "../services/apiService";
+//REFACTORED TO MAKE COMPONENTS CONTAIN INFO FOR FETCH DATA>> NOT SURE IF THIS IS ANTI PATTERN FOR REDUX
 
-export const fetchTitles = () => (dispatch) => {
-  console.log("in fetch");
+// import { FETCH_TITLES } from "./types";
+// import { FETCH_OCCUPATIONS } from "./types";
+// import { FETCH_OCCUPATIONSTATUS } from "./types";
+// import { TITLES_API_URL } from "../services/apiService";
+// import { OCCUPATIONS_API_URL } from "./../services/apiService";
+// import { OCCUPATIONSTATUS_API_URL } from "./../services/apiService";
 
-  fetch(TITLES_API_URL)
+// export const fetchTitles = () => (dispatch) => {
+//   fetch(TITLES_API_URL)
+//     .then((res) => res.json())
+//     .then((data) =>
+//       dispatch({
+//         type: FETCH_TITLES,
+//         payload: data,
+//       })
+//     );
+// };
+
+// export const fetchOccupations = () => (dispatch) => {
+//   fetch(OCCUPATIONS_API_URL)
+//     .then((res) => res.json())
+//     .then((data) =>
+//       dispatch({
+//         type: FETCH_OCCUPATIONS,
+//         payload: data,
+//       })
+//     );
+// };
+
+// export const fetchOccupationStatus = () => (dispatch) => {
+//   console.log("in occupation status fetch");
+
+//   fetch(OCCUPATIONSTATUS_API_URL)
+//     .then((res) => res.json())
+//     .then((data) =>
+//       dispatch({
+//         type: FETCH_OCCUPATIONSTATUS,
+//         payload: data,
+//       })
+//     );
+// };
+
+export const fetchData = (API_URL, TYPE) => (dispatch) => {
+  fetch(API_URL)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
-        type: FETCH_TESTS,
+        type: TYPE,
         payload: data,
       })
     );

@@ -78,8 +78,6 @@ const RadioGrid = ({ name, label, options, onToggle, value, error }) => {
   // const reactOptions = options.map(function(row) {
   //   return { _id: row.titleId.toString(), name: row.name };
   // });
-  console.log("options");
-  console.log(options);
 
   return (
     <React.Fragment>

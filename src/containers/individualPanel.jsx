@@ -1,32 +1,13 @@
-import React, { useState, useEffect } from "react";
-// import { TITLES_API_URL } from "../services/apiService";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchTitles } from "./../actions/testActions";
+import { fetchData } from "../actions/testActions";
+import { TITLES_API_URL } from "../services/apiService";
+import { FETCH_TITLES } from "../actions/types";
 
-const Individual = ({ titles, renderInput, renderRadioGrid, fetchTitles }) => {
+const Individual = ({ titles, renderInput, renderRadioGrid, fetchData }) => {
   useEffect(() => {
-    console.log("in use effect");
-    fetchTitles();
+    fetchData(TITLES_API_URL, FETCH_TITLES);
   }, []);
-
-  // console.log(this.props);
-  // const [hasError, setErrors] = useState(false);
-  // const [titles, setTitles] = useState([]);
-
-  //USE EFFECTS USED IN PLACE OF COMPONENT DID MOUNT AS SIDE EFFECT IN FUNCTION COMPONENT
-
-  // async function fetchData() {
-  //   const res = await fetch(TITLES_API_URL);
-  //   res
-  //     .json()
-  //     .then(res => setTitles(res))
-  //     .catch(err => setErrors(err));
-  // }
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  // let titles = [];
 
   return (
     <div>
@@ -37,6 +18,6 @@ const Individual = ({ titles, renderInput, renderRadioGrid, fetchTitles }) => {
   );
 };
 
-const mapStateToProps = (state) => ({ titles: state.tests.titles });
+const mapStateToProps = (state) => ({ titles: state.data.titles });
 
-export default connect(mapStateToProps, { fetchTitles })(Individual);
+export default connect(mapStateToProps, { fetchData })(Individual);

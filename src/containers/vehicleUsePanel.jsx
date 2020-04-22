@@ -1,38 +1,24 @@
 import React, { useState, useEffect } from "react";
-import {
-  getVehicleUses,
-  getLicenseTypes,
-} from "./../services/vehicleUseService";
+import { connect } from "react-redux";
 import {
   VEHICLEUSES_API_URL,
   LICENSETYPES_API_URL,
 } from "./../services/apiService";
+import { FETCH_VEHICLEUSES, FETCH_LICENSETYPES } from "./../actions/types";
+import { fetchData } from "../actions/testActions";
 
 const VehicleUsePanel = ({
+  fetchData,
+  vehicleUses,
+  licenseTypes,
   renderRadioGrid,
   renderSelect,
   renderYesNoToggle,
   renderButton,
 }) => {
-  const [hasError, setErrors] = useState(false);
-  const [vehicleUses, setVehicleUses] = useState([]);
-  const [licenseTypes, setLicenseTypes] = useState([]);
-
-  async function fetchData() {
-    const vehicleUsesRes = await fetch(VEHICLEUSES_API_URL);
-    vehicleUsesRes
-      .json()
-      .then((res) => setVehicleUses(res))
-      .catch((err) => setErrors(err));
-
-    const licenseTypesRes = await fetch(LICENSETYPES_API_URL);
-    licenseTypesRes
-      .json()
-      .then((res) => setLicenseTypes(res))
-      .catch((err) => setErrors(err));
-  }
   useEffect(() => {
-    fetchData();
+    fetchData(VEHICLEUSES_API_URL, FETCH_VEHICLEUSES);
+    fetchData(LICENSETYPES_API_URL, FETCH_LICENSETYPES);
   }, []);
 
   return (
@@ -54,4 +40,11 @@ const VehicleUsePanel = ({
   );
 };
 
-export default VehicleUsePanel;
+const mapStateToProps = (state) => ({
+  vehicleUses: state.data.vehicleUses,
+  licenseTypes: state.data.licenseTypes,
+});
+
+export default connect(mapStateToProps, {
+  fetchData,
+})(VehicleUsePanel);
