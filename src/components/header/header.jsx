@@ -6,26 +6,26 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   appBar: {
-    background: "#2E3B55"
+    background: "#2E3B55",
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 1
-  }
+    flexGrow: 1,
+  },
 }));
 
 const style = {
   background: "#007bff",
   color: "white",
   boxShadow: "none",
-  position: "fixed"
+  position: "fixed",
 };
 
 export default function ButtonAppBar() {
@@ -44,7 +44,7 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Hexham Insurance
+            RaceMate Insurance
           </Typography>
         </Toolbar>
       </AppBar>
