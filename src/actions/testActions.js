@@ -18,30 +18,6 @@
 //     );
 // };
 
-// export const fetchOccupations = () => (dispatch) => {
-//   fetch(OCCUPATIONS_API_URL)
-//     .then((res) => res.json())
-//     .then((data) =>
-//       dispatch({
-//         type: FETCH_OCCUPATIONS,
-//         payload: data,
-//       })
-//     );
-// };
-
-// export const fetchOccupationStatus = () => (dispatch) => {
-//   console.log("in occupation status fetch");
-
-//   fetch(OCCUPATIONSTATUS_API_URL)
-//     .then((res) => res.json())
-//     .then((data) =>
-//       dispatch({
-//         type: FETCH_OCCUPATIONSTATUS,
-//         payload: data,
-//       })
-//     );
-// };
-
 export const fetchData = (API_URL, TYPE) => (dispatch) => {
   fetch(API_URL)
     .then((res) => res.json())

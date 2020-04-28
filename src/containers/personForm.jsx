@@ -20,7 +20,7 @@ class PersonForm extends Form {
       vehicleUse_motoringQualification: "",
       status_postcode: "",
       status_email: "",
-      status_contactNumber: ""
+      status_contactNumber: "",
     },
     employmentTypes: [],
     licenseTypes: [],
@@ -29,7 +29,7 @@ class PersonForm extends Form {
     genres: [],
     occupations: [],
     titles: [],
-    errors: {}
+    errors: {},
   };
 
   errorType = {};
@@ -41,7 +41,7 @@ class PersonForm extends Form {
       .label("Title")
       .error(() => {
         return {
-          message: "Please select a title"
+          message: "Please select a title",
         };
       }),
     individual_firstName: Joi.string()
@@ -49,7 +49,7 @@ class PersonForm extends Form {
       .label("First Name")
       .error(() => {
         return {
-          message: "Please enter your first name"
+          message: "Please enter your first name",
         };
       }),
     individual_lastName: Joi.string()
@@ -57,7 +57,7 @@ class PersonForm extends Form {
       .label("Last Name")
       .error(() => {
         return {
-          message: "Please enter your last name"
+          message: "Please enter your last name",
         };
       }),
     status_email: Joi.string()
@@ -66,7 +66,7 @@ class PersonForm extends Form {
       .label("Email")
       .error(() => {
         return {
-          message: "Please enter a valid email address"
+          message: "Please enter a valid email address",
         };
       }),
     occupation_occupation: Joi.string()
@@ -74,7 +74,7 @@ class PersonForm extends Form {
       .label("Occupation")
       .error(() => {
         return {
-          message: "Please select an occupation from the list"
+          message: "Please select an occupation from the list",
         };
       }),
     occupation_occupationStatus: Joi.string()
@@ -82,7 +82,7 @@ class PersonForm extends Form {
       .label("Occupation Status")
       .error(() => {
         return {
-          message: "Please select an occupation status from the list"
+          message: "Please select an occupation status from the list",
         };
       }),
     vehicleUse_vehicleUse: Joi.string()
@@ -90,7 +90,7 @@ class PersonForm extends Form {
       .label("Vehicle Use")
       .error(() => {
         return {
-          message: "Please select a vehicle use from the options provided"
+          message: "Please select a vehicle use from the options provided",
         };
       }),
     vehicleUse_licenseType: Joi.string()
@@ -98,7 +98,7 @@ class PersonForm extends Form {
       .label("License Types")
       .error(() => {
         return {
-          message: "Please select an license type from the list"
+          message: "Please select an license type from the list",
         };
       }),
 
@@ -108,7 +108,7 @@ class PersonForm extends Form {
       .label("Postcode")
       .error(() => {
         return {
-          message: "Please enter a valid postcode"
+          message: "Please enter a valid postcode",
         };
       }),
     status_contactNumber: Joi.string()
@@ -119,7 +119,7 @@ class PersonForm extends Form {
       .label("Contact Number")
       .error(() => {
         return {
-          message: "Please enter a valid UK phone number"
+          message: "Please enter a valid UK phone number",
         };
       }),
     occupation_employmentType: Joi.string()
@@ -127,7 +127,7 @@ class PersonForm extends Form {
       .label("Employment Type")
       .error(() => {
         return {
-          message: "Please select an employment type from the options provided"
+          message: "Please select an employment type from the options provided",
         };
       }),
     occupation_partTime: Joi.boolean()
@@ -135,7 +135,7 @@ class PersonForm extends Form {
       .label("Part Time")
       .error(() => {
         return {
-          message: "Please state if you are a part time worker"
+          message: "Please state if you are a part time worker",
         };
       }),
     vehicleUse_licenseRestriction: Joi.boolean()
@@ -143,7 +143,7 @@ class PersonForm extends Form {
       .label("License Restrictions")
       .error(() => {
         return {
-          message: "Please state if you have any license restrictions"
+          message: "Please state if you have any license restrictions",
         };
       }),
     vehicleUse_motoringQualification: Joi.boolean()
@@ -151,9 +151,9 @@ class PersonForm extends Form {
       .label("Motoring Qualifications")
       .error(() => {
         return {
-          message: "Please state if you have any motoring qualifications"
+          message: "Please state if you have any motoring qualifications",
         };
-      })
+      }),
   };
 
   // username = React.createRef();
@@ -184,13 +184,13 @@ class PersonForm extends Form {
   }
 
   //map movie to viewmodel for view method
-  mapToViewModel = movie => {
+  mapToViewModel = (movie) => {
     return {
       _id: movie._id,
       title: movie.title,
       genreId: movie.genre._id,
       numberInStock: movie.numberInStock,
-      dailyRentalRate: movie.dailyRentalRate
+      dailyRentalRate: movie.dailyRentalRate,
     };
   };
 

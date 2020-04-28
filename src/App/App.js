@@ -7,10 +7,13 @@ import { Route, Router, Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { history } from "../_helpers";
 import { alertActions } from "../actions";
+import { LoginPage } from "../LoginPage";
+import { RegisterPage } from "../RegisterPage";
+import { HomePage } from "../HomePage";
 
 import { PrivateRoute } from "./../_components/PrivateRoute";
 
-class App extends React.Component() {
+class App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -43,8 +46,10 @@ class App extends React.Component() {
           <Header />
           <Router history={history}>
             <Switch>
-              <PrivateRoute exact path="/" component={PersonBase} />
+              {/* <PrivateRoute exact path="/" component={HomePage} /> */}
+              <PrivateRoute exact path="/" component={HomePage} />
               <Route path="/login" component={LoginPage} />
+              <Route path="/register" component={RegisterPage} />
               {/* <Route path="/person" component={PersonBase} /> */}
               <Route path="/vehicle" component={VehicleBase} />
               <Route path="/" component={PersonBase} />
