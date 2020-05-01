@@ -1,6 +1,6 @@
 import React from "react";
-import PersonForm from "./../../containers/personForm";
-import VehicleForm from "./../../containers/vehicleForm";
+import { PersonForm } from "../../containers";
+import { VehicleForm } from "./../../containers";
 import Person from "@material-ui/icons/Person";
 import Home from "@material-ui/icons/Home";
 import Work from "@material-ui/icons/Work";

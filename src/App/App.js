@@ -46,13 +46,12 @@ class App extends React.Component {
           <Header />
           <Router history={history}>
             <Switch>
-              {/* <PrivateRoute exact path="/" component={HomePage} /> */}
               <PrivateRoute exact path="/" component={HomePage} />
+              <PrivateRoute exact path="/person" component={PersonBase} />
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={RegisterPage} />
-              {/* <Route path="/person" component={PersonBase} /> */}
               <Route path="/vehicle" component={VehicleBase} />
-              <Route path="/" component={PersonBase} />
+              {/* <Route path="/" component={PersonBase} /> */}
               <Redirect from="*" to="/" />
             </Switch>
           </Router>

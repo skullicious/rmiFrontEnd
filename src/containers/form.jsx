@@ -7,6 +7,11 @@ import RadioGrid from "../elements/input/radioGrid";
 import YesNoToggle from "./../elements/input/yesNoToggle";
 import ValidationTabController from "./../helpers/validationTabController";
 
+import { connect } from "react-redux";
+import { formActions } from "./../actions/formActions";
+
+import { connect as reduxConnect } from "react-redux";
+
 class Form extends Component {
   state = {
     data: {},
@@ -28,6 +33,7 @@ class Form extends Component {
   }
 
   renderRadioGrid(name, label, options) {
+    console.log(this.state);
     const { data, errors } = this.state;
     return (
       <RadioGrid

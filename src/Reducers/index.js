@@ -6,6 +6,7 @@ import { authentication } from "./AuthenticationReducer";
 import { registration } from "./RegistrationReducer";
 import { users } from "./UsersReducer";
 import { alert } from "./AlertReducer";
+import { person } from "./FormReducer";
 
 const rootReducer = combineReducers({
   data: dataReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   registration,
   users,
   alert,
+  person,
 });
 
 export default rootReducer;
