@@ -1,9 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import { Field } from "redux-form";
 
 const Input = ({ name, label, error, ...rest }) => {
-  const useStyles = makeStyles(theme => ({}));
+  const useStyles = makeStyles((theme) => ({}));
 
   const classes = useStyles();
 
@@ -14,7 +15,8 @@ const Input = ({ name, label, error, ...rest }) => {
           {label}
         </label>
 
-        <input
+        <Field
+          component="input"
           id={name}
           className={"form-control col-sm-6"}
           name={name}

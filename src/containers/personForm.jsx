@@ -7,6 +7,8 @@ import RenderPersonParentPanel from "./personParentPanel";
 import { connect } from "react-redux";
 import { formActions } from "./../actions/formActions";
 
+import { Field, reduxForm } from "redux-form";
+
 class PersonForm extends Form {
   componentDidMount() {
     // const occupations = getOccs(); //gen genres for dropdown
@@ -30,9 +32,7 @@ class PersonForm extends Form {
     //else
     ///////////////
     //const person = getPerson(this.props.user.id); //get movie based on id in paramater.
-
-    this.props.GetPerson();
-
+    // this.props.GetPerson();
     // console.log(person);
     ///////////////
     // if (!movie) return this.props.history.replace("/not-found"); //if not found redirect to error
@@ -210,10 +210,12 @@ class PersonForm extends Form {
   };
 
   render() {
-    console.log(this.props);
+    const { handleSubmit } = this.props;
+
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        {/* <form onSubmit={this.handleSubmit}> */}
+        <form onSubmit={handleSubmit}>
           <IconTabs
             renderPanel={RenderPersonParentPanel}
             icons={this.props.icons}
@@ -230,21 +232,27 @@ class PersonForm extends Form {
   }
 }
 
-function mapState(state) {
-  const { users, authentication, person } = state;
+// function mapState(state) {
+//   const { users, authentication } = state;
 
-  const { user } = authentication;
+//   const { user } = authentication;
 
-  return {
-    user,
-    users,
-    person,
-  };
-}
+//   return {
+//     user,
+//     users,
+//   };
+// }
 
-const actionCreators = {
-  GetPerson: formActions.GetPerson,
-};
+// const actionCreators = {
+//   GetPerson: formActions.GetPerson,
+// };
 
-const connectedPersonForm = connect(mapState, actionCreators)(PersonForm);
-export { connectedPersonForm as PersonForm };
+PersonForm = reduxForm({
+  // a unique name for the form
+  form: "person",
+})(PersonForm);
+
+// const connectedPersonForm = connect(mapState, actionCreators)(PersonForm);
+export default PersonForm;
+
+// export { connectedPersonForm as PersonForm, ThisForm };

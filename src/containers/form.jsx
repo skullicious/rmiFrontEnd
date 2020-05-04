@@ -33,7 +33,6 @@ class Form extends Component {
   }
 
   renderRadioGrid(name, label, options) {
-    console.log(this.state);
     const { data, errors } = this.state;
     return (
       <RadioGrid

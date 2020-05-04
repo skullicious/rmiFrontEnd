@@ -1,5 +1,5 @@
 import React from "react";
-import { PersonForm } from "../../containers";
+import PersonForm from "../../containers/personForm";
 import { VehicleForm } from "./../../containers";
 import Person from "@material-ui/icons/Person";
 import Home from "@material-ui/icons/Home";
