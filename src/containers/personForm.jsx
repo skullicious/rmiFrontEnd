@@ -7,64 +7,12 @@ import RenderPersonParentPanel from "./personParentPanel";
 import { connect } from "react-redux";
 import { formActions } from "./../actions/formActions";
 
-import { Field, reduxForm } from "redux-form";
+import { reduxForm, Field } from "redux-form";
 
 class PersonForm extends Form {
   componentDidMount() {
-    // const occupations = getOccs(); //gen genres for dropdown
-    // const titles = getTitles();
-    // const vehicleUses = getVehicleUses();
-    // const licenseTypes = getLicenseTypes();
-    // const employmentTypes = getEmploymentTypes();
-    // this.setState({
-    //   occupations,
-    //   titles,
-    //   vehicleUses,
-    //   licenseTypes,
-    //   employmentTypes
-    // });
-    //
-    //
-    //set empty genres to result of call
-    ////*** */
-    // const movieId = this.props.match.params.id; //set movie id to the paramater
-    // if (movieId === "new") return; // if movie id is new return to empty page to allow details to be added
-    //else
-    ///////////////
-    //const person = getPerson(this.props.user.id); //get movie based on id in paramater.
-    // this.props.GetPerson();
-    // console.log(person);
-    ///////////////
-    // if (!movie) return this.props.history.replace("/not-found"); //if not found redirect to error
-    // this.setState({ data: this.mapToViewModel(movie) }); //if found map results from getMovie to a viewModel that fits with our local state
-    ///*** */
+    this.props.GetPerson();
   }
-  // state = {
-  //   data: {
-  //     individual_title: "",
-  //     individual_firstName: "",
-  //     individual_lastName: "",
-  //     occupation_occupation: "",
-  //     occupation_occupationStatus: "",
-  //     occupation_employmentType: "",
-  //     occupation_partTime: "",
-  //     vehicleUse_licenseRestriction: "",
-  //     vehicleUse_licenseType: "",
-  //     vehicleUse_vehicleUse: "",
-  //     vehicleUse_motoringQualification: "",
-  //     status_postcode: "",
-  //     status_email: "",
-  //     status_contactNumber: "",
-  //   },
-  //   employmentTypes: [],
-  //   licenseTypes: [],
-  //   licenseRestrictions: [],
-  //   vehicleUses: [],
-  //   genres: [],
-  //   occupations: [],
-  //   titles: [],
-  //   errors: {},
-  // };
 
   errorType = {};
 
@@ -210,7 +158,7 @@ class PersonForm extends Form {
   };
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, initialValues } = this.props;
 
     return (
       <div>
@@ -253,6 +201,16 @@ PersonForm = reduxForm({
 })(PersonForm);
 
 // const connectedPersonForm = connect(mapState, actionCreators)(PersonForm);
+
+PersonForm = connect(
+  (state) => ({
+    initialValues: state.person.items,
+    user: state.authentication.user,
+    users: state.authentication.users,
+  }),
+  { GetPerson: formActions.GetPerson }
+)(PersonForm);
+
 export default PersonForm;
 
 // export { connectedPersonForm as PersonForm, ThisForm };
