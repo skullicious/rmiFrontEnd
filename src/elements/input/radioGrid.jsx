@@ -7,8 +7,9 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import Grid from "@material-ui/core/Grid";
+import { Field } from "redux-form";
 
-const useStyles = makeStyles({
+const withStyles = makeStyles({
   root: {
     flexGrow: 1,
     width: "100%",
@@ -49,7 +50,7 @@ const useStyles = makeStyles({
 function StyledRadio(props) {
   const { label } = props;
 
-  const classes = useStyles();
+  const classes = withStyles();
 
   return (
     <Radio
@@ -72,16 +73,21 @@ function StyledRadio(props) {
 // const [getState] = React.useState(value);
 
 const RadioGrid = ({ name, label, options, onToggle, value, error }) => {
-  const classes = useStyles();
-
-  // //Why do I need to string this
-  // const reactOptions = options.map(function(row) {
-  //   return { _id: row.titleId.toString(), name: row.name };
-  // });
+  const classes = withStyles();
 
   return (
     <React.Fragment>
-      <div className={"form-group row"}>
+      <Field
+        name={name}
+        component={renderField}
+        options={options}
+        onChange={onToggle}
+        error={error}
+        label={label}
+        error={error}
+      />
+
+      {/* <div className={"form-group row"}>
         <label className="col-sm-6">{label}</label>
 
         <label className="col-sm-6">
@@ -104,7 +110,6 @@ const RadioGrid = ({ name, label, options, onToggle, value, error }) => {
                     key={option._id}
                     value={option._id}
                     control={<StyledRadio label={option.name} />}
-                    name={name}
                   />
                 </Grid>
               ))}
@@ -113,8 +118,47 @@ const RadioGrid = ({ name, label, options, onToggle, value, error }) => {
         </label>
 
         {error && <div className="alert alert-danger">{error}</div>}
-      </div>
+      </div> */}
     </React.Fragment>
+  );
+};
+
+const renderField = (field) => {
+  const classes = withStyles();
+
+  console.log(field);
+  return (
+    <div className={"form-group row"}>
+      <label className="col-sm-6">{field.input.label}</label>
+      <label className="col-sm-6">
+        <RadioGroup
+          value={field.input.value.toString()}
+          onChange={field.input.onChange}
+          aria-label={field.input.label}
+          name={field.input.name}
+        >
+          <Grid
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+          >
+            {field.options.map((option) => (
+              <Grid className={classes.gridItem} item xs>
+                <FormControlLabel
+                  className={classes.formControlLabel}
+                  key={option._id}
+                  value={option._id}
+                  control={<StyledRadio label={option.name} />}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </RadioGroup>
+      </label>
+
+      {field.error && <div className="alert alert-danger">{field.error}</div>}
+    </div>
   );
 };
 
