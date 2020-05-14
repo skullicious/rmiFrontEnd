@@ -2,9 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "./form";
 import IconTabs from "../elements/nav/iconTabs";
-import { getOccs } from "../services/occupationService";
-import { getTitles } from "../services/titleService";
-import { getLicenseTypes, getVehicleUses } from "../services/vehicleUseService";
+
 import RenderVehicleParentPanel from "./../containers/vehiclePanels/vehicleParentPanel";
 import { authentication } from "./../Reducers/AuthenticationReducer";
 import { users } from "./../Reducers/UsersReducer";
@@ -63,24 +61,18 @@ class VehicleForm extends Form {
 
   // username = React.createRef();
   componentDidMount() {
-    const occupations = getOccs(); //gen genres for dropdown
-    const titles = getTitles();
-    const vehicleUses = getVehicleUses();
-    const licenseTypes = getLicenseTypes();
-
-    this.setState({ occupations, titles, vehicleUses, licenseTypes }); //set empty genres to result of call
-
+    // const occupations = getOccs(); //gen genres for dropdown
+    // const titles = getTitles();
+    // const vehicleUses = getVehicleUses();
+    // const licenseTypes = getLicenseTypes();
+    // this.setState({ occupations, titles, vehicleUses, licenseTypes }); //set empty genres to result of call
     ////*** */
     // const movieId = this.props.match.params.id; //set movie id to the paramater
     // if (movieId === "new") return; // if movie id is new return to empty page to allow details to be added
-
     //else
-
     // const movie = getMovie(movieId); //get movie based on id in paramater.
     // if (!movie) return this.props.history.replace("/not-found"); //if not found redirect to error
-
     // this.setState({ data: this.mapToViewModel(movie) }); //if found map results from getMovie to a viewModel that fits with our local state
-
     ///*** */
   }
 

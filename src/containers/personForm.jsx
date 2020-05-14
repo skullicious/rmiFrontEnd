@@ -7,17 +7,17 @@ import RenderPersonParentPanel from "./personParentPanel";
 import { connect } from "react-redux";
 import { formActions } from "./../actions/formActions";
 
-import { reduxForm, Field } from "redux-form";
+import { reduxForm, getFormValues } from "redux-form";
 
 class PersonForm extends Form {
   componentDidMount() {
-    this.props.GetPerson();
+    // console.log(this.props.user.id);
+    this.props.GetPerson(this.props.user);
   }
 
   errorType = {};
 
   schema = {
-    _id: Joi.string(),
     individual_title: Joi.string()
       .required()
       .label("Title")
@@ -158,11 +158,10 @@ class PersonForm extends Form {
   };
 
   render() {
-    const { handleSubmit, initialValues } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <div>
-        {/* <form onSubmit={this.handleSubmit}> */}
         <form onSubmit={handleSubmit}>
           <IconTabs
             renderPanel={RenderPersonParentPanel}
@@ -180,30 +179,14 @@ class PersonForm extends Form {
   }
 }
 
-// function mapState(state) {
-//   const { users, authentication } = state;
-
-//   const { user } = authentication;
-
-//   return {
-//     user,
-//     users,
-//   };
-// }
-
-// const actionCreators = {
-//   GetPerson: formActions.GetPerson,
-// };
-
 PersonForm = reduxForm({
   // a unique name for the form
   form: "person",
 })(PersonForm);
 
-// const connectedPersonForm = connect(mapState, actionCreators)(PersonForm);
-
 PersonForm = connect(
   (state) => ({
+    currentValues: getFormValues("person")(state),
     initialValues: state.person.items,
     user: state.authentication.user,
     users: state.authentication.users,
@@ -212,5 +195,3 @@ PersonForm = connect(
 )(PersonForm);
 
 export default PersonForm;
-
-// export { connectedPersonForm as PersonForm, ThisForm };

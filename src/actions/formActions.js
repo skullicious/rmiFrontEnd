@@ -8,11 +8,11 @@ export const formActions = {
   GetPerson,
 };
 
-function GetPerson() {
+function GetPerson(user) {
   return (dispatch) => {
     dispatch(request());
 
-    formService.GetPerson().then(
+    formService.GetPerson(user).then(
       (person) => dispatch(success(person)),
       (error) => dispatch(failure(error))
     );

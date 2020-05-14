@@ -10,7 +10,7 @@ export function person(state = initialState, action) {
       };
     case formConstants.GETALL_SUCCESS:
       return {
-        ...state,
+        // ...state,
         items: { ...action.person },
       };
     case formConstants.GETALL_FAILURE:

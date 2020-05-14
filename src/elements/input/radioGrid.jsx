@@ -86,39 +86,6 @@ const RadioGrid = ({ name, label, options, onToggle, value, error }) => {
         label={label}
         error={error}
       />
-
-      {/* <div className={"form-group row"}>
-        <label className="col-sm-6">{label}</label>
-
-        <label className="col-sm-6">
-          <RadioGroup
-            value={value}
-            onChange={onToggle}
-            aria-label={label}
-            name={name}
-          >
-            <Grid
-              container
-              direction="row"
-              justify="space-between"
-              alignItems="center"
-            >
-              {options.map((option) => (
-                <Grid className={classes.gridItem} item xs>
-                  <FormControlLabel
-                    className={classes.formControlLabel}
-                    key={option._id}
-                    value={option._id}
-                    control={<StyledRadio label={option.name} />}
-                  />
-                </Grid>
-              ))}
-            </Grid>
-          </RadioGroup>
-        </label>
-
-        {error && <div className="alert alert-danger">{error}</div>}
-      </div> */}
     </React.Fragment>
   );
 };
@@ -126,7 +93,6 @@ const RadioGrid = ({ name, label, options, onToggle, value, error }) => {
 const renderField = (field) => {
   const classes = withStyles();
 
-  console.log(field);
   return (
     <div className={"form-group row"}>
       <label className="col-sm-6">{field.input.label}</label>

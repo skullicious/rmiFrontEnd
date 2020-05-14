@@ -4,18 +4,17 @@ export const formService = {
   GetPerson,
 };
 
-function GetPerson() {
+function GetPerson(user) {
   const requestOptions = {
-    method: "GET",
-    headers: authHeader(),
+    method: "PUT",
+    headers: { ...authHeader(), "Content-Type": "application/json" },
+    body: JSON.stringify(user),
   };
 
-  console.log("fetching");
-
-  return fetch(config.apiUrl + "/api/person/test", requestOptions).then(
-    handleResponse,
-    handleError
-  );
+  return fetch(
+    config.apiUrl + "/api/person/test/" + user.id,
+    requestOptions
+  ).then(handleResponse, handleError);
 }
 
 function handleResponse(response) {

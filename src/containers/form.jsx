@@ -7,11 +7,6 @@ import RadioGrid from "../elements/input/radioGrid";
 import YesNoToggle from "./../elements/input/yesNoToggle";
 import ValidationTabController from "./../helpers/validationTabController";
 
-import { connect } from "react-redux";
-import { formActions } from "./../actions/formActions";
-
-import { connect as reduxConnect } from "react-redux";
-
 class Form extends Component {
   state = {
     data: {},
@@ -48,6 +43,7 @@ class Form extends Component {
 
   renderInput(name, label, type = "text") {
     const { data, errors } = this.state;
+
     return (
       <Input
         type={type}
@@ -87,11 +83,12 @@ class Form extends Component {
     );
   }
 
-  renderButton(label, target) {
+  renderButton(label, target, pristine, submitting) {
     return (
       <button
         // disabled={this.validate()}
         className="btn btn-primary"
+        disabled={pristine || submitting}
         value={target}
         onClick={this.handleSubmit}
       >
@@ -115,6 +112,8 @@ class Form extends Component {
   };
 
   handleChange = ({ currentTarget: input }) => {
+    console.log("changing");
+
     const errors = { ...this.state.errors };
 
     if (Object.keys(errors).length === 0 && errors.constructor === Object) {
@@ -129,7 +128,7 @@ class Form extends Component {
     }
 
     const data = { ...this.state.data };
-
+    console.log(data);
     data[input.name] = input.value;
     this.setState({ data, errors });
 
@@ -137,9 +136,17 @@ class Form extends Component {
   };
 
   validate = () => {
+    console.log("validating all");
     const options = { abortEarly: false };
 
-    const { error } = Joi.validate(this.state.data, this.schema, options);
+    console.log(this.props.currentValues);
+
+    const { error } = Joi.validate(
+      this.props.currentValues,
+      this.schema,
+      options
+    );
+
     if (!error) return null;
     const errors = {};
     for (let item of error.details) errors[item.path[0]] = item.message;
@@ -163,6 +170,8 @@ class Form extends Component {
     e.preventDefault();
 
     const errors = this.validate();
+
+    console.log(errors);
     this.setState({ errors: errors || {} });
     if (errors) return;
 
