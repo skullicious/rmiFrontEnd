@@ -1,10 +1,11 @@
 import { authHeader, config } from "../_helpers";
 
 export const formService = {
-  GetPerson,
+  GetRider,
+  SaveRider,
 };
 
-function GetPerson(user) {
+function GetRider(user) {
   const requestOptions = {
     method: "PUT",
     headers: { ...authHeader(), "Content-Type": "application/json" },
@@ -12,9 +13,24 @@ function GetPerson(user) {
   };
 
   return fetch(
-    config.apiUrl + "/api/person/test/" + user.id,
+    config.apiUrl + "/api/person/rider/" + user.id,
     requestOptions
   ).then(handleResponse, handleError);
+}
+
+function SaveRider(values) {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(values),
+  };
+
+  console.log(values);
+
+  return fetch(config.apiUrl + "/api/person/rider/save", requestOptions).then(
+    handleResponse,
+    handleError
+  );
 }
 
 function handleResponse(response) {

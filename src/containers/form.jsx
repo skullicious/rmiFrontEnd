@@ -112,8 +112,6 @@ class Form extends Component {
   };
 
   handleChange = ({ currentTarget: input }) => {
-    console.log("changing");
-
     const errors = { ...this.state.errors };
 
     if (Object.keys(errors).length === 0 && errors.constructor === Object) {
@@ -128,7 +126,7 @@ class Form extends Component {
     }
 
     const data = { ...this.state.data };
-    console.log(data);
+
     data[input.name] = input.value;
     this.setState({ data, errors });
 
@@ -136,10 +134,7 @@ class Form extends Component {
   };
 
   validate = () => {
-    console.log("validating all");
     const options = { abortEarly: false };
-
-    console.log(this.props.currentValues);
 
     const { error } = Joi.validate(
       this.props.currentValues,
@@ -171,7 +166,6 @@ class Form extends Component {
 
     const errors = this.validate();
 
-    console.log(errors);
     this.setState({ errors: errors || {} });
     if (errors) return;
 

@@ -12,7 +12,7 @@ import { reduxForm, getFormValues } from "redux-form";
 class PersonForm extends Form {
   componentDidMount() {
     // console.log(this.props.user.id);
-    this.props.GetPerson(this.props.user);
+    this.props.GetRider(this.props.user);
   }
 
   errorType = {};
@@ -153,8 +153,12 @@ class PersonForm extends Form {
     // call server
 
     console.log(this.props.user.id + " << this is the person ID");
+
+    this.props.SaveRider(this.props.currentValues);
+    const { dispatch } = this.props;
+    dispatch(formActions.SaveRider(this.props.currentValues));
     //  saveMovie(this.state.data); // save movie in state
-    this.props.history.push("/vehicle");
+    //this.props.history.push("/vehicle");
   };
 
   render() {
@@ -191,7 +195,7 @@ PersonForm = connect(
     user: state.authentication.user,
     users: state.authentication.users,
   }),
-  { GetPerson: formActions.GetPerson }
+  { GetRider: formActions.GetRider, SaveRider: formActions.SaveRider }
 )(PersonForm);
 
 export default PersonForm;
