@@ -25,8 +25,6 @@ function SaveRider(values) {
     body: JSON.stringify(values),
   };
 
-  console.log(values);
-
   return fetch(config.apiUrl + "/api/person/rider/save", requestOptions).then(
     handleResponse,
     handleError

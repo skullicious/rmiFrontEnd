@@ -152,9 +152,11 @@ class PersonForm extends Form {
   doSubmit = () => {
     // call server
 
-    console.log(this.props.user.id + " << this is the person ID");
-
-    this.props.SaveRider(this.props.currentValues);
+    const userId = this.props.user.id;
+    console.log(userId);
+    //not sure about this
+    this.props.currentValues.Id = userId;
+    // this.props.SaveRider(this.props.currentValues);
     const { dispatch } = this.props;
     dispatch(formActions.SaveRider(this.props.currentValues));
     //  saveMovie(this.state.data); // save movie in state

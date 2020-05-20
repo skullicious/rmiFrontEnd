@@ -31,8 +31,6 @@ function GetRider(user) {
 }
 
 function SaveRider(values) {
-  console.log("values in form actions");
-  console.log(values);
   return (dispatch) => {
     dispatch(request(values));
 
