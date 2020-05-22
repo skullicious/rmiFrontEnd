@@ -136,11 +136,14 @@ class Form extends Component {
   validate = () => {
     const options = { abortEarly: false };
 
+    console.log(this.props.currentValues);
     const { error } = Joi.validate(
       this.props.currentValues,
       this.schema,
       options
     );
+
+    console.log(error);
 
     if (!error) return null;
     const errors = {};
@@ -152,8 +155,12 @@ class Form extends Component {
   };
 
   validateProperty = ({ name, value }) => {
+    //name = name.split(".").join("_"); //fix
+
     const obj = { [name]: value }; //build object and determine property name at runtime
+
     const schema = { [name]: this.schema[name] }; //use specific schema for single object
+
     const { error } = Joi.validate(obj, schema); // validate
 
     return error ? error.details[0].message : null; // feed into custom object map

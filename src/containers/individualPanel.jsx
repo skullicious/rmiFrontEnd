@@ -11,9 +11,9 @@ const Individual = ({ titles, renderInput, renderRadioGrid, fetchData }) => {
 
   return (
     <div>
-      {renderRadioGrid("individual_title", "Title Selection:", titles)}
-      {renderInput("individual_firstName", "First Name")}
-      {renderInput("individual_lastName", "Last Name")}
+      {renderRadioGrid("individual.title", "Title Selection:", titles)}
+      {renderInput("individual.firstName", "First Name")}
+      {renderInput("individual.lastName", "Last Name")}
     </div>
   );
 };

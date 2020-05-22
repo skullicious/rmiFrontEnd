@@ -9,9 +9,10 @@ export function person(state = initialState, action) {
         ...state,
       };
     case formConstants.GETALL_SUCCESS:
+      console.log(action);
       return {
         // ...state,
-        items: { ...action.person },
+        items: { ...action.rider },
       };
     case formConstants.GETALL_FAILURE:
       return {

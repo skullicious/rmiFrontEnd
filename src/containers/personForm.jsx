@@ -12,10 +12,21 @@ import { reduxForm, getFormValues } from "redux-form";
 class PersonForm extends Form {
   componentDidMount() {
     // console.log(this.props.user.id);
+
     this.props.GetRider(this.props.user);
   }
 
   errorType = {};
+
+  // schema = Joi.object().keys({
+  //   individual: Joi.array().items(
+  //     Joi.object().keys({
+  //       title: Joi.string().required().label("Title"),
+  //       firstName: Joi.string().required().label("First Name"),
+  //       lastName: Joi.string().required().label("Last Name"),
+  //     })
+  //   ),
+  // });
 
   schema = {
     individual_title: Joi.string()
@@ -139,13 +150,13 @@ class PersonForm extends Form {
   };
 
   //map movie to viewmodel for view method
-  mapToViewModel = (movie) => {
+  mapToViewModel = (data) => {
     return {
-      _id: movie._id,
-      title: movie.title,
-      genreId: movie.genre._id,
-      numberInStock: movie.numberInStock,
-      dailyRentalRate: movie.dailyRentalRate,
+      // _id: data._id,
+      // individual_title: data.individual.individual_title,
+      // genreId: movie.genre._id,
+      // numberInStock: movie.numberInStock,
+      // dailyRentalRate: movie.dailyRentalRate,
     };
   };
 
@@ -153,7 +164,7 @@ class PersonForm extends Form {
     // call server
 
     const userId = this.props.user.id;
-    console.log(userId);
+
     //not sure about this
     this.props.currentValues.Id = userId;
     // this.props.SaveRider(this.props.currentValues);
