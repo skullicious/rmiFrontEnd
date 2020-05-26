@@ -1,19 +1,23 @@
-const ValidationTabController = errors => {
+const ValidationTabController = (errors) => {
   const tabList = new Set();
 
   const errorList = Object.entries(errors);
 
-  errorList.map(item => {
+  errorList.map((item) => {
     let currentId = item[0];
 
-    if (currentId.includes("individual_")) {
-      tabList.add("individualPanel");
-    } else if (currentId.includes("status_")) {
-      tabList.add("statusPanel");
-    } else if (currentId.includes("vehicleUse_")) {
-      tabList.add("vehicleUsePanel");
-    } else if (currentId.includes("occupation_")) {
-      tabList.add("occupationPanel");
+    if (currentId.endsWith("id") || currentId.endsWith("Id")) {
+      console.log("Do not validate Ids");
+    } else {
+      if (currentId.includes("individual.")) {
+        tabList.add("individualPanel");
+      } else if (currentId.includes("status.")) {
+        tabList.add("statusPanel");
+      } else if (currentId.includes("vehicleUse.")) {
+        tabList.add("vehicleUsePanel");
+      } else if (currentId.includes("occupation.")) {
+        tabList.add("occupationPanel");
+      }
     }
   });
 

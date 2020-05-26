@@ -133,17 +133,32 @@ class Form extends Component {
     ValidationTabController(errors);
   };
 
+  //This is to flatten the object for validations
+  flattenObject = (ob, prefix) => {
+    const toReturn = {};
+    prefix = prefix ? prefix + "." : "";
+
+    for (let i in ob) {
+      if (!ob.hasOwnProperty(i)) continue;
+
+      if (typeof ob[i] === "object" && ob[i] !== null) {
+        // Recursion on deeper objects
+        Object.assign(toReturn, this.flattenObject(ob[i], prefix + i));
+      } else {
+        toReturn[prefix + i] = ob[i];
+      }
+    }
+    return toReturn;
+  };
+
   validate = () => {
     const options = { abortEarly: false };
 
-    console.log(this.props.currentValues);
-    const { error } = Joi.validate(
-      this.props.currentValues,
-      this.schema,
-      options
-    );
+    let vals = this.props.currentValues;
 
-    console.log(error);
+    const flattenedVals = this.flattenObject(vals);
+
+    const { error } = Joi.validate(flattenedVals, this.schema, options);
 
     if (!error) return null;
     const errors = {};
@@ -155,7 +170,7 @@ class Form extends Component {
   };
 
   validateProperty = ({ name, value }) => {
-    //name = name.split(".").join("_"); //fix
+    //name = name.split(".").join("_"); // match formatting
 
     const obj = { [name]: value }; //build object and determine property name at runtime
 

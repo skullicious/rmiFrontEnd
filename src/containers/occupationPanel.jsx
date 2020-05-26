@@ -25,16 +25,16 @@ const OccupationPanel = ({
 
   return (
     <div>
-      {renderSelect("occupation_occupation", "Occupation", occupations)}
+      {renderSelect("occupation.occupation", "Occupation", occupations)}
       {renderSelect(
-        "occupation_occupationStatus",
+        "occupation.occupationStatus",
         "Occupation Status",
         occupationStatus
       )}
-      {renderYesNoToggle("occupation_partTime", "Part Time?")}
+      {renderYesNoToggle("occupation.partTime", "Part Time?")}
       <br />
       {renderRadioGrid(
-        "occupation_employmentType",
+        "occupation.employmentType",
         "Employment Type",
         employmentTypes
       )}
