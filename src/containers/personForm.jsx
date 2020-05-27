@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { formActions } from "./../actions/formActions";
 
 import { reduxForm, getFormValues } from "redux-form";
+import Individual from "./individualPanel";
 
 class PersonForm extends Form {
   componentDidMount() {
@@ -19,6 +20,10 @@ class PersonForm extends Form {
   errorType = {};
 
   schema = {
+    Id: Joi.number(),
+    id: Joi.number(),
+    "individual.id": Joi.number(),
+    "individual.userId": Joi.number(),
     "individual.title": Joi.string()
       .required()
       .label("Title")
@@ -43,8 +48,8 @@ class PersonForm extends Form {
           message: "Please enter your last name",
         };
       }),
-    "status.email": Joi.string()
-      .email({ minDomainAtoms: 2 })
+    "contact.Email.EmailAddress": Joi.string()
+      // .email({ minDomainAtoms: 2 })
       .required()
       .label("Email")
       .error(() => {
@@ -84,7 +89,7 @@ class PersonForm extends Form {
           message: "Please select an license type from the list",
         };
       }),
-    "status.postcode": Joi.string()
+    "contact.address.postCode": Joi.string()
       .regex(/[A-Za-z]{1,2}[0-9]{1,2}\s*[A-Za-z]{0,1}\s*?[0-9][A-Za-z]{2}\s*/)
       .required()
       .label("Postcode")
@@ -152,12 +157,15 @@ class PersonForm extends Form {
   doSubmit = () => {
     // call server
 
+    console.log("in dosubmit");
+
     const userId = this.props.user.id;
 
     //not sure about this
     this.props.currentValues.Id = userId;
     // this.props.SaveRider(this.props.currentValues);
     const { dispatch } = this.props;
+
     dispatch(formActions.SaveRider(this.props.currentValues));
     //  saveMovie(this.state.data); // save movie in state
     //this.props.history.push("/vehicle");

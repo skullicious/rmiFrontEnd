@@ -152,7 +152,7 @@ class Form extends Component {
   };
 
   validate = () => {
-    const options = { abortEarly: false };
+    const options = { abortEarly: false, stripUnknown: true };
 
     let vals = this.props.currentValues;
 
@@ -188,8 +188,13 @@ class Form extends Component {
 
     const errors = this.validate();
 
+    console.log("submitting");
+
     this.setState({ errors: errors || {} });
+    console.log(errors);
     if (errors) return;
+
+    console.log("submitting");
 
     this.doSubmit();
     // const username = this.username.current.value;
