@@ -48,7 +48,7 @@ class PersonForm extends Form {
           message: "Please enter your last name",
         };
       }),
-    "contact.Email.EmailAddress": Joi.string()
+    "contact.email.emailAddress": Joi.string()
       // .email({ minDomainAtoms: 2 })
       .required()
       .label("Email")
@@ -98,10 +98,10 @@ class PersonForm extends Form {
           message: "Please enter a valid postcode",
         };
       }),
-    "status.contactNumber": Joi.string()
-      .regex(
-        /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/
-      )
+    "contact.phoneNumber.number": Joi.string()
+      // .regex(
+      //   /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/
+      // )
       .required()
       .label("Contact Number")
       .error(() => {
