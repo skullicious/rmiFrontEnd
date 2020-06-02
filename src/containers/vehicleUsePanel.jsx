@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import {
-  VEHICLEUSES_API_URL,
+  CYCLEUSES_API_URL,
   LICENSETYPES_API_URL,
 } from "./../services/apiService";
-import { FETCH_VEHICLEUSES, FETCH_LICENSETYPES } from "./../actions/types";
+import { FETCH_CYCLEUSES, FETCH_LICENSETYPES } from "./../actions/types";
 import { fetchData } from "../actions/testActions";
 
 const VehicleUsePanel = ({
   fetchData,
-  vehicleUses,
+  cycleUses,
   licenseTypes,
   renderRadioGrid,
   renderSelect,
@@ -17,22 +17,23 @@ const VehicleUsePanel = ({
   renderButton,
 }) => {
   useEffect(() => {
-    fetchData(VEHICLEUSES_API_URL, FETCH_VEHICLEUSES);
+    fetchData(CYCLEUSES_API_URL, FETCH_CYCLEUSES);
     fetchData(LICENSETYPES_API_URL, FETCH_LICENSETYPES);
   }, []);
 
+
   return (
     <div>
-      {renderRadioGrid("vehicleUse.vehicleUse", "Vehicle Use", vehicleUses)}
-      {renderSelect("vehicleUse.licenseType", "License Type", licenseTypes)}
+      {renderRadioGrid("cycleUse.cycleUse", "Cycle Use", cycleUses)}
+      {renderSelect("cycleUse.licenseType", "License Type", licenseTypes)}
 
       {renderYesNoToggle(
-        "vehicleUse.licenseRestriction",
-        "Do you have any license restrictions?"
+        "cycleUse.isCommuting",
+        "Do you commute to work by bicycle?"
       )}
       {renderYesNoToggle(
-        "vehicleUse.motoringQualification",
-        "Do you have any motoring qualifications?"
+        "cycleUse.motoringQualification",
+        "Do you have a full UK Driving license?"
       )}
       <br />
       {renderButton("Next")}
@@ -41,7 +42,7 @@ const VehicleUsePanel = ({
 };
 
 const mapStateToProps = (state) => ({
-  vehicleUses: state.data.vehicleUses,
+  cycleUses: state.data.cycleUses,
   licenseTypes: state.data.licenseTypes,
 });
 

@@ -73,7 +73,7 @@ class PersonForm extends Form {
           message: "Please select an occupation status from the list",
         };
       }),
-    "vehicleUse.vehicleUse": Joi.string()
+    "cycleUse.cycleUse": Joi.string()
       .required()
       .label("Vehicle Use")
       .error(() => {
@@ -81,7 +81,7 @@ class PersonForm extends Form {
           message: "Please select a vehicle use from the options provided",
         };
       }),
-    "vehicleUse.licenseType": Joi.string()
+    "cycleUse.licenseType": Joi.string()
       .required()
       .label("License Types")
       .error(() => {
@@ -125,15 +125,15 @@ class PersonForm extends Form {
           message: "Please state if you are a part time worker",
         };
       }),
-    "vehicleUse.licenseRestriction": Joi.boolean()
+    "cycleUse.isCommuting": Joi.boolean()
       .required()
-      .label("License Restrictions")
+      .label("Do you commute to work?")
       .error(() => {
         return {
-          message: "Please state if you have any license restrictions",
+          message: "Please state if you commute to work",
         };
       }),
-    "vehicleUse.motoringQualification": Joi.boolean()
+    "cycleUse.motoringQualification": Joi.boolean()
       .required()
       .label("Motoring Qualifications")
       .error(() => {

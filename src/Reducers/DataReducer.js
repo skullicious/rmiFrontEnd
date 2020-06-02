@@ -4,6 +4,7 @@ import { FETCH_OCCUPATIONSTATUS } from "../actions/types";
 import { FETCH_EMPLOYMENTTYPES } from "../actions/types";
 import { FETCH_VEHICLEUSES } from "./../actions/types";
 import { FETCH_LICENSETYPES } from "./../actions/types";
+import { FETCH_CYCLEUSES } from "./../actions/types";
 
 const initalState = {
   titles: [],
@@ -12,6 +13,7 @@ const initalState = {
   employmentTypes: [],
   vehicleUses: [],
   licenseTypes: [],
+  cycleUses: [],
 };
 
 export default function (state = initalState, action) {
@@ -45,6 +47,11 @@ export default function (state = initalState, action) {
       return {
         ...state,
         licenseTypes: action.payload,
+      };
+    case FETCH_CYCLEUSES:
+      return {
+        ...state,
+        cycleUses: action.payload,
       };
     default:
       return state;
