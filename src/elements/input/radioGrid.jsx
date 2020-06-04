@@ -95,7 +95,7 @@ const renderField = (field) => {
 
   return (
     <div className={"form-group row"}>
-      <label className="col-sm-6">{field.input.label}</label>
+      <label className="col-sm-6">{field.label}</label>
       <label className="col-sm-6">
         <RadioGroup
           value={field.input.value.toString()}

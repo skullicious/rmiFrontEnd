@@ -11,9 +11,9 @@ const ValidationTabController = (errors) => {
     } else {
       if (currentId.includes("individual.")) {
         tabList.add("individualPanel");
-      } else if (currentId.includes("status.")) {
+      } else if (currentId.includes("contact.")) {
         tabList.add("statusPanel");
-      } else if (currentId.includes("vehicleUse.")) {
+      } else if (currentId.includes("cycleUse.")) {
         tabList.add("vehicleUsePanel");
       } else if (currentId.includes("occupation.")) {
         tabList.add("occupationPanel");
