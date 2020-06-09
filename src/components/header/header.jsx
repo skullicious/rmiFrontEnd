@@ -9,6 +9,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    opacity: 0.8,
   },
   appBar: {
     background: "#2E3B55",
@@ -22,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const style = {
-  background: "#007bff",
-  color: "white",
+  background: "white",
+  color: "black",
   boxShadow: "none",
   position: "fixed",
 };

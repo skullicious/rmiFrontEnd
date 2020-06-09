@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { fetchData } from "../actions/testActions";
 import { TITLES_API_URL } from "../services/apiService";
 import { FETCH_TITLES } from "../actions/types";
-import { Hidden } from "@material-ui/core";
+import { Hidden, Typography } from "@material-ui/core";
 
 const Individual = ({ titles, renderInput, renderRadioGrid, fetchData }) => {
   useEffect(() => {

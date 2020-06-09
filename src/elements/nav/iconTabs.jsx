@@ -6,23 +6,25 @@ import Paper from "@material-ui/core/Paper/Paper";
 import { useMediaQuery } from "react-responsive";
 import Footer from "../../components/footer/footer";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
+    opacity: 0.8,
     flexGrow: 1,
     maxWidth: 3000,
     minWidth: 320,
     width: "100%",
     paddingTop: "28px",
     position: "fixed",
-    zIndex: "2"
+    zIndex: "2",
+    backgroundColor: "#AEAEAE",
   },
 
   "@global": {
     "[data-value-error]": {
       backgroundColor: "#f8d7da",
-      borderColor: "#f5c6cb"
-    }
-  }
+      borderColor: "#f5c6cb",
+    },
+  },
 }));
 
 export default function SimpleTabs({
@@ -32,10 +34,10 @@ export default function SimpleTabs({
   renderYesNoToggle,
   renderPanel,
   renderButton,
-  icons
+  icons,
 }) {
   const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-device-width: 1224px)"
+    query: "(min-device-width: 1224px)",
   });
 
   const classes = useStyles();
@@ -45,7 +47,7 @@ export default function SimpleTabs({
     setValue(newValue);
   };
 
-  const bottomNavClick = dir => {
+  const bottomNavClick = (dir) => {
     let newValue;
     if (dir === "forward" && value < icons.length) {
       newValue = value + 1;
@@ -87,7 +89,7 @@ export default function SimpleTabs({
         renderYesNoToggle,
         renderSelect,
         value,
-        renderButton
+        renderButton,
       })}
 
       {!isDesktopOrLaptop && (

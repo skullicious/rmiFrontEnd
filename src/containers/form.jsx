@@ -98,17 +98,19 @@ class Form extends Component {
   }
 
   handleToggle = ({ currentTarget: input }) => {
-    const errors = { ...this.state.errors };
-    const errorMessage = this.validateProperty(input);
+    // handleToggle = (input) => {
+    console.log(input);
+    // const errors = { ...this.state.errors };
+    // const errorMessage = this.validateProperty(input);
 
-    if (errorMessage) errors[input.name] = errorMessage;
-    else delete errors[input.name];
+    // if (errorMessage) errors[input.name] = errorMessage;
+    // else delete errors[input.name];
 
-    const data = { ...this.state.data };
-    data[input.name] = input.value;
-    this.setState({ data, errors });
+    // const data = { ...this.state.data };
+    // data[input.name] = input.value;
+    // this.setState({ data, errors });
 
-    ValidationTabController(errors);
+    // ValidationTabController(errors);
   };
 
   handleChange = ({ currentTarget: input }) => {
@@ -187,8 +189,6 @@ class Form extends Component {
     e.preventDefault();
 
     const errors = this.validate();
-
-    console.log("submitting");
 
     this.setState({ errors: errors || {} });
     console.log(errors);

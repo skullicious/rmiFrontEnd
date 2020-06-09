@@ -10,6 +10,7 @@ import { formActions } from "./../actions/formActions";
 import { reduxForm, getFormValues } from "redux-form";
 import Individual from "./individualPanel";
 
+import Paper from "material-ui/Paper";
 class PersonForm extends Form {
   componentDidMount() {
     // console.log(this.props.user.id);

@@ -11,16 +11,17 @@ const useStyles = makeStyles({
     left: "0",
     bottom: "0",
     width: "100%",
-    backgroundColor: "#007bff",
+    backgroundColor: "white",
     textAlign: "center",
-    zIndex: 3
-  }
+    zIndex: 3,
+    opacity: 0.8,
+  },
 });
 
 export default function Footer({ bottomNavClick, index, iconCount }) {
   const classes = useStyles();
 
-  const handleChange = dir => {
+  const handleChange = (dir) => {
     bottomNavClick(dir);
   };
 
