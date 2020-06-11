@@ -4,7 +4,11 @@ import Grid from "@material-ui/core/Grid";
 import { Field } from "redux-form";
 
 const Input = ({ name, label, error, ...rest }) => {
-  const useStyles = makeStyles((theme) => ({}));
+  const useStyles = makeStyles((theme) => ({
+    padding: {
+      padding: "0px",
+    },
+  }));
 
   const classes = useStyles();
 

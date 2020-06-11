@@ -26,9 +26,13 @@ const toggleStyles = makeStyles((theme) => ({
     color: "#212529",
   },
   toggleButtonSelected: {
-    backgroundColor: "#137cbd !important",
+    backgroundColor: "#4EB9A9 !important",
+
+    borderWidth: "50px",
+    borderColor: "#4EB9A9",
     "& a": {
-      color: "white !important",
+      fontWeight: "Bold",
+      color: "#000000 !important",
     },
   },
 }));

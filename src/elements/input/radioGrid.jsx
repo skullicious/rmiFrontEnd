@@ -24,8 +24,8 @@ const withStyles = makeStyles({
     fontWeight: "bold",
   },
   checkedIcon: {
-    backgroundColor: "#137cbd",
-    color: "white",
+    backgroundColor: "#4EB9A9",
+    color: "#000000",
   },
   formControlLabel: {
     margin: "0",

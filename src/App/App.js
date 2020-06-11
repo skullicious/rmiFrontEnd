@@ -14,8 +14,6 @@ import { HomePage } from "../HomePage";
 import { PrivateRoute } from "./../_components/PrivateRoute";
 
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import red from "@material-ui/core/colors/red";
-import green from "@material-ui/core/colors/green";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
@@ -25,8 +23,14 @@ import Image from "../content/background1.jpg";
 
 const theme = createMuiTheme({
   palette: {
-    primary: red,
-    secondary: green,
+    primary: {
+      main: "#4EB9A9",
+    },
+    secondary: {
+      main: "#EB1F23",
+    },
+
+    // secondary: green,
   },
   status: {
     danger: "orange",

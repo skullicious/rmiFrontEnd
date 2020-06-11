@@ -6,6 +6,7 @@ import DatePicker from "../elements/input/datepicker";
 import RadioGrid from "../elements/input/radioGrid";
 import YesNoToggle from "./../elements/input/yesNoToggle";
 import ValidationTabController from "./../helpers/validationTabController";
+import ReactSelect from "./../elements/input/reactSelect";
 
 class Form extends Component {
   state = {
@@ -73,6 +74,25 @@ class Form extends Component {
     const { data, errors } = this.state;
     return (
       <Select
+        name={name}
+        value={data[name]}
+        label={label}
+        options={options}
+        onChange={this.handleChange}
+        error={errors[name]}
+      />
+    );
+  }
+
+  renderReactSelect(name, label, options) {
+    console.log("options in selec");
+    console.log(options);
+
+    console.log("options in selec");
+
+    const { data, errors } = this.state;
+    return (
+      <ReactSelect
         name={name}
         value={data[name]}
         label={label}

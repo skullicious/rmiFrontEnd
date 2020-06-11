@@ -6,10 +6,15 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
+import Image from "react-bootstrap/Image";
+
+import HeaderImage from "../../content/HorizontalClearBG.png";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     opacity: 0.8,
+    height: "55px",
   },
   appBar: {
     background: "#2E3B55",
@@ -19,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+  },
+  headerImage: {
+    backgroundImage: "url(" + Image + ")",
   },
 }));
 
@@ -44,9 +52,10 @@ export default function ButtonAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Image className="img-fluid" src={HeaderImage}></Image>
+          {/* <Typography variant="h6" className={classes.title}>
             RaceMate Insurance
-          </Typography>
+          </Typography> */}
         </Toolbar>
       </AppBar>
     </div>

@@ -14,18 +14,33 @@ const RenderPersonParentPanel = ({
   renderYesNoToggle,
   renderRadioGrid,
   renderButton,
-  value
+  renderReactSelect,
+  value,
 }) => {
   const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-device-width: 1224px)"
+    query: "(min-device-width: 1224px)",
   });
 
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles((theme) => ({
     root: {
       paddingTop: "100px",
-
-      width: "100%"
-    }
+    },
+    panelBackground: {
+      padding: "30px",
+      backgroundColor: "#FFFFFF",
+      margin: "5px 5px 5px 5px",
+      borderRadius: "2%",
+    },
+    desktopBackground: {
+      padding: "30px",
+      backgroundColor: "#ffffff",
+      margin: "40px 40px 40px 40px",
+      borderRadius: "2%",
+      maxWidth: "100%",
+    },
+    flexFix: {
+      display: "block",
+    },
   }));
 
   const classes = useStyles();
@@ -35,29 +50,38 @@ const RenderPersonParentPanel = ({
       {!isDesktopOrLaptop && (
         <div className={classes.root}>
           <TabPanel value={value} index={0}>
-            <IndividualPanel
-              renderInput={renderInput}
-              renderSelect={renderSelect}
-              renderRadioGrid={renderRadioGrid}
-            />
+            <div className={classes.panelBackground}>
+              <IndividualPanel
+                renderInput={renderInput}
+                renderSelect={renderSelect}
+                renderRadioGrid={renderRadioGrid}
+              />
+            </div>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <StatusPanel renderInput={renderInput} />
+            <div className={classes.panelBackground}>
+              <StatusPanel renderInput={renderInput} />
+            </div>
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <OccupationPanel
-              renderSelect={renderSelect}
-              renderYesNoToggle={renderYesNoToggle}
-              renderRadioGrid={renderRadioGrid}
-            />
+            <div className={classes.panelBackground}>
+              <OccupationPanel
+                renderReactSelect={renderReactSelect}
+                renderSelect={renderSelect}
+                renderYesNoToggle={renderYesNoToggle}
+                renderRadioGrid={renderRadioGrid}
+              />
+            </div>
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <VehicleUsePanel
-              renderYesNoToggle={renderYesNoToggle}
-              renderRadioGrid={renderRadioGrid}
-              renderSelect={renderSelect}
-              renderButton={renderButton}
-            />
+            <div className={classes.panelBackground}>
+              <VehicleUsePanel
+                renderYesNoToggle={renderYesNoToggle}
+                renderRadioGrid={renderRadioGrid}
+                renderSelect={renderSelect}
+                renderButton={renderButton}
+              />
+            </div>
           </TabPanel>
           <br />
           <br />
@@ -67,30 +91,35 @@ const RenderPersonParentPanel = ({
       <br />
       {isDesktopOrLaptop && (
         <Grid
+          className={classes.flexFix}
           container
 
           // direction="row"
           // justify="space-between"
           // alignItems="center"
         >
-          <div className={classes.root}>
-            <IndividualPanel
-              renderInput={renderInput}
-              renderSelect={renderSelect}
-              renderRadioGrid={renderRadioGrid}
-            />
-            <StatusPanel renderInput={renderInput} />
-            <OccupationPanel
-              renderSelect={renderSelect}
-              renderYesNoToggle={renderYesNoToggle}
-              renderRadioGrid={renderRadioGrid}
-            />
-            <VehicleUsePanel
-              renderYesNoToggle={renderYesNoToggle}
-              renderRadioGrid={renderRadioGrid}
-              renderSelect={renderSelect}
-              renderButton={renderButton}
-            />
+          <div className={classes.desktopBackground}>
+            <div className={classes.root}>
+              <IndividualPanel
+                renderInput={renderInput}
+                renderSelect={renderSelect}
+                renderRadioGrid={renderRadioGrid}
+              />
+
+              <StatusPanel renderInput={renderInput} />
+              <OccupationPanel
+                renderReactSelect={renderReactSelect}
+                renderSelect={renderSelect}
+                renderYesNoToggle={renderYesNoToggle}
+                renderRadioGrid={renderRadioGrid}
+              />
+              <VehicleUsePanel
+                renderYesNoToggle={renderYesNoToggle}
+                renderRadioGrid={renderRadioGrid}
+                renderSelect={renderSelect}
+                renderButton={renderButton}
+              />
+            </div>
             <br />
             <br />
           </div>

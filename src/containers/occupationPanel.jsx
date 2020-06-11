@@ -14,6 +14,7 @@ const OccupationPanel = ({
   occupations,
   occupationStatus,
   renderSelect,
+  renderReactSelect,
   renderYesNoToggle,
   renderRadioGrid,
 }) => {
@@ -23,10 +24,14 @@ const OccupationPanel = ({
     fetchData(OCCUPATIONSTATUS_API_URL, FETCH_OCCUPATIONSTATUS);
   }, []);
 
+  console.log("fetchdata");
+  console.log(occupations);
+  console.log("fetchdata");
+
   return (
     <div>
-      {renderSelect("occupation.occupation", "Occupation", occupations)}
-      {renderSelect(
+      {renderReactSelect("occupation.occupation", "Occupation", occupations)}
+      {renderReactSelect(
         "occupation.occupationStatus",
         "Occupation Status",
         occupationStatus

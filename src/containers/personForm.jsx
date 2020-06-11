@@ -8,9 +8,7 @@ import { connect } from "react-redux";
 import { formActions } from "./../actions/formActions";
 
 import { reduxForm, getFormValues } from "redux-form";
-import Individual from "./individualPanel";
 
-import Paper from "material-ui/Paper";
 class PersonForm extends Form {
   componentDidMount() {
     // console.log(this.props.user.id);
@@ -183,6 +181,7 @@ class PersonForm extends Form {
             icons={this.props.icons}
             renderInput={this.renderInput.bind(this)}
             renderSelect={this.renderSelect.bind(this)}
+            renderReactSelect={this.renderReactSelect.bind(this)}
             renderDatePicker={this.renderDatePicker.bind(this)}
             renderRadioGrid={this.renderRadioGrid.bind(this)}
             renderYesNoToggle={this.renderYesNoToggle.bind(this)}

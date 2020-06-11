@@ -13,10 +13,13 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 3000,
     minWidth: 320,
     width: "100%",
-    paddingTop: "28px",
+
     position: "fixed",
     zIndex: "2",
-    backgroundColor: "#AEAEAE",
+    backgroundColor: "black",
+  },
+  base: {
+    color: "white",
   },
 
   "@global": {
@@ -34,6 +37,7 @@ export default function SimpleTabs({
   renderYesNoToggle,
   renderPanel,
   renderButton,
+  renderReactSelect,
   icons,
 }) {
   const isDesktopOrLaptop = useMediaQuery({
@@ -61,13 +65,17 @@ export default function SimpleTabs({
   return (
     <React.Fragment>
       <div className={classes.root}>
-        <Paper square className={classes.root}>
+        <Paper
+          square
+          className={classes.root}
+          hidden={isDesktopOrLaptop ? true : false}
+        >
           {/* {!isDesktopOrLaptop && ( */}
           <Tabs
             value={value}
             onChange={handleChange}
             variant="fullWidth"
-            indicatorColor="primary"
+            indicatorColor="primary" //indicator!
             textColor="primary"
             aria-label="icon tabs"
           >
@@ -76,11 +84,13 @@ export default function SimpleTabs({
                 key={index}
                 icon={icon.tabIcon}
                 aria-label={icon.ariaLabel}
-                classes={{ selected: classes.selected }}
+                classes={{
+                  root: classes.base,
+                }}
               />
             ))}
           </Tabs>
-          {/* )} */}
+          // )}
         </Paper>
       </div>
       {renderPanel({
@@ -88,6 +98,7 @@ export default function SimpleTabs({
         renderRadioGrid,
         renderYesNoToggle,
         renderSelect,
+        renderReactSelect,
         value,
         renderButton,
       })}
