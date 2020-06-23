@@ -36,12 +36,6 @@ const handleSelectChange = (input, value) => {
   return currentTarget;
 };
 
-const getValue = (opts, val) => {
-  const result = opts.find((o) => o._id === val);
-
-  return result;
-};
-
 const RenderField = (field) => {
   console.log(field);
   return (

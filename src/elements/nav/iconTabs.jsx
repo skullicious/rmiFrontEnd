@@ -90,7 +90,6 @@ export default function SimpleTabs({
               />
             ))}
           </Tabs>
-          // )}
         </Paper>
       </div>
       {renderPanel({

@@ -74,10 +74,6 @@ const RenderField = (field) => {
   const handleAlignment = (event, newAlignment, value) => {
     setAlignment(newAlignment);
 
-    console.log(event.currentTarget.value.toString());
-
-    console.log(field);
-
     field.input.onChange(event);
   };
 

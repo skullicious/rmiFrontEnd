@@ -20,10 +20,13 @@ const withStyles = makeStyles({
     minHeight: "64px",
     minWidth: "62px",
     width: "100%",
-    fontSize: "13px",
+    fontSize: "14px",
     fontWeight: "bold",
+    paddingTop: "20px",
   },
   checkedIcon: {
+    paddingTop: "20px",
+
     backgroundColor: "#4EB9A9",
     color: "#000000",
   },
