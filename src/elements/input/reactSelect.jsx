@@ -9,25 +9,10 @@ const customStyles = {
   valueContainer: (provided, state) => ({
     ...provided,
 
-    backgroundColor: state.value !== null ? "#4EB9A9" : "white",
+    backgroundColor: state.hasValue !== false ? "#4EB9A9" : "white",
+
     fontWeight: state.value !== null ? "bold" : "normal",
   }),
-  // control: (styles, { isSelected }) => ({
-  //   ...styles,
-  //   backgroundColor: isSelected ? "#4EB9A9" : "white",
-  //   fontWeight: isSelected ? "bold" : "normal",
-  // }),
-  option: (styles, { isDisabled, isFocused, isSelected }) => {
-    return {
-      ...styles,
-
-      backgroundColor: isFocused ? "#4EB9A9" : "white",
-
-      color: isFocused ? "black" : "",
-
-      cursor: isDisabled ? "not-allowed" : "default",
-    };
-  },
 };
 
 const ReactSelect = ({ name, label, options, value, onChange }) => {
