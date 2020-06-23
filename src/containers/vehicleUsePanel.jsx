@@ -12,7 +12,7 @@ const VehicleUsePanel = ({
   cycleUses,
   licenseTypes,
   renderRadioGrid,
-  renderSelect,
+  renderReactSelect,
   renderYesNoToggle,
   renderButton,
 }) => {
@@ -21,11 +21,11 @@ const VehicleUsePanel = ({
     fetchData(LICENSETYPES_API_URL, FETCH_LICENSETYPES);
   }, []);
 
-
   return (
     <div>
       {renderRadioGrid("cycleUse.cycleUse", "Cycle Use", cycleUses)}
-      {renderSelect("cycleUse.licenseType", "License Type", licenseTypes)}
+
+      {renderReactSelect("cycleUse.licenseType", "License type", licenseTypes)}
 
       {renderYesNoToggle(
         "cycleUse.isCommuting",

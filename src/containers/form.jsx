@@ -85,19 +85,15 @@ class Form extends Component {
   }
 
   renderReactSelect(name, label, options) {
-    console.log("options in selec");
-    console.log(options);
-
-    console.log("options in selec");
-
     const { data, errors } = this.state;
+
     return (
       <ReactSelect
         name={name}
         value={data[name]}
         label={label}
         options={options}
-        onChange={this.handleChange}
+        onChange={this.handleReactSelectChange}
         error={errors[name]}
       />
     );
@@ -118,19 +114,40 @@ class Form extends Component {
   }
 
   handleToggle = ({ currentTarget: input }) => {
-    // handleToggle = (input) => {
-    console.log(input);
-    // const errors = { ...this.state.errors };
-    // const errorMessage = this.validateProperty(input);
+    const errors = { ...this.state.errors };
+    const errorMessage = this.validateProperty(input);
 
-    // if (errorMessage) errors[input.name] = errorMessage;
-    // else delete errors[input.name];
+    if (errorMessage) errors[input.name] = errorMessage;
+    else delete errors[input.name];
 
-    // const data = { ...this.state.data };
-    // data[input.name] = input.value;
-    // this.setState({ data, errors });
+    const data = { ...this.state.data };
+    data[input.name] = input.value;
 
-    // ValidationTabController(errors);
+    this.setState({ data, errors });
+
+    ValidationTabController(errors);
+  };
+
+  handleReactSelectChange = (input) => {
+    const errors = { ...this.state.errors };
+
+    if (Object.keys(errors).length === 0 && errors.constructor === Object) {
+      //allow user to enter date without validation
+    }
+
+    // if we have generated errors by doing normal submit start checking fields onChange
+    else {
+      const errorMessage = this.validateProperty(input);
+      if (errorMessage) errors[input.name] = errorMessage;
+      else delete errors[input.name];
+    }
+
+    const data = { ...this.state.data };
+
+    data[input.name] = input.value;
+    this.setState({ data, errors });
+
+    ValidationTabController(errors);
   };
 
   handleChange = ({ currentTarget: input }) => {
@@ -179,6 +196,8 @@ class Form extends Component {
     let vals = this.props.currentValues;
 
     const flattenedVals = this.flattenObject(vals);
+
+    console.log(flattenedVals, this.schema, options);
 
     const { error } = Joi.validate(flattenedVals, this.schema, options);
 

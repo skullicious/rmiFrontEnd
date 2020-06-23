@@ -67,7 +67,7 @@ const RenderPersonParentPanel = ({
             <div className={classes.panelBackground}>
               <OccupationPanel
                 renderReactSelect={renderReactSelect}
-                renderSelect={renderSelect}
+                renderReactSelect={renderReactSelect}
                 renderYesNoToggle={renderYesNoToggle}
                 renderRadioGrid={renderRadioGrid}
               />
@@ -78,7 +78,7 @@ const RenderPersonParentPanel = ({
               <VehicleUsePanel
                 renderYesNoToggle={renderYesNoToggle}
                 renderRadioGrid={renderRadioGrid}
-                renderSelect={renderSelect}
+                renderReactSelect={renderReactSelect}
                 renderButton={renderButton}
               />
             </div>
@@ -102,21 +102,21 @@ const RenderPersonParentPanel = ({
             <div className={classes.root}>
               <IndividualPanel
                 renderInput={renderInput}
-                renderSelect={renderSelect}
+                renderReactSelect={renderReactSelect}
                 renderRadioGrid={renderRadioGrid}
               />
 
               <StatusPanel renderInput={renderInput} />
               <OccupationPanel
                 renderReactSelect={renderReactSelect}
-                renderSelect={renderSelect}
+                renderReactSelect={renderReactSelect}
                 renderYesNoToggle={renderYesNoToggle}
                 renderRadioGrid={renderRadioGrid}
               />
               <VehicleUsePanel
                 renderYesNoToggle={renderYesNoToggle}
                 renderRadioGrid={renderRadioGrid}
-                renderSelect={renderSelect}
+                renderReactSelect={renderReactSelect}
                 renderButton={renderButton}
               />
             </div>
