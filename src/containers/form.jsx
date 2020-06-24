@@ -7,6 +7,7 @@ import RadioGrid from "../elements/input/radioGrid";
 import YesNoToggle from "./../elements/input/yesNoToggle";
 import ValidationTabController from "./../helpers/validationTabController";
 import ReactSelect from "./../elements/input/reactSelect";
+import RmButton from "./../elements/button/rmButton";
 
 class Form extends Component {
   state = {
@@ -101,17 +102,28 @@ class Form extends Component {
 
   renderButton(label, target, pristine, submitting) {
     return (
-      <button
-        // disabled={this.validate()}
-        className="btn btn-primary"
+      <RmButton
+        label={label}
         disabled={pristine || submitting}
         value={target}
         onClick={this.handleSubmit}
-      >
-        {label}
-      </button>
+      />
     );
   }
+
+  // renderButton(label, target, pristine, submitting) {
+  //   return (
+  //     <button
+  //       // disabled={this.validate()}
+  //       className="btn btn-primary"
+  //       disabled={pristine || submitting}
+  //       value={target}
+  //       onClick={this.handleSubmit}
+  //     >
+  //       {label}
+  //     </button>
+  //   );
+  // }
 
   handleToggle = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };

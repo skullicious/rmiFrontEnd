@@ -36,7 +36,7 @@ const VehicleUsePanel = ({
         "Do you have a full UK Driving license?"
       )}
       <br />
-      {renderButton("Next")}
+      {renderButton("GET QUOTE")}
     </div>
   );
 };
