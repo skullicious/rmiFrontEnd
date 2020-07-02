@@ -6,8 +6,11 @@ import Paper from "@material-ui/core/Paper/Paper";
 import { useMediaQuery } from "react-responsive";
 import Footer from "../../components/footer/footer";
 
+import { useScrollTrigger } from "@material-ui/core";
+
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginTop: "27px",
     opacity: 0.8,
     flexGrow: 1,
     maxWidth: 3000,
@@ -18,10 +21,12 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "2",
     backgroundColor: "black",
   },
+  scrollTriggered: {
+    opacity: 1.0,
+  },
   base: {
     color: "white",
   },
-
   "@global": {
     "[data-value-error]": {
       backgroundColor: "#f8d7da",
@@ -62,15 +67,16 @@ export default function SimpleTabs({
     }
   };
 
+  const trigger = useScrollTrigger({ threshold: 33, disableHysteresis: true });
+
   return (
     <React.Fragment>
-      <div className={classes.root}>
+      <div className={!trigger ? classes.root : classes.scrollTriggered}>
         <Paper
           square
           className={classes.root}
           hidden={isDesktopOrLaptop ? true : false}
         >
-          {/* {!isDesktopOrLaptop && ( */}
           <Tabs
             value={value}
             onChange={handleChange}

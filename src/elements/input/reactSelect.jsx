@@ -6,12 +6,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Field } from "redux-form";
 
 const customStyles = {
-  valueContainer: (provided, state) => ({
+  control: (provided, state) => ({
     ...provided,
 
-    backgroundColor: state.hasValue !== false ? "#4EB9A9" : "white",
+    // backgroundColor: state.hasValue !== false ? "#4EB9A9" : "white",
 
-    fontWeight: state.value !== null ? "bold" : "normal",
+    borderColor: state.hasValue !== false ? "#4EB9A9" : "white",
+
+    borderWidth: "3px",
+
+    // fontWeight: state.hasValue !== false ? "bold" : "normal",
   }),
 };
 

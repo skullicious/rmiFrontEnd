@@ -15,19 +15,19 @@ const withStyles = makeStyles({
     width: "100%",
   },
   icon: {
-    border: "1px solid #c7c7c7",
-    borderRadius: "5%",
+    border: "2px solid #c7c7c7",
+    borderRadius: "25px",
     minHeight: "64px",
     minWidth: "62px",
     width: "100%",
     fontSize: "14px",
-    fontWeight: "bold",
+    // fontWeight: "bold",
     paddingTop: "20px",
   },
   checkedIcon: {
     paddingTop: "20px",
-
-    backgroundColor: "#4EB9A9",
+    borderColor: "#4EB9A9",
+    borderWidth: "3px",
     color: "#000000",
   },
   formControlLabel: {

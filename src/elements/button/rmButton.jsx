@@ -6,7 +6,7 @@ const RmButton = ({ label, target, pristine, submitting, onClick }) => {
     root: {
       backgroundColor: "#4EB9A9",
       color: "white",
-      borderRadius: theme.shape.borderRadius,
+      borderRadius: "25px",
       width: "100%",
       border: "none",
       borderColor: "#4EB9A9",

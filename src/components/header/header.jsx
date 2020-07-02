@@ -9,6 +9,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Image from "react-bootstrap/Image";
 
 import HeaderImage from "../../content/HorizontalClearBG.png";
+import { useScrollTrigger } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,9 +41,15 @@ const style = {
 export default function ButtonAppBar() {
   const classes = useStyles();
 
+  const trigger = useScrollTrigger({ threshold: 33, disableHysteresis: true });
+
   return (
-    <div className={classes.root}>
-      <AppBar style={style} position="sticky">
+    <div id="rmiHeader">
+      <AppBar
+        style={style}
+        position="sticky"
+        className={!trigger ? classes.root : classes.scrollTriggered}
+      >
         <Toolbar>
           <IconButton
             edge="start"
@@ -53,9 +60,6 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Image className="img-fluid" src={HeaderImage}></Image>
-          {/* <Typography variant="h6" className={classes.title}>
-            RaceMate Insurance
-          </Typography> */}
         </Toolbar>
       </AppBar>
     </div>

@@ -17,6 +17,7 @@ const toggleStyles = makeStyles((theme) => ({
   toggleButtonGroup: {
     width: "100%",
     fontWeight: "400",
+    borderRadius: "25px",
   },
   toggleButtonNA: {
     color: "black",
@@ -27,12 +28,10 @@ const toggleStyles = makeStyles((theme) => ({
   },
   toggleButtonSelected: {
     backgroundColor: "#4EB9A9 !important",
-
-    borderWidth: "50px",
-    borderColor: "#4EB9A9",
     "& a": {
-      fontWeight: "Bold",
       color: "#000000 !important",
+      borderColor: "black",
+      border: "10px",
     },
   },
 }));
@@ -108,6 +107,7 @@ const RenderField = (field) => {
               >
                 <a>Yes</a>
               </ToggleButton>
+
               <ToggleButton
                 className={classes.toggleButtonNA}
                 value="na"
@@ -117,6 +117,7 @@ const RenderField = (field) => {
               >
                 ||
               </ToggleButton>
+
               <ToggleButton
                 classes={{
                   root: classes.toggleButton,
