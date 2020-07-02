@@ -78,8 +78,6 @@ class LoginPage extends React.Component {
 
     const { classes } = this.props;
 
-    console.log(classes);
-
     return (
       <React.Fragment>
         <div className={classes.root}>
