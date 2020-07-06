@@ -10,19 +10,31 @@ import { useScrollTrigger } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: "32px",
+    marginTop: "56px",
     opacity: 0.8,
+    flexGrow: 1,
+    maxWidth: 3000,
+    minWidth: 320,
+    width: "100%",
+    zIndex: 3,
+
+    position: "fixed",
+
+    backgroundColor: "black",
+  },
+  scrollTriggered: {
+    marginTop: "56px",
+
+    zIndex: 3,
+
+    opacity: 1,
     flexGrow: 1,
     maxWidth: 3000,
     minWidth: 320,
     width: "100%",
 
     position: "fixed",
-    zIndex: "2",
     backgroundColor: "black",
-  },
-  scrollTriggered: {
-    opacity: 1.0,
   },
   base: {
     color: "white",
@@ -67,14 +79,14 @@ export default function SimpleTabs({
     }
   };
 
-  const trigger = useScrollTrigger({ threshold: 33, disableHysteresis: true });
+  const trigger = useScrollTrigger({ threshold: 66, disableHysteresis: true });
 
   return (
     <React.Fragment>
-      <div className={!trigger ? classes.root : classes.scrollTriggered}>
+      <div>
         <Paper
           square
-          className={classes.root}
+          className={!trigger ? classes.root : classes.scrollTriggered}
           hidden={isDesktopOrLaptop ? true : false}
         >
           <Tabs
