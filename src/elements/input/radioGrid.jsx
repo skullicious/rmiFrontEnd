@@ -13,12 +13,15 @@ const withStyles = makeStyles({
   root: {
     flexGrow: 1,
     width: "100%",
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
   },
   icon: {
     border: "2px solid #c7c7c7",
     borderRadius: "25px",
     minHeight: "64px",
-    minWidth: "62px",
+    minWidth: "90px",
     width: "100%",
     fontSize: "14px",
     // fontWeight: "bold",
@@ -58,7 +61,7 @@ function StyledRadio(props) {
   return (
     <Radio
       className={classes.root}
-      disableRipple
+      disableRipple={true}
       color="default"
       checkedIcon={
         <span className={clsx(classes.icon, classes.checkedIcon)}>{label}</span>

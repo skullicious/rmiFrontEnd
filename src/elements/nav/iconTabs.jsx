@@ -10,7 +10,7 @@ import { useScrollTrigger } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: "27px",
+    marginTop: "32px",
     opacity: 0.8,
     flexGrow: 1,
     maxWidth: 3000,

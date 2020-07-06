@@ -14,22 +14,26 @@ import Image from "react-bootstrap/Image";
 
 import RmIcon from "../content/RMIClearBG.png";
 
-const styles = {
+const styles = (theme) => ({
   root: {
     paddingTop: "100px",
+    width: "50%",
+    margin: "auto",
   },
   panelBackground: {
     padding: "30px",
     backgroundColor: "#FFFFFF",
-    margin: "5px 30px 5px 30px",
+    margin: "auto",
     borderRadius: "2%",
+    maxWidth: "500px",
   },
   desktopBackground: {
     padding: "30px",
     backgroundColor: "#ffffff",
-    margin: "40px 40px 40px 40px",
+    margin: "auto",
     borderRadius: "2%",
-    maxWidth: "100%",
+    minWidth: "150px",
+    maxWidth: "500px",
   },
   flexFix: {
     display: "block",
@@ -37,7 +41,7 @@ const styles = {
   rmIcon: {
     backgroundImage: "url(" + Image + ")",
   },
-};
+});
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -82,7 +86,7 @@ class LoginPage extends React.Component {
       <React.Fragment>
         <div className={classes.root}>
           <div className={classes.panelBackground}>
-            <div className="col-md-6 col-md-offset-3">
+            <div className="">
               <Image className="img-fluid" src={RmIcon}></Image>
               <form name="form" onSubmit={this.handleSubmit}>
                 <div

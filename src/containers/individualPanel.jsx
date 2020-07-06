@@ -16,6 +16,8 @@ const Individual = ({ titles, renderInput, renderRadioGrid, fetchData }) => {
       About you
       <br></br>
       Please note fields marked with '*' require an entry.
+      <br></br>
+      <br></br>
       <input
         type="hidden"
         id="individual.id"

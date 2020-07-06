@@ -9,17 +9,30 @@ import RmButton from "./../elements/button/rmButton";
 
 import { withStyles } from "@material-ui/core/styles";
 
-const styles = {
+const styles = (theme) => ({
   root: {
     paddingTop: "100px",
+    width: "50%",
+    margin: "auto",
   },
   panelBackground: {
     padding: "30px",
     backgroundColor: "#FFFFFF",
-    margin: "5px 30px 5px 30px",
+    margin: "auto",
     borderRadius: "2%",
+    maxWidth: "500px",
   },
-};
+  desktopBackground: {
+    padding: "30px",
+    backgroundColor: "#ffffff",
+    margin: "auto",
+    borderRadius: "2%",
+    minWidth: "150px",
+    maxWidth: "500px",
+
+    [theme.breakpoints.up("md")]: {},
+  },
+});
 
 class RegisterPage extends React.Component {
   constructor(props) {
@@ -68,7 +81,7 @@ class RegisterPage extends React.Component {
     return (
       <div className={classes.root}>
         <div className={classes.panelBackground}>
-          <div className="col-md-6 col-md-offset-3">
+          <div className="">
             <h2>Register</h2>
             <form name="form" onSubmit={this.handleSubmit}>
               <div

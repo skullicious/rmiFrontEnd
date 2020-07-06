@@ -30,11 +30,17 @@ const RenderPersonParentPanel = ({
       backgroundColor: "#FFFFFF",
       margin: "5px 5px 5px 5px",
       borderRadius: "2%",
+      [theme.breakpoints.up("md")]: {
+        margin: "80px 80px 80px 80px",
+      },
+      [theme.breakpoints.up("lg")]: {
+        margin: "160px 160px 160px 160px",
+      },
     },
     desktopBackground: {
       padding: "30px",
       backgroundColor: "#ffffff",
-      margin: "40px 40px 40px 40px",
+      margin: "100px 240px 240px 240px",
       borderRadius: "2%",
       maxWidth: "100%",
     },
