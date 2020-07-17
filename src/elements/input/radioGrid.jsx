@@ -18,17 +18,18 @@ const withStyles = makeStyles({
     },
   },
   icon: {
-    border: "2px solid #c7c7c7",
+    border: "2px solid #AEAEAE",
     borderRadius: "25px",
-    minHeight: "64px",
+    minHeight: "50px",
+
     minWidth: "90px",
     width: "100%",
     fontSize: "14px",
     // fontWeight: "bold",
-    paddingTop: "20px",
+    paddingTop: "13px",
   },
   checkedIcon: {
-    paddingTop: "20px",
+    paddingTop: "13px",
     borderColor: "#4EB9A9",
     borderWidth: "3px",
     color: "#000000",
@@ -45,6 +46,9 @@ const withStyles = makeStyles({
 
   formLabel: {
     color: "#212529",
+    "&:hover": {
+      backgroundColor: "red !important",
+    },
   },
 
   labelFocused: {
@@ -90,7 +94,6 @@ const RadioGrid = ({ name, label, options, onToggle, value, error }) => {
         onChange={onToggle}
         error={error}
         label={label}
-        error={error}
       />
     </React.Fragment>
   );
@@ -102,7 +105,7 @@ const renderField = (field) => {
   return (
     <div className={"form-group row"}>
       <label className="col-sm-6">{field.label}</label>
-      <label className="col-sm-6">
+      <label className={"col-sm-6"}>
         <RadioGroup
           value={field.input.value.toString()}
           onChange={field.input.onChange}
@@ -111,6 +114,7 @@ const renderField = (field) => {
         >
           <Grid
             container
+            spacing={1}
             direction="row"
             justify="space-between"
             alignItems="center"

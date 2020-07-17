@@ -11,27 +11,50 @@ const toggleStyles = makeStyles((theme) => ({
   },
   paper: {
     display: "flex",
-    border: `1px solid ${theme.palette.divider}`,
+    border: "2px solid #AEAEAE",
     flexWrap: "wrap",
+    borderRadius: "25px !important",
   },
   toggleButtonGroup: {
     width: "100%",
     fontWeight: "400",
-    borderRadius: "25px",
+    borderRadius: "25px !important",
+    height: "46px !important",
   },
   toggleButtonNA: {
     color: "black",
+    height: "38px !important",
   },
-  toggleButton: {
+  toggleButtonNo: {
     width: "50%",
+    borderRadius: "0px 50px 50px 0px !important",
     color: "#212529",
+    height: "39px !important",
+    "&:focus": {
+      outline: 0,
+    },
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+  toggleButtonYes: {
+    width: "50%",
+    borderRadius: "50px 0px 0px 50px !important",
+    color: "#212529",
+    height: "39px !important",
+
+    "&:focus": {
+      outline: 0,
+    },
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
   },
   toggleButtonSelected: {
-    backgroundColor: "#4EB9A9 !important",
+    border: "solid #4EB9A9 3px !important",
+    backgroundColor: "white !important",
     "& a": {
       color: "#000000 !important",
-      borderColor: "black",
-      border: "10px",
     },
   },
 }));
@@ -50,7 +73,7 @@ const StyledToggleButtonGroup = withStyles((theme) => ({
   },
 }))(ToggleButtonGroup);
 
-const YesNoToggle = ({ name, label, onToggle, error, value }) => {
+const YesNoToggle = ({ name, label, onToggle, error }) => {
   return (
     <React.Fragment>
       <Field
@@ -59,7 +82,6 @@ const YesNoToggle = ({ name, label, onToggle, error, value }) => {
         label={label}
         onChange={onToggle}
         error={error}
-        value={value}
       />
     </React.Fragment>
   );
@@ -70,10 +92,28 @@ const RenderField = (field) => {
     field.input.value.toString()
   );
 
+  console.log(alignment);
+
+  // const handleAlignment = (event, newAlignment, value) => {
+  //   setAlignment(newAlignment);
+
+  //   field.input.onChange(event);
+  // };
+
   const handleAlignment = (event, newAlignment, value) => {
     setAlignment(newAlignment);
 
+    field.input.value = event.currentTarget.value;
+
     field.input.onChange(event);
+  };
+
+  const parentClick = (event) => {
+    event.preventDefault();
+
+    console.log("parentclick event");
+    console.log(event.currentTarget.parentNode.parentNode.click());
+    console.log("parentclick event");
   };
 
   const classes = toggleStyles();
@@ -90,7 +130,7 @@ const RenderField = (field) => {
               name={field.input.name}
               label={field.input.label}
               size="small"
-              value={alignment}
+              value={field.input.value}
               exclusive
               aria-label="text alignment"
               className={classes.toggleButtonGroup}
@@ -98,14 +138,14 @@ const RenderField = (field) => {
             >
               <ToggleButton
                 classes={{
-                  root: classes.toggleButton,
+                  root: classes.toggleButtonYes,
                   selected: classes.toggleButtonSelected,
                 }}
                 value="true"
                 aria-label="true aligned"
                 name={field.input.name}
               >
-                <a>Yes</a>
+                <a onClick={parentClick}>Yes</a>
               </ToggleButton>
 
               <ToggleButton
@@ -120,14 +160,14 @@ const RenderField = (field) => {
 
               <ToggleButton
                 classes={{
-                  root: classes.toggleButton,
+                  root: classes.toggleButtonNo,
                   selected: classes.toggleButtonSelected,
                 }}
                 value="false"
                 aria-label="false aligned"
                 name={field.input.name}
               >
-                <a>No</a>
+                <a onClick={parentClick}>No</a>
               </ToggleButton>
             </StyledToggleButtonGroup>
           </Paper>

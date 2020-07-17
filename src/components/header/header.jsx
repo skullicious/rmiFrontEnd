@@ -15,7 +15,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     opacity: 0.8,
-    height: "56px",
+    height: "64px",
+  },
+  scrollTriggered: {
+    flexGrow: 1,
+    opacity: 1,
+    height: "64px",
+    borderBottom: "1px solid grey",
   },
   appBar: {
     background: "#2E3B55",
@@ -28,6 +34,10 @@ const useStyles = makeStyles((theme) => ({
   },
   headerImage: {
     backgroundImage: "url(" + Image + ")",
+  },
+  imgFluid: {
+    maxWidth: "100%",
+    height: "42px",
   },
 }));
 
@@ -59,7 +69,7 @@ export default function ButtonAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Image className="img-fluid" src={HeaderImage}></Image>
+          <Image className={classes.imgFluid} src={HeaderImage}></Image>
         </Toolbar>
       </AppBar>
     </div>

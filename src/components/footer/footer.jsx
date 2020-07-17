@@ -19,11 +19,17 @@ const useStyles = makeStyles({
     position: "absolute",
     top: "-20px",
     left: "35px",
+    "&:focus": {
+      outline: 0,
+    },
   },
   forwardChevron: {
     position: "absolute",
     top: "-20px",
     right: "35px",
+    "&:focus": {
+      outline: 0,
+    },
   },
 });
 

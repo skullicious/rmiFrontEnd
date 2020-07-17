@@ -47,6 +47,14 @@ class PersonForm extends Form {
           message: "Please enter your last name",
         };
       }),
+    "individual.dateOfBirth": Joi.string()
+      .required()
+      .label("Date of Birth")
+      .error(() => {
+        return {
+          message: "Please select your date of birth",
+        };
+      }),
     "contact.email.emailAddress": Joi.string()
       .email({ minDomainAtoms: 2 })
       .required()
@@ -182,10 +190,10 @@ class PersonForm extends Form {
             renderInput={this.renderInput.bind(this)}
             renderSelect={this.renderSelect.bind(this)}
             renderReactSelect={this.renderReactSelect.bind(this)}
-            renderDatePicker={this.renderDatePicker.bind(this)}
             renderRadioGrid={this.renderRadioGrid.bind(this)}
             renderYesNoToggle={this.renderYesNoToggle.bind(this)}
             renderButton={this.renderButton.bind(this)}
+            renderDatePicker={this.renderDatePicker.bind(this)}
           />
         </form>
       </div>
@@ -199,12 +207,15 @@ PersonForm = reduxForm({
 })(PersonForm);
 
 PersonForm = connect(
-  (state) => ({
-    currentValues: getFormValues("person")(state),
-    initialValues: state.person.items,
-    user: state.authentication.user,
-    users: state.authentication.users,
-  }),
+  (state) => (
+    console.log(state),
+    {
+      currentValues: getFormValues("person")(state),
+      initialValues: state.person.items,
+      user: state.authentication.user,
+      users: state.authentication.users,
+    }
+  ),
   { GetRider: formActions.GetRider, SaveRider: formActions.SaveRider }
 )(PersonForm);
 

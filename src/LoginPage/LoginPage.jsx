@@ -17,7 +17,7 @@ import RmIcon from "../content/RMIClearBG.png";
 const styles = (theme) => ({
   root: {
     paddingTop: "100px",
-    width: "50%",
+    width: "75%",
     margin: "auto",
   },
   panelBackground: {
@@ -30,7 +30,7 @@ const styles = (theme) => ({
   desktopBackground: {
     padding: "30px",
     backgroundColor: "#ffffff",
-    margin: "auto",
+    // margin: "auto",
     borderRadius: "2%",
     minWidth: "150px",
     maxWidth: "500px",
@@ -40,6 +40,15 @@ const styles = (theme) => ({
   },
   rmIcon: {
     backgroundImage: "url(" + Image + ")",
+  },
+  rmInput: {
+    borderRadius: "25px !important",
+    width: "50%",
+    border: "2px solid #AEAEAE",
+    height: "26px",
+    width: "100%",
+    height: "50px",
+    padding: "15px",
   },
 });
 
@@ -97,7 +106,7 @@ class LoginPage extends React.Component {
                   <label htmlFor="username">Username</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={classes.rmInput}
                     name="username"
                     value={username}
                     onChange={this.handleChange}
@@ -114,7 +123,7 @@ class LoginPage extends React.Component {
                   <label htmlFor="password">Password</label>
                   <input
                     type="password"
-                    className="form-control"
+                    className={classes.rmInput}
                     name="password"
                     value={password}
                     onChange={this.handleChange}

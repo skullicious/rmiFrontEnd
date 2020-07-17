@@ -6,7 +6,13 @@ import { FETCH_TITLES } from "../actions/types";
 import { Hidden, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-const Individual = ({ titles, renderInput, renderRadioGrid, fetchData }) => {
+const Individual = ({
+  titles,
+  renderInput,
+  renderRadioGrid,
+  renderDatePicker,
+  fetchData,
+}) => {
   useEffect(() => {
     fetchData(TITLES_API_URL, FETCH_TITLES);
   }, []);
@@ -27,6 +33,7 @@ const Individual = ({ titles, renderInput, renderRadioGrid, fetchData }) => {
       {renderRadioGrid("individual.title", "Title Selection *", titles)}
       {renderInput("individual.firstName", "First Name *")}
       {renderInput("individual.lastName", "Last Name *")}
+      {renderDatePicker("individual.dateOfBirth", "Date Of Birth *")}
     </div>
   );
 };

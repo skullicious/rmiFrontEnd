@@ -12,7 +12,7 @@ import { withStyles } from "@material-ui/core/styles";
 const styles = (theme) => ({
   root: {
     paddingTop: "100px",
-    width: "50%",
+    width: "75%",
     margin: "auto",
   },
   panelBackground: {
@@ -31,6 +31,18 @@ const styles = (theme) => ({
     maxWidth: "500px",
 
     [theme.breakpoints.up("md")]: {},
+  },
+  rmInput: {
+    borderRadius: "25px !important",
+    width: "50%",
+    border: "2px solid #AEAEAE",
+    height: "26px",
+    width: "100%",
+    height: "50px",
+    padding: "15px",
+    "&:focus": {
+      outline: 0,
+    },
   },
 });
 
@@ -93,7 +105,7 @@ class RegisterPage extends React.Component {
                 <label htmlFor="firstName">First Name</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={classes.rmInput}
                   name="firstName"
                   value={user.firstName}
                   onChange={this.handleChange}
@@ -111,7 +123,7 @@ class RegisterPage extends React.Component {
                 <label htmlFor="lastName">Last Name</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={classes.rmInput}
                   name="lastName"
                   value={user.lastName}
                   onChange={this.handleChange}
@@ -129,7 +141,7 @@ class RegisterPage extends React.Component {
                 <label htmlFor="username">Username</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={classes.rmInput}
                   name="username"
                   value={user.username}
                   onChange={this.handleChange}
@@ -147,7 +159,7 @@ class RegisterPage extends React.Component {
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
-                  className="form-control"
+                  className={classes.rmInput}
                   name="password"
                   value={user.password}
                   onChange={this.handleChange}

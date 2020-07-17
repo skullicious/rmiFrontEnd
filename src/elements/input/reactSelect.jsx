@@ -9,13 +9,10 @@ const customStyles = {
   control: (provided, state) => ({
     ...provided,
 
-    // backgroundColor: state.hasValue !== false ? "#4EB9A9" : "white",
-
-    borderColor: state.hasValue !== false ? "#4EB9A9" : "white",
-
+    borderColor: state.hasValue !== false ? "#4EB9A9" : "#AEAEAE",
     borderWidth: "3px",
-
-    // fontWeight: state.hasValue !== false ? "bold" : "normal",
+    borderRadius: "25px",
+    height: "50px",
   }),
 };
 
@@ -41,7 +38,6 @@ const handleSelectChange = (input, value) => {
 };
 
 const RenderField = (field) => {
-  console.log(field);
   return (
     <div>
       <div className="form-group row">
@@ -62,10 +58,6 @@ const RenderField = (field) => {
               options={field.options}
               getOptionLabel={(option) => option.name}
               styles={customStyles}
-              // onChange={(value) =>
-              //   field.input.onChange(
-              //     handleSelectChange(field.input.name, value)
-
               onChange={(value) =>
                 field.input.onChange(
                   handleSelectChange(field.input.name, value)

@@ -15,6 +15,7 @@ const RenderPersonParentPanel = ({
   renderRadioGrid,
   renderButton,
   renderReactSelect,
+  renderDatePicker,
   value,
 }) => {
   const isDesktopOrLaptop = useMediaQuery({
@@ -26,6 +27,7 @@ const RenderPersonParentPanel = ({
       paddingTop: "100px",
     },
     panelBackground: {
+      minWidth: "276px",
       padding: "30px",
       backgroundColor: "#FFFFFF",
       margin: "5px 5px 5px 5px",
@@ -36,13 +38,17 @@ const RenderPersonParentPanel = ({
       [theme.breakpoints.up("lg")]: {
         margin: "160px 160px 160px 160px",
       },
+      [theme.breakpoints.up("xl")]: {
+        margin: "140px 240px 240px 240px",
+      },
     },
     desktopBackground: {
-      padding: "30px",
+      padding: "0px 120px 0px 120px",
       backgroundColor: "#ffffff",
-      margin: "100px 240px 240px 240px",
+      margin: "100px 640px 240px 640px",
       borderRadius: "2%",
       maxWidth: "100%",
+      minWidth: "640px",
     },
     flexFix: {
       display: "block",
@@ -61,6 +67,7 @@ const RenderPersonParentPanel = ({
                 renderInput={renderInput}
                 renderSelect={renderSelect}
                 renderRadioGrid={renderRadioGrid}
+                renderDatePicker={renderDatePicker}
               />
             </div>
           </TabPanel>
@@ -110,6 +117,7 @@ const RenderPersonParentPanel = ({
                 renderInput={renderInput}
                 renderReactSelect={renderReactSelect}
                 renderRadioGrid={renderRadioGrid}
+                renderDatePicker={renderDatePicker}
               />
 
               <StatusPanel renderInput={renderInput} />

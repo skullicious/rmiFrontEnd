@@ -10,7 +10,7 @@ import { useScrollTrigger } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: "56px",
+    marginTop: "64px",
     opacity: 0.8,
     flexGrow: 1,
     maxWidth: 3000,
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "black",
   },
   scrollTriggered: {
-    marginTop: "56px",
+    marginTop: "64px",
 
     zIndex: 3,
 
@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   },
   base: {
     color: "white",
+    "&:focus": {
+      outline: 0,
+    },
   },
   "@global": {
     "[data-value-error]": {
@@ -55,6 +58,7 @@ export default function SimpleTabs({
   renderPanel,
   renderButton,
   renderReactSelect,
+  renderDatePicker,
   icons,
 }) {
   const isDesktopOrLaptop = useMediaQuery({
@@ -118,6 +122,7 @@ export default function SimpleTabs({
         renderReactSelect,
         value,
         renderButton,
+        renderDatePicker,
       })}
 
       {!isDesktopOrLaptop && (

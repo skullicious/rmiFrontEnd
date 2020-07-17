@@ -2,18 +2,35 @@ import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "../elements/input/input";
 import Select from "./../elements/input/select";
-import DatePicker from "../elements/input/datepicker";
 import RadioGrid from "../elements/input/radioGrid";
 import YesNoToggle from "./../elements/input/yesNoToggle";
 import ValidationTabController from "./../helpers/validationTabController";
 import ReactSelect from "./../elements/input/reactSelect";
 import RmButton from "./../elements/button/rmButton";
+import DatePicker from "./../elements/input/datepicker";
 
 class Form extends Component {
   state = {
     data: {},
     errors: {},
   };
+
+  renderDatePicker(name, label) {
+    const { data, errors } = this.state;
+
+    console.log("in datepicker render");
+    console.log(name, label);
+    console.log("in datepicker render");
+    return (
+      <DatePicker
+        name={name}
+        label={label}
+        value={data[name]}
+        onChange={this.handleChange}
+        errors={errors[name]}
+      />
+    );
+  }
 
   renderYesNoToggle(name, label) {
     const { data, errors } = this.state;
@@ -126,6 +143,9 @@ class Form extends Component {
   // }
 
   handleToggle = ({ currentTarget: input }) => {
+    console.log("handleToggle");
+    console.log(input);
+    console.log("handleToggle");
     const errors = { ...this.state.errors };
     const errorMessage = this.validateProperty(input);
 
@@ -167,11 +187,10 @@ class Form extends Component {
 
     if (Object.keys(errors).length === 0 && errors.constructor === Object) {
       //allow user to enter date without validation
-    }
-
-    // if we have generated errors by doing normal submit start checking fields onChange
-    else {
+    } else {
+      // if we have generated errors by doing normal submit start checking fields onChange
       const errorMessage = this.validateProperty(input);
+
       if (errorMessage) errors[input.name] = errorMessage;
       else delete errors[input.name];
     }
