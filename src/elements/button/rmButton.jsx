@@ -12,6 +12,10 @@ const RmButton = ({ label, target, pristine, submitting, onClick }) => {
       borderColor: "#4EB9A9",
       height: "50px",
       fontWeight: "Bold",
+      marginBottom: "15px",
+      "&:focus": {
+        outline: 0,
+      },
     },
   }));
 

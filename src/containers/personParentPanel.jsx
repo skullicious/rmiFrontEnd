@@ -13,6 +13,7 @@ const RenderPersonParentPanel = ({
   renderSelect,
   renderYesNoToggle,
   renderRadioGrid,
+  renderSearchButton,
   renderButton,
   renderReactSelect,
   renderDatePicker,
@@ -73,7 +74,10 @@ const RenderPersonParentPanel = ({
           </TabPanel>
           <TabPanel value={value} index={1}>
             <div className={classes.panelBackground}>
-              <StatusPanel renderInput={renderInput} />
+              <StatusPanel
+                renderInput={renderInput}
+                renderSearchButton={renderSearchButton}
+              />
             </div>
           </TabPanel>
           <TabPanel value={value} index={2}>
@@ -120,7 +124,10 @@ const RenderPersonParentPanel = ({
                 renderDatePicker={renderDatePicker}
               />
 
-              <StatusPanel renderInput={renderInput} />
+              <StatusPanel
+                renderInput={renderInput}
+                renderSearchButton={renderSearchButton}
+              />
               <OccupationPanel
                 renderReactSelect={renderReactSelect}
                 renderReactSelect={renderReactSelect}

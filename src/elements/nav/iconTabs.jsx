@@ -57,6 +57,7 @@ export default function SimpleTabs({
   renderYesNoToggle,
   renderPanel,
   renderButton,
+  renderSearchButton,
   renderReactSelect,
   renderDatePicker,
   icons,
@@ -123,6 +124,7 @@ export default function SimpleTabs({
         value,
         renderButton,
         renderDatePicker,
+        renderSearchButton,
       })}
 
       {!isDesktopOrLaptop && (

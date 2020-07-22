@@ -194,6 +194,7 @@ class PersonForm extends Form {
             renderYesNoToggle={this.renderYesNoToggle.bind(this)}
             renderButton={this.renderButton.bind(this)}
             renderDatePicker={this.renderDatePicker.bind(this)}
+            renderSearchButton={this.renderSearchButton.bind(this)}
           />
         </form>
       </div>

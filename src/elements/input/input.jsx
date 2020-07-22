@@ -10,7 +10,7 @@ const withStyles = makeStyles((theme) => ({
   fieldEmpty: {
     borderRadius: "25px !important",
     width: "50%",
-    border: "2px solid #AEAEAE",
+    border: "3px solid #AEAEAE",
     height: "50px",
     width: "100%",
 
@@ -22,7 +22,7 @@ const withStyles = makeStyles((theme) => ({
   fieldPopulated: {
     borderRadius: "25px !important",
     width: "50%",
-    border: "2px solid #4EB9A9",
+    border: "3px solid #4EB9A9",
     height: "50px",
     width: "100%",
 
@@ -33,22 +33,37 @@ const withStyles = makeStyles((theme) => ({
   },
 }));
 
-const Input = ({ name, label, error }) => {
+const Input = ({ name, label, error, dependent, isReadOnly }) => {
   return (
     <React.Fragment>
-      <Field name={name} component={renderField} error={error} label={label} />
+      <Field
+        name={name}
+        component={renderField}
+        error={error}
+        label={label}
+        dependent={dependent}
+        isReadOnly={isReadOnly}
+      />
     </React.Fragment>
   );
 };
 
 const renderField = (field) => {
+  console.log("field");
+  console.log(field);
+  console.log("field");
   const classes = withStyles();
 
   return (
     <React.Fragment>
-      <div className={(classes.padding, "form-group row")}>
+      <div
+        hidden={
+          field.dependent != undefined && field.input.value == "" ? true : false
+        }
+        className={(classes.padding, "form-group row")}
+      >
         <label className="col-sm-6" htmlFor={field.input.name}>
-          {field.input.label}
+          {field.label}
         </label>
         <div className="col-sm-6">
           <Field
@@ -61,9 +76,11 @@ const renderField = (field) => {
             }
             name={field.input.name}
             value={field.input.value}
+            readOnly={field.isReadOnly}
           />
         </div>
       </div>
+
       {field.error && <div className="alert alert-danger">{field.error}</div>}
     </React.Fragment>
   );

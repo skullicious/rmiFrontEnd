@@ -49,6 +49,9 @@ const styles = (theme) => ({
     width: "100%",
     height: "50px",
     padding: "15px",
+    "&:focus": {
+      outline: 0,
+    },
   },
 });
 

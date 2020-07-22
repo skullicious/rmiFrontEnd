@@ -15,23 +15,6 @@ class Form extends Component {
     errors: {},
   };
 
-  renderDatePicker(name, label) {
-    const { data, errors } = this.state;
-
-    console.log("in datepicker render");
-    console.log(name, label);
-    console.log("in datepicker render");
-    return (
-      <DatePicker
-        name={name}
-        label={label}
-        value={data[name]}
-        onChange={this.handleChange}
-        errors={errors[name]}
-      />
-    );
-  }
-
   renderYesNoToggle(name, label) {
     const { data, errors } = this.state;
 
@@ -60,7 +43,7 @@ class Form extends Component {
     );
   }
 
-  renderInput(name, label, type = "text") {
+  renderInput(name, label, dependent, isReadOnly, type = "text") {
     const { data, errors } = this.state;
 
     return (
@@ -71,6 +54,8 @@ class Form extends Component {
         label={label}
         onChange={this.handleChange}
         error={errors[name]}
+        dependent={dependent}
+        isReadOnly={isReadOnly}
       />
     );
   }
@@ -87,6 +72,20 @@ class Form extends Component {
       />
     );
   }
+
+  // renderDatePicker(name, label) {
+  //   const { data, errors } = this.state;
+
+  //   return (
+  //     <DatePicker
+  //       name={name}
+  //       label={label}
+  //       value={data[name]}
+  //       onChange={this.handleChange}
+  //       errors={errors[name]}
+  //     />
+  //   );
+  // }
 
   renderSelect(name, label, options) {
     const { data, errors } = this.state;
@@ -128,6 +127,19 @@ class Form extends Component {
     );
   }
 
+  renderSearchButton(label, target, pristine, submitting) {
+    return (
+      <RmButton
+        label={label}
+        disabled={pristine || submitting}
+        value={target}
+        onClick={this.handleAddressSearch}
+      />
+    );
+  }
+
+  handleAddressSearch = (postcode) => {};
+
   // renderButton(label, target, pristine, submitting) {
   //   return (
   //     <button
@@ -143,9 +155,6 @@ class Form extends Component {
   // }
 
   handleToggle = ({ currentTarget: input }) => {
-    console.log("handleToggle");
-    console.log(input);
-    console.log("handleToggle");
     const errors = { ...this.state.errors };
     const errorMessage = this.validateProperty(input);
 

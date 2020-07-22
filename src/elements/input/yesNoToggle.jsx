@@ -92,14 +92,6 @@ const RenderField = (field) => {
     field.input.value.toString()
   );
 
-  console.log(alignment);
-
-  // const handleAlignment = (event, newAlignment, value) => {
-  //   setAlignment(newAlignment);
-
-  //   field.input.onChange(event);
-  // };
-
   const handleAlignment = (event, newAlignment, value) => {
     setAlignment(newAlignment);
 
@@ -110,10 +102,6 @@ const RenderField = (field) => {
 
   const parentClick = (event) => {
     event.preventDefault();
-
-    console.log("parentclick event");
-    console.log(event.currentTarget.parentNode.parentNode.click());
-    console.log("parentclick event");
   };
 
   const classes = toggleStyles();
