@@ -17,6 +17,7 @@ const RenderPersonParentPanel = ({
   renderButton,
   renderReactSelect,
   renderDatePicker,
+  renderReactAddressSelect,
   value,
 }) => {
   const isDesktopOrLaptop = useMediaQuery({
@@ -77,6 +78,8 @@ const RenderPersonParentPanel = ({
               <StatusPanel
                 renderInput={renderInput}
                 renderSearchButton={renderSearchButton}
+                renderReactSelect={renderReactSelect}
+                renderReactAddressSelect={renderReactAddressSelect}
               />
             </div>
           </TabPanel>
@@ -127,6 +130,8 @@ const RenderPersonParentPanel = ({
               <StatusPanel
                 renderInput={renderInput}
                 renderSearchButton={renderSearchButton}
+                renderReactSelect={renderReactSelect}
+                renderReactAddressSelect={renderReactAddressSelect}
               />
               <OccupationPanel
                 renderReactSelect={renderReactSelect}

@@ -28,3 +28,14 @@ export const fetchData = (API_URL, TYPE) => (dispatch) => {
       })
     );
 };
+
+export const fetchAddress = (API_URL, TYPE) => (dispatch) => {
+  fetch(API_URL)
+    .then((res) => res.json())
+    .then((data) =>
+      dispatch({
+        type: TYPE,
+        payload: data,
+      })
+    );
+};

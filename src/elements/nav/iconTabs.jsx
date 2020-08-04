@@ -60,6 +60,7 @@ export default function SimpleTabs({
   renderSearchButton,
   renderReactSelect,
   renderDatePicker,
+  renderReactAddressSelect,
   icons,
 }) {
   const isDesktopOrLaptop = useMediaQuery({
@@ -121,6 +122,7 @@ export default function SimpleTabs({
         renderYesNoToggle,
         renderSelect,
         renderReactSelect,
+        renderReactAddressSelect,
         value,
         renderButton,
         renderDatePicker,

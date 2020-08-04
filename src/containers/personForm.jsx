@@ -190,6 +190,7 @@ class PersonForm extends Form {
             renderInput={this.renderInput.bind(this)}
             renderSelect={this.renderSelect.bind(this)}
             renderReactSelect={this.renderReactSelect.bind(this)}
+            renderReactAddressSelect={this.renderReactAddressSelect.bind(this)}
             renderRadioGrid={this.renderRadioGrid.bind(this)}
             renderYesNoToggle={this.renderYesNoToggle.bind(this)}
             renderButton={this.renderButton.bind(this)}
@@ -208,15 +209,12 @@ PersonForm = reduxForm({
 })(PersonForm);
 
 PersonForm = connect(
-  (state) => (
-    console.log(state),
-    {
-      currentValues: getFormValues("person")(state),
-      initialValues: state.person.items,
-      user: state.authentication.user,
-      users: state.authentication.users,
-    }
-  ),
+  (state) => ({
+    currentValues: getFormValues("person")(state),
+    initialValues: state.person.items,
+    user: state.authentication.user,
+    users: state.authentication.users,
+  }),
   { GetRider: formActions.GetRider, SaveRider: formActions.SaveRider }
 )(PersonForm);
 

@@ -116,6 +116,21 @@ class Form extends Component {
     );
   }
 
+  renderReactAddressSelect(name, label, options) {
+    const { data, errors } = this.state;
+
+    return (
+      <ReactSelect
+        name={name}
+        value={data[name]}
+        label={label}
+        options={options}
+        onChange={this.handleReactSelectChange}
+        error={errors[name]}
+      />
+    );
+  }
+
   renderButton(label, target, pristine, submitting) {
     return (
       <RmButton

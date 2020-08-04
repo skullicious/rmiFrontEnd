@@ -16,7 +16,8 @@ const customStyles = {
   }),
 };
 
-const ReactSelect = ({ name, label, options, value, onChange }) => {
+const ReactAddressSelect = ({ name, label, options, value, onChange }) => {
+  console.log("in react address select");
   return (
     <React.Fragment>
       <Field
@@ -53,7 +54,6 @@ const RenderField = (field) => {
               {...props}
               isMulti={false}
               className={"col-sm-6"}
-              // defaultInputValue={"Please Select..."}
               id={field.input.name}
               name={field.input.name}
               options={field.options}
@@ -73,4 +73,4 @@ const RenderField = (field) => {
   );
 };
 
-export default ReactSelect;
+export default ReactAddressSelect;

@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import StateManager from "react-select";
+import { fetchData } from "../actions/testActions";
+import { FETCH_ADDRESS } from "../actions/types";
+import { ADDRESS_API_URL } from "../services/apiService";
 
-const StatusPanel = ({ renderInput, renderSearchButton }) => {
+import { fetchAddress } from "./../actions/testActions";
+
+const StatusPanel = ({
+  renderInput,
+  renderSearchButton,
+  renderReactSelect,
+  renderReactAddressSelect,
+  addresses,
+  dispatch,
+}) => {
+  // useEffect(() => {
+  //   fetchAddress(ADDRESS_API_URL, FETCH_ADDRESS);
+  // }, []);
+
   return (
     <div>
       <input
@@ -43,12 +60,35 @@ const StatusPanel = ({ renderInput, renderSearchButton }) => {
         true
       )}
 
-      {renderInput(
+      {/* {renderInput(
         "contact.address.ConfirmedAddress",
         "Confirmed Address",
         "contact.address.confirmedAddress"
-      )}
+      )} */}
+
       {renderSearchButton("Search for Address")}
+
+      {/* {renderReactSelect(
+        "contact.address.confirmedAddress",
+        "Address",
+        addresses
+      )} */}
+
+      {renderInput("contact.address.confirmedAddress", "confirmed Address")}
+
+      {renderReactAddressSelect(
+        "contact.address.addresses",
+        "Address",
+        addresses
+      )}
+
+      <button
+        onClick={() =>
+          dispatch(fetchAddress(ADDRESS_API_URL + "ub68sx", FETCH_ADDRESS))
+        }
+      ></button>
+
+      {/* <button onClick={() => dispatch({ type: "FETCH_ADDRESS" })}>-</button> */}
 
       <input
         type="hidden"
@@ -63,4 +103,10 @@ const StatusPanel = ({ renderInput, renderSearchButton }) => {
   );
 };
 
-export default StatusPanel;
+const mapStateToProps = (state) => ({
+  addresses: state.data.address,
+});
+
+export default connect(mapStateToProps)(StatusPanel);
+
+// export default StatusPanel;

@@ -49,9 +49,6 @@ const Input = ({ name, label, error, dependent, isReadOnly }) => {
 };
 
 const renderField = (field) => {
-  console.log("field");
-  console.log(field);
-  console.log("field");
   const classes = withStyles();
 
   return (
