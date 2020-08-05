@@ -17,7 +17,6 @@ const customStyles = {
 };
 
 const ReactAddressSelect = ({ name, label, options, value, onChange }) => {
-  console.log("in react address select");
   return (
     <React.Fragment>
       <Field

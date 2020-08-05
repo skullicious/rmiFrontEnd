@@ -17,6 +17,7 @@ const customStyles = {
 };
 
 const ReactSelect = ({ name, label, options, value, onChange }) => {
+  console.log("in select");
   return (
     <React.Fragment>
       <Field
@@ -33,11 +34,13 @@ const ReactSelect = ({ name, label, options, value, onChange }) => {
 
 const handleSelectChange = (input, value) => {
   //rebuilds object for consumation by form
+  console.log(value);
   const currentTarget = value._id;
   return currentTarget;
 };
 
 const RenderField = (field) => {
+  console.log("in select");
   return (
     <div>
       <div className="form-group row">

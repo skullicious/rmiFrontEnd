@@ -30,7 +30,13 @@ export const fetchData = (API_URL, TYPE) => (dispatch) => {
 };
 
 export const fetchAddress = (API_URL, TYPE) => (dispatch) => {
-  fetch(API_URL)
+  console.log("Search term passed from component");
+
+  const API_URL_TRIMMED = API_URL.replace(/ /g, "");
+
+  console.log(API_URL_TRIMMED);
+
+  fetch(API_URL_TRIMMED)
     .then((res) => res.json())
     .then((data) =>
       dispatch({

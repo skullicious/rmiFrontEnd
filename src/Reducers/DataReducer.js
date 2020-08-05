@@ -78,6 +78,7 @@ export default function (state = initalState, action) {
         ...state,
         address: dummyAddresses,
       };
+
     default:
       return state;
   }

@@ -8,6 +8,7 @@ import ValidationTabController from "./../helpers/validationTabController";
 import ReactSelect from "./../elements/input/reactSelect";
 import RmButton from "./../elements/button/rmButton";
 import DatePicker from "./../elements/input/datepicker";
+import ReactAddressSelect from "./../elements/input/reactAddressSelect";
 
 class Form extends Component {
   state = {
@@ -120,7 +121,7 @@ class Form extends Component {
     const { data, errors } = this.state;
 
     return (
-      <ReactSelect
+      <ReactAddressSelect
         name={name}
         value={data[name]}
         label={label}

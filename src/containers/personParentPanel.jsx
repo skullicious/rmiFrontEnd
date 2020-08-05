@@ -78,7 +78,7 @@ const RenderPersonParentPanel = ({
               <StatusPanel
                 renderInput={renderInput}
                 renderSearchButton={renderSearchButton}
-                renderReactSelect={renderReactSelect}
+                // renderReactSelect={renderReactSelect}
                 renderReactAddressSelect={renderReactAddressSelect}
               />
             </div>
@@ -130,7 +130,7 @@ const RenderPersonParentPanel = ({
               <StatusPanel
                 renderInput={renderInput}
                 renderSearchButton={renderSearchButton}
-                renderReactSelect={renderReactSelect}
+                // renderReactSelect={renderReactSelect}
                 renderReactAddressSelect={renderReactAddressSelect}
               />
               <OccupationPanel

@@ -10,14 +10,16 @@ import { fetchAddress } from "./../actions/testActions";
 const StatusPanel = ({
   renderInput,
   renderSearchButton,
-  renderReactSelect,
   renderReactAddressSelect,
   addresses,
   dispatch,
+  searchterm,
 }) => {
   // useEffect(() => {
   //   fetchAddress(ADDRESS_API_URL, FETCH_ADDRESS);
   // }, []);
+
+  console.log();
 
   return (
     <div>
@@ -84,11 +86,11 @@ const StatusPanel = ({
 
       <button
         onClick={() =>
-          dispatch(fetchAddress(ADDRESS_API_URL + "ub68sx", FETCH_ADDRESS))
+          dispatch(fetchAddress(ADDRESS_API_URL + searchterm, FETCH_ADDRESS))
         }
       ></button>
-
-      {/* <button onClick={() => dispatch({ type: "FETCH_ADDRESS" })}>-</button> */}
+      {/* 
+      <button onClick={() => dispatch({ type: "SET_ADDRESS" })}>-</button> */}
 
       <input
         type="hidden"
@@ -96,6 +98,7 @@ const StatusPanel = ({
         name="contact.email.emailAddress.Email.Id"
         value=""
       ></input>
+
       {renderInput("contact.email.emailAddress", "Email Address")}
 
       {renderInput("contact.phoneNumber.number", "Contact Number")}
@@ -104,9 +107,8 @@ const StatusPanel = ({
 };
 
 const mapStateToProps = (state) => ({
+  searchterm: state.form.person.values.contact.address.postCode,
   addresses: state.data.address,
 });
 
 export default connect(mapStateToProps)(StatusPanel);
-
-// export default StatusPanel;
