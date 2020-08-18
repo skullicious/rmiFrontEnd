@@ -206,6 +206,9 @@ class PersonForm extends Form {
 PersonForm = reduxForm({
   // a unique name for the form
   form: "person",
+  keepDirtyOnReinitialize: true,
+  enableReinitialize: true,
+  updateUnregisteredFields: true,
 })(PersonForm);
 
 PersonForm = connect(

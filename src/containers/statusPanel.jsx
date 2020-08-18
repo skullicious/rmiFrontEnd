@@ -14,12 +14,11 @@ const StatusPanel = ({
   addresses,
   dispatch,
   searchterm,
+  confirmedAddress,
 }) => {
   // useEffect(() => {
   //   fetchAddress(ADDRESS_API_URL, FETCH_ADDRESS);
   // }, []);
-
-  console.log();
 
   return (
     <div>
@@ -76,10 +75,16 @@ const StatusPanel = ({
         addresses
       )} */}
 
-      {renderInput("contact.address.confirmedAddress", "confirmed Address")}
+      {/* {renderInput("contact.address.confirmedAddress", "confirmed Address")} */}
+
+      {/* {renderReactAddressSelect(
+        "contact.address.confirmedAddress",
+        "confirmed Address",
+        addressName
+      )} */}
 
       {renderReactAddressSelect(
-        "contact.address.addresses",
+        "contact.address.confirmedAddress",
         "Address",
         addresses
       )}
@@ -106,9 +111,16 @@ const StatusPanel = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  searchterm: state.form.person.values.contact.address.postCode,
-  addresses: state.data.address,
-});
+const mapStateToProps = (state) => (
+  console.log("status"),
+  console.log(state),
+  console.log("status"),
+  {
+    //hardcode this because at initial render is undefined
+    // searchterm: state.form.person.values.contact.address.postCode,
+    //confirmedAddress: "state.form.person.values.contact.address.addresses",
+    addresses: state.data.address,
+  }
+);
 
 export default connect(mapStateToProps)(StatusPanel);

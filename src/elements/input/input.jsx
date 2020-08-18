@@ -33,7 +33,7 @@ const withStyles = makeStyles((theme) => ({
   },
 }));
 
-const Input = ({ name, label, error, dependent, isReadOnly }) => {
+const Input = ({ name, label, error, dependent, isReadOnly, value }) => {
   return (
     <React.Fragment>
       <Field
@@ -43,6 +43,7 @@ const Input = ({ name, label, error, dependent, isReadOnly }) => {
         label={label}
         dependent={dependent}
         isReadOnly={isReadOnly}
+        value={value}
       />
     </React.Fragment>
   );
@@ -62,6 +63,7 @@ const renderField = (field) => {
         <label className="col-sm-6" htmlFor={field.input.name}>
           {field.label}
         </label>
+
         <div className="col-sm-6">
           <Field
             component="input"
